@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-07T02:31:48.672Z</updated>
+  <updated>2017-07-07T02:34:11.539Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/07/07/Hexo%E5%AE%89%E8%A3%85/"/>
     <id>http://yoursite.com/2017/07/07/Hexo安装/</id>
     <published>2017-07-07T02:25:12.000Z</published>
-    <updated>2017-07-07T02:31:48.672Z</updated>
+    <updated>2017-07-07T02:34:11.539Z</updated>
     
     <content type="html"><![CDATA[<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>我们很经常会要用到Git以及Github，首先来安装Git：</p>
 <ul>
@@ -33,8 +33,8 @@
 </ul>
 <p>同样选择对应自己电脑的版本下载安装。</p>
 <h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>安装好Git和Node.js之后，轮到我们今天的主角登场了~先打开Git Bash，然后输入下面这条命令来安装Hexo：</p>
-<pre><code>npm install hexo-cli -g
-</code></pre>]]></content>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div></pre></td></tr></table></figure>
+]]></content>
     
     <summary type="html">
     

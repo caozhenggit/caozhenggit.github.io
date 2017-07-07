@@ -16,8 +16,8 @@
 </ul>
 <p>同样选择对应自己电脑的版本下载安装。</p>
 <h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>安装好Git和Node.js之后，轮到我们今天的主角登场了~先打开Git Bash，然后输入下面这条命令来安装Hexo：</p>
-<pre><code>npm install hexo-cli -g
-</code></pre>]]></content>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div></pre></td></tr></table></figure>
+]]></content>
       
         
     </entry>
