@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-07T07:52:14.061Z</updated>
+  <updated>2017-07-07T08:02:47.295Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/07/07/%E6%AF%95%E4%B8%9A%E5%90%8E%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%94%B6%E8%8E%B7/"/>
     <id>http://yoursite.com/2017/07/07/毕业后这一年的收获/</id>
     <published>2017-07-07T07:00:11.000Z</published>
-    <updated>2017-07-07T07:52:14.061Z</updated>
+    <updated>2017-07-07T08:02:47.295Z</updated>
     
     <content type="html"><![CDATA[<p>去年的七月拿到毕业证正式毕业，一转眼就又是七月了，这一年还是经历了不少事，回头看看，这一年中的大多数选择还是比较满意的。今天趁着懒癌没发作，总结一下这一年的收获吧。</p>
 <h2 id="当前状况"><a href="#当前状况" class="headerlink" title="当前状况"></a>当前状况</h2><p>毕业一年，上海，创业公司，安卓开发，无房无车，几乎无存款，身体还算健康，但缺乏锻炼免疫力差，女友关系和睦，离家很远。</p>
@@ -40,8 +40,8 @@
     
     </summary>
     
+      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
-      <category term="生活" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
