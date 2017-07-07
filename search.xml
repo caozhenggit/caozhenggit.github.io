@@ -17,6 +17,12 @@
 ]]></content>
       
         
+        <tags>
+            
+            <tag> 生活 </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -77,6 +83,12 @@ INFO  You are almost done! Don&apos;t forget to run &apos;npm install&apos; befo
 <p>这里以<a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank" rel="external">Apollo</a>这个主题为例，进去github页面之后可以看到很详细的安装和启动方法，这里就不展开来讲了。</p>
 ]]></content>
       
+        
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
         
     </entry>
     
