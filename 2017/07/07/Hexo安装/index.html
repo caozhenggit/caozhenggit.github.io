@@ -18,7 +18,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/07/Hexo安装/index.html">
 <meta property="og:site_name" content="愤怒的泡面">
 <meta property="og:description" content="安装Git我们很经常会要用到Git以及Github，首先来安装Git：  下载Git  选择合适的版本下载然后安装，我们稍后将会用上。 安装Node.js因为Hexo是一款基于Node.js的静态博客框架，所以我们还需要安装好它：  下载Node.js  同样选择对应自己电脑的版本下载安装。 安装Hexo安装好Git和Node.js之后，轮到我们今天的主角登场了~先打开Git Bash，然后输入下">
-<meta property="og:updated_time" content="2017-07-07T03:23:48.970Z">
+<meta property="og:updated_time" content="2017-07-07T03:39:30.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo安装">
 <meta name="twitter:description" content="安装Git我们很经常会要用到Git以及Github，首先来安装Git：  下载Git  选择合适的版本下载然后安装，我们稍后将会用上。 安装Node.js因为Hexo是一款基于Node.js的静态博客框架，所以我们还需要安装好它：  下载Node.js  同样选择对应自己电脑的版本下载安装。 安装Hexo安装好Git和Node.js之后，轮到我们今天的主角登场了~先打开Git Bash，然后输入下">
@@ -166,37 +166,37 @@
 <p>来试试安装成功没有，输入以下命令查看Hexo的版本信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo -v</div></pre></td></tr></table></figure>
 <p>如果出现类似内容说明安装成功啦！</p>
-<p><code>hexo-cli: 0.1.9
-    os: Windows_NT 6.1.7601 win32 ia32
-    http_parser: 2.3
-    node: 0.12.2
-    v8: 3.28.73
-    uv: 1.4.2-node1
-    zlib: 1.2.8
-    modules: 14
-    openssl: 1.0.1m</code></p>
-<h2 id="Hexo的使用"><a href="#Hexo的使用" class="headerlink" title="Hexo的使用"></a>Hexo的使用</h2><p>现在我们可以开始创建博客写文章了！是不是很快~下面会介绍几个Hexo的常用命令，掌握之后就能愉悦地开始写作之旅了XD</p>
+<pre><code>hexo-cli: 0.1.9
+os: Windows_NT 6.1.7601 win32 ia32
+http_parser: 2.3
+node: 0.12.2
+v8: 3.28.73
+uv: 1.4.2-node1
+zlib: 1.2.8
+modules: 14
+openssl: 1.0.1m
+</code></pre><h2 id="Hexo的使用"><a href="#Hexo的使用" class="headerlink" title="Hexo的使用"></a>Hexo的使用</h2><p>现在我们可以开始创建博客写文章了！是不是很快~下面会介绍几个Hexo的常用命令，掌握之后就能愉悦地开始写作之旅了XD</p>
 <h3 id="新建博客"><a href="#新建博客" class="headerlink" title="新建博客"></a>新建博客</h3><p>假设我在E盘有个叫blog的文件夹，现在我们用Git Bash进去这个文件夹里，然后将它初始化为我们的博客目录：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure>
 <p>安装成功的提示信息：</p>
-<p><code>INFO  Copying data to E:\blog
-    INFO  You are almost done! Don&#39;t forget to run &#39;npm install&#39; before you start blogging with Hexo!</code></p>
-<p>注意看到第二条！提示我们在开始使用前要先执行</p>
+<pre><code>INFO  Copying data to E:\blog
+INFO  You are almost done! Don&apos;t forget to run &apos;npm install&apos; before you start blogging with Hexo!
+</code></pre><p>注意看到第二条！提示我们在开始使用前要先执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install</div></pre></td></tr></table></figure>
 <p>这条命令是用来安装依赖包的，具体安装内容可以在package.json文件里找到。安装好了之后会看到一大串的信息，这里就不贴出来了。现在我们可以看到blog目录下的文件结构是这样的：</p>
-<p><code>.
-    ├── _config.yml
-    ├── node_modules
-    ├── package.json
-    ├── scaffolds
-    ├── source
-    |   └── _posts
-    └── themes</code></p>
-<h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"我的第一篇文章"</span></div></pre></td></tr></table></figure>
+<pre><code>.
+├── _config.yml
+├── node_modules
+├── package.json
+├── scaffolds
+├── source
+|   └── _posts
+└── themes
+</code></pre><h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"我的第一篇文章"</span></div></pre></td></tr></table></figure>
 <h3 id="生成界面"><a href="#生成界面" class="headerlink" title="生成界面"></a>生成界面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate 或者 hexo g</div></pre></td></tr></table></figure>
 <h3 id="界面预览"><a href="#界面预览" class="headerlink" title="界面预览"></a>界面预览</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server 或者 hexo s</div></pre></td></tr></table></figure>
 <p>我们会看到这样一条提示：</p>
-<pre><code>`INFO  Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop.`
+<pre><code>INFO  Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop.
 </code></pre><p>打开浏览器访问<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
 <h3 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h3><p>是不是很激动！成功了有木有~不过等等，博客名写着Hexo，可不是我想的那样噢，还有还有，页面底部的版权信息里作者名字也不是我啊喂！来，我们来改掉它们！</p>
 <p>找到博客根目录下的配置文件_config.yml，用自己喜欢的文本编辑器编辑它。看到# Site的那一部分，里面的title就是博客的名字，subtitle就是副标题，author对应的那个就是作者名字啦，把自己的大名写上去吧！</p>
