@@ -50,7 +50,7 @@
     <link href="http://yoursite.com/2017/07/07/Hexo%E5%AE%89%E8%A3%85/"/>
     <id>http://yoursite.com/2017/07/07/Hexo安装/</id>
     <published>2017-07-07T02:25:12.000Z</published>
-    <updated>2017-07-07T08:12:25.251Z</updated>
+    <updated>2017-07-07T08:13:55.078Z</updated>
     
     <content type="html"><![CDATA[<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>我们很经常会要用到Git以及Github，首先来安装Git：</p>
 <ul>
@@ -111,8 +111,7 @@ INFO  You are almost done! Don&apos;t forget to run &apos;npm install&apos; befo
 date: 2015-10-20 06:49:50
 type: &quot;categories&quot;
 comments: false
-</code></pre><h3 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h3><p><code>` bash
-$ hexo new page tags</code></p>
+</code></pre><h3 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new page tags</div></pre></td></tr></table></figure>
 <p>编辑站点的source/tags/index.md，添加</p>
 <pre><code>title: tags
 date: 2015-10-20 06:49:50
