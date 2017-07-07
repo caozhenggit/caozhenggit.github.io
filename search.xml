@@ -81,11 +81,18 @@ INFO  You are almost done! Don&apos;t forget to run &apos;npm install&apos; befo
 <h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><p>在这个看脸的世界，我们的博客怎么可以没有颜值呢，折腾完上面的那些之后，是时候给博客挑上件漂亮的“衣服”了。</p>
 <p>Hexo官方网站上展示了多套主题，可以按自己的口味挑选，或者动手能力强的，可以试着自己写一套独一无二的主题噢XD</p>
 <p>这里以<a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank" rel="external">Apollo</a>这个主题为例，进去github页面之后可以看到很详细的安装和启动方法，这里就不展开来讲了。</p>
-<h3 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$ hexo new page tags</div><div class="line">``</div><div class="line"></div><div class="line">编辑站点的<span class="built_in">source</span>/tags/index.md，添加</div><div class="line"></div><div class="line">	title: tags</div><div class="line">	date: 2015-10-20 06:49:50</div><div class="line">	<span class="built_in">type</span>: <span class="string">"tags"</span></div><div class="line">	comments: <span class="literal">false</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">### 添加分类 ###</span></div><div class="line"></div><div class="line">``` bash</div><div class="line">$ hexo new page categories</div></pre></td></tr></table></figure>
+<h3 id="添加分类"><a href="#添加分类" class="headerlink" title="添加分类"></a>添加分类</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new page categories</div></pre></td></tr></table></figure>
 <p>编辑站点的source/categories/index.md，添加</p>
 <pre><code>title: categories
 date: 2015-10-20 06:49:50
 type: &quot;categories&quot;
+comments: false
+</code></pre><h3 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h3><p><code>` bash
+$ hexo new page tags</code></p>
+<p>编辑站点的source/tags/index.md，添加</p>
+<pre><code>title: tags
+date: 2015-10-20 06:49:50
+type: &quot;tags&quot;
 comments: false
 </code></pre>]]></content>
       
