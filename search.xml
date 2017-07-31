@@ -3,6 +3,98 @@
   
     
     <entry>
+      <title><![CDATA[Hexo常用命令笔记]]></title>
+      <url>/2017/07/31/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/</url>
+      <content type="html"><![CDATA[<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><ul>
+<li>npm install hexo -g #安装  </li>
+<li>npm update hexo -g #升级  </li>
+<li>hexo init #初始化</li>
+</ul>
+<h2 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h2><ul>
+<li>hexo n “我的博客” == hexo new “我的博客” #新建文章</li>
+<li>hexo p == hexo publish</li>
+<li>hexo g == hexo generate#生成</li>
+<li>hexo s == hexo server #启动服务预览</li>
+<li>hexo d == hexo deploy#部署</li>
+</ul>
+<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><ul>
+<li>hexo server #Hexo 会监视文件变动并自动更新，您无须重启服务器</li>
+<li>hexo server -s #静态模式</li>
+<li>hexo server -p 5000 #更改端口</li>
+<li><p>hexo server -i 192.168.1.1 #自定义 IP</p>
+</li>
+<li><p>hexo clean #清除缓存 网页正常情况下可以忽略此条命令</p>
+</li>
+<li>hexo g #生成静态网页</li>
+<li>hexo d #开始部署</li>
+</ul>
+<h2 id="监视文件变动"><a href="#监视文件变动" class="headerlink" title="监视文件变动"></a>监视文件变动</h2><ul>
+<li>hexo generate #使用 Hexo 生成静态文件快速而且简单</li>
+<li>hexo generate –watch #监视文件变动</li>
+</ul>
+<p>完成后部署<br>两个命令的作用是相同的</p>
+<ul>
+<li>hexo generate –deploy</li>
+<li>hexo deploy –generate</li>
+<li>hexo deploy -g</li>
+<li>hexo server -g</li>
+</ul>
+<h2 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h2><ul>
+<li>hexo publish [layout] <title></title></li>
+</ul>
+<h2 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h2><ul>
+<li>hexo new “postName” #新建文章</li>
+<li>hexo new page “pageName” #新建页面</li>
+<li>hexo generate #生成静态页面至public目录</li>
+<li>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）</li>
+<li><p>hexo deploy #将.deploy目录部署到GitHub</p>
+</li>
+<li><p>hexo new [layout] <title></title></p>
+</li>
+<li>hexo new photo “My Gallery”</li>
+<li>hexo new “Hello World” –lang tw</li>
+</ul>
+<h2 id="变量-描述"><a href="#变量-描述" class="headerlink" title="变量    描述"></a>变量    描述</h2><pre><code>layout    布局
+title    标题
+date    文件建立日期
+title: 使用Hexo搭建个人博客
+layout: post
+date: 2014-03-03 19:07:43
+comments: true
+categories: Blog
+tags: [Hexo]
+keywords: Hexo, Blog
+description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。
+</code></pre>]]></content>
+      
+        <categories>
+            
+            <category> Hexo </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Git 配置用户名、密码]]></title>
+      <url>/2017/07/31/Git-%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E5%90%8D%E3%80%81%E5%AF%86%E7%A0%81/</url>
+      <content type="html"><![CDATA[<p>在终端输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git config --global credential.helper store</div></pre></td></tr></table></figure>
+<p>然后git pull一次，输入一次用户名密码就会自动保存该用户名密码；</p>
+<p>查看配置的用户信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git config --list</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> Git </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Markdown 基本语法]]></title>
       <url>/2017/07/12/Markdown-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<h2 id="关于Markdown"><a href="#关于Markdown" class="headerlink" title="关于Markdown"></a>关于Markdown</h2><p>Markdown是一个 Web 上使用的文本到HTML的转换工具，可以通过简单、易读易写的文本格式生成结构化的HTML文档。</p>
