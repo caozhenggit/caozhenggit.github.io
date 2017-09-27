@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-31T02:57:53.456Z</updated>
+  <updated>2017-09-27T05:42:07.254Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Android开源框架】之数据库框架</title>
+    <link href="http://yoursite.com/2017/09/27/%E3%80%90Android%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6%E3%80%91%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6/"/>
+    <id>http://yoursite.com/2017/09/27/【Android开源框架】之数据库框架/</id>
+    <published>2017-09-27T04:40:27.000Z</published>
+    <updated>2017-09-27T05:42:07.254Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="GreenDAO"><a href="#GreenDAO" class="headerlink" title="GreenDAO"></a><a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external">GreenDAO</a></h2><p>GreenDAO是一个轻量级，快速的orm框架。简化建表、查询、更新、插入、事务、索引的操作<br>特性:</p>
+<ul>
+<li>性能突出(比ormlite快4-5倍), performance</li>
+<li>库小，核心包小于100k</li>
+<li>简单易用的API</li>
+<li>支持protobuf</li>
+<li>自动生成数据库访问代码</li>
+</ul>
+<h2 id="Realm"><a href="#Realm" class="headerlink" title="Realm"></a><a href="https://github.com/chennaione/sugar" target="_blank" rel="external">Realm</a></h2><p>移动端的数据库，适用于 Phone、Tablet、Wearable，支持 ORM，线程安全、支持连表及数据库加密，比 SQLite 性能更好。<br>特性:</p>
+<ul>
+<li>着重移动端</li>
+<li>简单易用的API</li>
+<li>支持线程安全，关系数据库和加密</li>
+<li>访问快速</li>
+<li>跨平台</li>
+</ul>
+<h2 id="OrmLite"><a href="#OrmLite" class="headerlink" title="OrmLite"></a><a href="https://sourceforge.net/projects/ormlite/files/releases/com/j256/ormlite/" target="_blank" rel="external">OrmLite</a></h2><p>OrmLite不是Android平台专用的orm框架，它是一个Java orm，OrmLite For Android增加了对Android平台的支持。</p>
+<h2 id="ActiveAndroid"><a href="#ActiveAndroid" class="headerlink" title="ActiveAndroid"></a><a href="https://github.com/pardom/ActiveAndroid" target="_blank" rel="external">ActiveAndroid</a></h2><p>ActiveAndroid是一个轻量级的orm框架，名称命令方式类似于Yii、Rails等使用的orm框架ActiveRecord</p>
+<h2 id="DBFlow"><a href="#DBFlow" class="headerlink" title="DBFlow"></a><a href="https://github.com/Raizlabs/DBFlow" target="_blank" rel="external">DBFlow</a></h2><p>一个速度极快，功能强大，而且非常简单的 Android 数据库 ORM 库</p>
+<h2 id="Sugar"><a href="#Sugar" class="headerlink" title="Sugar"></a><a href="https://github.com/chennaione/sugar" target="_blank" rel="external">Sugar</a></h2><p>用超级简单的方法处理Android数据库<br>特性:</p>
+<ul>
+<li>配置少</li>
+<li>自动生成表结构</li>
+<li>支持在不同模式版本直接切换</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;GreenDAO&quot;&gt;&lt;a href=&quot;#GreenDAO&quot; class=&quot;headerlink&quot; title=&quot;GreenDAO&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/greenrobot/greenDAO&quot; target=&quot;_blan
+    
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Hexo常用命令笔记</title>
@@ -156,7 +201,7 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
     <link href="http://yoursite.com/2017/07/11/%E5%BC%80%E6%BA%90%E5%BC%B9%E5%B9%95%E5%BC%95%E6%93%8E%C2%B7%E7%83%88%E7%84%B0%E5%BC%B9%E5%B9%95%E4%BD%BF-DanmakuFlameMaster/"/>
     <id>http://yoursite.com/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/</id>
     <published>2017-07-11T05:35:13.000Z</published>
-    <updated>2017-07-12T04:50:49.517Z</updated>
+    <updated>2017-09-27T05:39:12.166Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>DanmakuFlameMaster 是 Android 上开源弹幕解析绘制引擎项目，也是 Android 上最好的开源弹幕引擎·烈焰弹幕。其架构清晰，简单易用，支持多种高效绘制</p>
 <ul>
@@ -185,64 +230,102 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
 <h2 id="Android-Studio集成方法"><a href="#Android-Studio集成方法" class="headerlink" title="Android Studio集成方法"></a>Android Studio集成方法</h2><p>build.gradle中添加</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    compile <span class="string">'com.github.ctiao:dfm:0.4.2'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>1.布局文件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;master.flame.danmaku.ui.widget.DanmakuView</div><div class="line">	android:id=<span class="string">"@+id/sv_danmaku"</span></div><div class="line">	android:layout_width=<span class="string">"match_parent"</span></div><div class="line">	android:layout_height=<span class="string">"match_parent"</span> /&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;master.flame.danmaku.ui.widget.DanmakuView</div><div class="line">	android:id=<span class="string">"@+id/sv_danmaku"</span></div><div class="line">	android:layout_width=<span class="string">"match_parent"</span></div><div class="line">	android:layout_height=<span class="string">"match_parent"</span> /&gt;</div></pre></td></tr></table></figure>
 <p>2.初始化</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">private BaseDanmakuParser mParser;<span class="comment">//解析器对象</span></div><div class="line">private IDanmakuView mDanmakuView;</div><div class="line">private DanmakuContext mContext;</div><div class="line">mDanmakuView = (IDanmakuView) findViewById(R.id.sv_danmaku);</div><div class="line">mContext = DanmakuContext.create();</div><div class="line"><span class="comment">// 设置弹幕的最大显示行数</span></div><div class="line">HashMap&lt;Integer, Integer&gt; maxLinesPair = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</div><div class="line"><span class="comment">// 滚动弹幕最大显示3行</span></div><div class="line">maxLinesPair.put(BaseDanmaku.TYPE_SCROLL_RL, <span class="number">3</span>); </div><div class="line"><span class="comment">// 设置是否禁止重叠</span></div><div class="line">HashMap&lt;Integer, <span class="built_in">Boolean</span>&gt; overlappingEnablePair = <span class="keyword">new</span> HashMap&lt;Integer, <span class="built_in">Boolean</span>&gt;();</div><div class="line">overlappingEnablePair.put(BaseDanmaku.TYPE_SCROLL_LR, <span class="literal">true</span>);</div><div class="line">overlappingEnablePair.put(BaseDanmaku.TYPE_FIX_BOTTOM, <span class="literal">true</span>);</div><div class="line">mContext.setDanmakuStyle(IDisplayer.DANMAKU_STYLE_STROKEN, <span class="number">3</span>)</div><div class="line">        .setDuplicateMergingEnabled(<span class="literal">false</span>)</div><div class="line">        .setScrollSpeedFactor(<span class="number">1.2</span>f) <span class="comment">//是否启用合并重复弹幕</span></div><div class="line">        .setScaleTextSize(<span class="number">1.2</span>f) <span class="comment">//设置弹幕滚动速度系数,只对滚动弹幕有效</span></div><div class="line">        .setCacheStuffer(<span class="keyword">new</span> SpannedCacheStuffer(), mCacheStufferAdapter) <span class="comment">// 图文混排使用SpannedCacheStuffer  设置缓存绘制填充器，默认使用&#123;@link SimpleTextCacheStuffer&#125;只支持纯文字显示, 如果需要图文混排请设置&#123;@link SpannedCacheStuffer&#125;如果需要定制其他样式请扩展&#123;@link SimpleTextCacheStuffer&#125;|&#123;@link SpannedCacheStuffer&#125;</span></div><div class="line">        .setMaximumLines(maxLinesPair) <span class="comment">//设置最大显示行数</span></div><div class="line">        .preventOverlapping(overlappingEnablePair); <span class="comment">//设置防弹幕重叠，null为允许重叠</span></div><div class="line"><span class="keyword">if</span> (mDanmakuView != <span class="literal">null</span>) &#123;</div><div class="line">    mParser = createParser(<span class="keyword">this</span>.getResources().openRawResource(R.raw.comments)); <span class="comment">//创建解析器对象，从raw资源目录下解析comments.xml文本</span></div><div class="line">    mDanmakuView.setCallback(<span class="keyword">new</span> master.flame.danmaku.controller.DrawHandler.Callback() &#123;</div><div class="line">        @Override</div><div class="line">        public <span class="keyword">void</span> updateTimer(DanmakuTimer timer) &#123;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public <span class="keyword">void</span> drawingFinished() &#123;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public <span class="keyword">void</span> danmakuShown(BaseDanmaku danmaku) &#123;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public <span class="keyword">void</span> prepared() &#123;</div><div class="line">            mDanmakuView.start();</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">   mDanmakuView.prepare(mParser, mContext);</div><div class="line">   mDanmakuView.showFPS(<span class="literal">false</span>); <span class="comment">//是否显示FPS</span></div><div class="line">   mDanmakuView.enableDanmakuDrawingCache(<span class="literal">true</span>);</div></pre></td></tr></table></figure>
-<p>3.创建解析器对象</p>
-<pre><code class="javascript">
-<span class="comment">/**
+<pre><code>private BaseDanmakuParser mParser;//解析器对象
+private IDanmakuView mDanmakuView;
+private DanmakuContext mContext;
+mDanmakuView = (IDanmakuView) findViewById(R.id.sv_danmaku);
+mContext = DanmakuContext.create();
+// 设置弹幕的最大显示行数
+HashMap&lt;Integer, Integer&gt; maxLinesPair = new HashMap&lt;Integer, Integer&gt;();
+// 滚动弹幕最大显示3行
+maxLinesPair.put(BaseDanmaku.TYPE_SCROLL_RL, 3); 
+// 设置是否禁止重叠
+HashMap&lt;Integer, Boolean&gt; overlappingEnablePair = new HashMap&lt;Integer, Boolean&gt;();
+overlappingEnablePair.put(BaseDanmaku.TYPE_SCROLL_LR, true);
+overlappingEnablePair.put(BaseDanmaku.TYPE_FIX_BOTTOM, true);
+mContext.setDanmakuStyle(IDisplayer.DANMAKU_STYLE_STROKEN, 3)
+        .setDuplicateMergingEnabled(false)
+        .setScrollSpeedFactor(1.2f) //是否启用合并重复弹幕
+        .setScaleTextSize(1.2f) //设置弹幕滚动速度系数,只对滚动弹幕有效
+        .setCacheStuffer(new SpannedCacheStuffer(), mCacheStufferAdapter) // 图文混排使用SpannedCacheStuffer  设置缓存绘制填充器，默认使用{@link SimpleTextCacheStuffer}只支持纯文字显示, 如果需要图文混排请设置{@link SpannedCacheStuffer}如果需要定制其他样式请扩展{@link SimpleTextCacheStuffer}|{@link SpannedCacheStuffer}
+        .setMaximumLines(maxLinesPair) //设置最大显示行数
+        .preventOverlapping(overlappingEnablePair); //设置防弹幕重叠，null为允许重叠
+if (mDanmakuView != null) {
+    mParser = createParser(this.getResources().openRawResource(R.raw.comments)); //创建解析器对象，从raw资源目录下解析comments.xml文本
+    mDanmakuView.setCallback(new master.flame.danmaku.controller.DrawHandler.Callback() {
+        @Override
+        public void updateTimer(DanmakuTimer timer) {
+        }
+
+        @Override
+        public void drawingFinished() {
+        }
+
+        @Override
+        public void danmakuShown(BaseDanmaku danmaku) {
+        }
+
+        @Override
+        public void prepared() {
+            mDanmakuView.start();
+        }
+    });
+mDanmakuView.prepare(mParser, mContext);
+mDanmakuView.showFPS(false); //是否显示FPS
+mDanmakuView.enableDanmakuDrawingCache(true);
+</code></pre><p>3.创建解析器对象</p>
+<pre><code>/**
  * 创建解析器对象，解析输入流
  * @param stream
  * @return
- */</span>
+ */
 private BaseDanmakuParser createParser(InputStream stream) {
-    <span class="keyword">if</span> (stream == <span class="literal">null</span>) {
-        <span class="keyword">return</span> <span class="keyword">new</span> BaseDanmakuParser() {
+    if (stream == null) {
+        return new BaseDanmakuParser() {
             @Override
             protected Danmakus parse() {
-                <span class="keyword">return</span> <span class="keyword">new</span> Danmakus();
+                return new Danmakus();
             }
         };
     }
     ILoader loader = DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_BILI);
-    <span class="keyword">try</span> {
+    try {
         loader.load(stream);
-    } <span class="keyword">catch</span> (IllegalDataException e) {
+    } catch (IllegalDataException e) {
         e.printStackTrace();
     }
-    BaseDanmakuParser parser = <span class="keyword">new</span> BiliDanmukuParser();
+    BaseDanmakuParser parser = new BiliDanmukuParser();
     IDataSource&lt;?&gt; dataSource = loader.getDataSource();
     parser.load(dataSource);
-    <span class="keyword">return</span> parser;
+    return parser;
 }
 注：
-DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_BILI) <span class="comment">//xml解析</span>
-DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_ACFUN) <span class="comment">//json文件格式解析</span>
-</code></pre>
-<p>4.自定义弹幕背景和边距</p>
-<pre><code class="javascript">
-private <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">BackgroundCacheStuffer</span> <span class="keyword">extends</span> <span class="title">SpannedCacheStuffer</span> </span>{
-    <span class="comment">// 通过扩展SimpleTextCacheStuffer或SpannedCacheStuffer个性化你的弹幕样式</span>
-    final Paint paint = <span class="keyword">new</span> Paint();
+DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_BILI) //xml解析
+DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_ACFUN) //json文件格式解析
+</code></pre><p>4.自定义弹幕背景和边距</p>
+<pre><code>private static class BackgroundCacheStuffer extends SpannedCacheStuffer {
+    // 通过扩展SimpleTextCacheStuffer或SpannedCacheStuffer个性化你的弹幕样式
+    final Paint paint = new Paint();
     @Override
-    public <span class="keyword">void</span> measure(BaseDanmaku danmaku, TextPaint paint) {
-        danmaku.padding = <span class="number">10</span>;  <span class="comment">// 在背景绘制模式下增加padding</span>
-        <span class="keyword">super</span>.measure(danmaku, paint);
+    public void measure(BaseDanmaku danmaku, TextPaint paint) {
+        danmaku.padding = 10;  // 在背景绘制模式下增加padding
+        super.measure(danmaku, paint);
     }
 
     @Override
-    public <span class="keyword">void</span> drawBackground(BaseDanmaku danmaku, Canvas canvas, float left, float top) {
-        paint.setColor(<span class="number">0x8125309b</span>);  <span class="comment">//弹幕背景颜色</span>
-        canvas.drawRect(left + <span class="number">2</span>, top + <span class="number">2</span>, left + danmaku.paintWidth - <span class="number">2</span>, top + danmaku.paintHeight - <span class="number">2</span>, paint);
+    public void drawBackground(BaseDanmaku danmaku, Canvas canvas, float left, float top) {
+        paint.setColor(0x8125309b);  //弹幕背景颜色
+        canvas.drawRect(left + 2, top + 2, left + danmaku.paintWidth - 2, top + danmaku.paintHeight - 2, paint);
     }
 
     @Override
-    public <span class="keyword">void</span> drawStroke(BaseDanmaku danmaku, <span class="built_in">String</span> lineText, Canvas canvas, float left, float top, Paint paint) {
-        <span class="comment">// 禁用描边绘制</span>
+    public void drawStroke(BaseDanmaku danmaku, String lineText, Canvas canvas, float left, float top, Paint paint) {
+        // 禁用描边绘制
     }
 }
-</code></pre>
-]]></content>
+</code></pre>]]></content>
     
     <summary type="html">
     
