@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【Android异常】关于Android方法数量限制的问题 | 愤怒的泡面</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="愤怒的泡面" />
+  
+  <meta name="description" content="异常错误信息错误信息： 12345Error:Errorconverting bytecode to dex:Cause:com.android.dex.DexIndexOverflowException:field ID not in [0, 0xffff]: 65536（笔者开发时遇到的是域数量问题，方法数量问题错误信息于此类似）:XXXXXX:transformClassesWithDexF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Android异常】关于Android方法数量限制的问题">
+<meta property="og:url" content="http://yoursite.com/2017/10/11/【Android异常】关于Android方法数量限制的问题/index.html">
+<meta property="og:site_name" content="愤怒的泡面">
+<meta property="og:description" content="异常错误信息错误信息： 12345Error:Errorconverting bytecode to dex:Cause:com.android.dex.DexIndexOverflowException:field ID not in [0, 0xffff]: 65536（笔者开发时遇到的是域数量问题，方法数量问题错误信息于此类似）:XXXXXX:transformClassesWithDexF">
+<meta property="og:updated_time" content="2017-10-11T04:13:38.903Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Android异常】关于Android方法数量限制的问题">
+<meta name="twitter:description" content="异常错误信息错误信息： 12345Error:Errorconverting bytecode to dex:Cause:com.android.dex.DexIndexOverflowException:field ID not in [0, 0xffff]: 65536（笔者开发时遇到的是域数量问题，方法数量问题错误信息于此类似）:XXXXXX:transformClassesWithDexF">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">愤怒的泡面</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        愤怒的泡面
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个程序猿的博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" ">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" ">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-【Android异常】关于Android方法数量限制的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      【Android异常】关于Android方法数量限制的问题
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-10-11
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="异常错误信息"><a href="#异常错误信息" class="headerlink" title="异常错误信息"></a>异常错误信息</h2><p>错误信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Error:Errorconverting bytecode to dex:</div><div class="line">Cause:com.android.dex.DexIndexOverflowException:field ID not <span class="keyword">in</span> [0, 0xffff]: 65536（笔者开发时遇到的是域数量问题，方法数量问题错误信息于此类似）</div><div class="line">:XXXXXX:transformClassesWithDexForDebug FAILED</div><div class="line">Error:Executionfailed <span class="keyword">for</span> task <span class="string">':XXXXXX:transformClassesWithDexForDebug'</span>.</div><div class="line">&gt;com.android.build.api.transform.TransformException:com.android.ide.common.process.ProcessException:java.util.concurrent.ExecutionException:com.android.ide.common.process.ProcessException:org.gradle.process.internal.ExecException: Process <span class="string">'command '</span>C:\ProgramFiles\Java\jdk1.8.0_73\bin\java.exe<span class="string">''</span> finished withnon-zero <span class="built_in">exit</span> value 2</div></pre></td></tr></table></figure>
+<h2 id="限制Android方法数量的原因"><a href="#限制Android方法数量的原因" class="headerlink" title="限制Android方法数量的原因"></a>限制Android方法数量的原因</h2><p>Android应用以DEX文件的形式存储字节码文件，在Dalvik字节码规范里，方法引用索引method referenceindex只有16位,即65536个。<br>注意是method reference，这里限制的是自己代码、Android框架、第三方库三者方法数量的总和。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p><a href="http://developer.android.com/intl/es/tools/building/multidex.html" target="_blank" rel="external">Google官方出的分包方案</a>，采用MultiDex支持库</p>
+<p>1，配置building.gradle，开启MultiDex</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    defaultConfig &#123;</div><div class="line">        multiDexEnabled <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">dependencies&#123;</div><div class="line">    compile<span class="string">'com.android.support:multidex:1.0.0'</span></div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2，配置应用</p>
+<p>方法1：在AndroidManifest.xml的application中声明android.support.multidex.MultiDexApplication；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xmlversion=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</div><div class="line">&lt;manifestxmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">   package=<span class="string">"com.example.android.multidex.myapplication"</span>&gt;</div><div class="line">    &lt;application</div><div class="line">        ...</div><div class="line">       android:name=<span class="string">"android.support.multidex.MultiDexApplication"</span>&gt;</div><div class="line">        ...</div><div class="line">    &lt;/application&gt;</div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure>
+<p>方法2：让你自己的Application类继承MultiDexApplication</p>
+<p>方法3：让你自己的Application类重写attachBaseContext 方法，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected voidattachBaseContext(Context base) &#123;</div><div class="line">super.attachBaseContext(base);</div><div class="line">MultiDex.install(this);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月11日 12:13</p>
+        <p>原始链接： <a class="post-url" href="/2017/10/11/【Android异常】关于Android方法数量限制的问题/" title="【Android异常】关于Android方法数量限制的问题">http://yoursite.com/2017/10/11/【Android异常】关于Android方法数量限制的问题/</a></p>
+        <footer>
+            <a href="http://yoursite.com">
+                <img src="/images/logo.png" alt="CaoZheng">
+                CaoZheng
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/10/11/【Android异常】关于Android方法数量限制的问题/&title=《【Android异常】关于Android方法数量限制的问题》 — 愤怒的泡面&pic=http://yoursite.comimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/10/11/【Android异常】关于Android方法数量限制的问题/&title=《【Android异常】关于Android方法数量限制的问题》 — 愤怒的泡面&source=工作是为了更好的生活" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/10/11/【Android异常】关于Android方法数量限制的问题/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【Android异常】关于Android方法数量限制的问题》 — 愤怒的泡面&url=http://yoursite.com/2017/10/11/【Android异常】关于Android方法数量限制的问题/&via=http://yoursite.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/10/11/【Android异常】关于Android方法数量限制的问题/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2017/10/11/【Android异常】关于Android方法数量限制的问题/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异常错误信息"><span class="post-toc-text">异常错误信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#限制Android方法数量的原因"><span class="post-toc-text">限制Android方法数量的原因</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解决方法"><span class="post-toc-text">解决方法</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/10/01/【旅行计划】西藏自驾游/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">【旅行计划】西藏自驾游</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 CaoZheng<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/旅行计划/">旅行计划</a><a class="category-link" href="/categories/生活/">生活</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>
