@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/27/Java线程池的使用/index.html">
 <meta property="og:site_name" content="愤怒的泡面">
 <meta property="og:description" content="new Thread与线程池new Thread的弊端  每次new Thread新建对象性能差。 线程缺乏统一管理，可能无限制新建线程，相互之间竞争，及可能占用过多系统资源导致死机或oom。 缺乏更多功能，如定时执行、定期执行、线程中断。  相比new Thread，Java提供的四种线程池的好处在于：  重用存在的线程，减少对象创建、消亡的开销，性能佳。 可有效控制最大并发线程数，提高系统资源">
-<meta property="og:updated_time" content="2017-10-27T03:58:56.893Z">
+<meta property="og:updated_time" content="2017-10-27T04:02:04.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java线程池的使用">
 <meta name="twitter:description" content="new Thread与线程池new Thread的弊端  每次new Thread新建对象性能差。 线程缺乏统一管理，可能无限制新建线程，相互之间竞争，及可能占用过多系统资源导致死机或oom。 缺乏更多功能，如定时执行、定期执行、线程中断。  相比new Thread，Java提供的四种线程池的好处在于：  重用存在的线程，减少对象创建、消亡的开销，性能佳。 可有效控制最大并发线程数，提高系统资源">
@@ -167,7 +167,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();</div><div class="line">singleThreadExecutor.execute(runnable);</div></pre></td></tr></table></figure>
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2017年10月27日 11:58</p>
+        <p>最后更新： 2017年10月27日 12:02</p>
         <p>原始链接： <a class="post-url" href="/2017/10/27/Java线程池的使用/" title="Java线程池的使用">http://yoursite.com/2017/10/27/Java线程池的使用/</a></p>
         <footer>
             <a href="http://yoursite.com">
@@ -256,6 +256,16 @@
     
 
 <nav id="article-nav">
+  
+    <a href="/2017/10/27/Android开发中定制自己的线程池/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Android开发中定制自己的线程池
+        
+      </span>
+    </a>
   
   
     <a href="/2017/10/11/【Android异常】关于Android方法数量限制的问题/" id="article-nav-older" class="article-nav-link-wrap">

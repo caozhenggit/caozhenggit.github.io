@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android开发中定制自己的线程池 | 愤怒的泡面</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="愤怒的泡面" />
+  
+  <meta name="description" content="ThreadPoolExecutor的构造方法ThreadPoolExecutor的构造方法有四个，如下: 12345678910111213141516171819202122232425262728293031323334353637public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTi">
+<meta name="keywords" content="线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发中定制自己的线程池">
+<meta property="og:url" content="http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/index.html">
+<meta property="og:site_name" content="愤怒的泡面">
+<meta property="og:description" content="ThreadPoolExecutor的构造方法ThreadPoolExecutor的构造方法有四个，如下: 12345678910111213141516171819202122232425262728293031323334353637public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTi">
+<meta property="og:updated_time" content="2017-10-27T09:33:08.479Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android开发中定制自己的线程池">
+<meta name="twitter:description" content="ThreadPoolExecutor的构造方法ThreadPoolExecutor的构造方法有四个，如下: 12345678910111213141516171819202122232425262728293031323334353637public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTi">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">愤怒的泡面</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        愤怒的泡面
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        天下难事，必作于易；天下大事，必作于细
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" ">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" ">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Android开发中定制自己的线程池" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Android开发中定制自己的线程池
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-10-27
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="ThreadPoolExecutor的构造方法"><a href="#ThreadPoolExecutor的构造方法" class="headerlink" title="ThreadPoolExecutor的构造方法"></a>ThreadPoolExecutor的构造方法</h2><p>ThreadPoolExecutor的构造方法有四个，如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                           TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            threadFactory, defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          RejectedExecutionHandler handler) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), handler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit,BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory, RejectedExecutionHandler handler) &#123;</div><div class="line">    <span class="keyword">if</span> (corePoolSize &lt; 0 ||</div><div class="line">            maximumPoolSize &lt;= 0 ||</div><div class="line">            maximumPoolSize &lt; corePoolSize ||</div><div class="line">            keepAliveTime &lt; 0)</div><div class="line">        throw new IllegalArgumentException();</div><div class="line">    <span class="keyword">if</span> (workQueue == null || threadFactory == null || handler == null)</div><div class="line">        throw new NullPointerException();</div><div class="line">    this.corePoolSize = corePoolSize;</div><div class="line">    this.maximumPoolSize = maximumPoolSize;</div><div class="line">    this.workQueue = workQueue;</div><div class="line">    this.keepAliveTime = unit.toNanos(keepAliveTime);</div><div class="line">    this.threadFactory = threadFactory;</div><div class="line">    this.handler = handler;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>构造方法参数说明</strong></p>
+<ul>
+<li><p>corePoolSize</p>
+<p>  线程池的核心线程数，即线程池中的最小线程数</p>
+</li>
+<li><p>maximumPoolSize</p>
+<p>  最大线程池大小,当活动线程数达到这个值，后续任务会被阻塞</p>
+</li>
+<li><p>keepAliveTime</p>
+<p>  线程池中超过corePoolSize数目的非核心线程最大存活时间</p>
+</li>
+<li><p>unit</p>
+<p>  keepAliveTime 参数的时间单位</p>
+</li>
+<li><p>workQueue</p>
+<p>  执行前用于保持任务的队列，也就是线程池的缓存队列</p>
+</li>
+<li><p>threadFactory</p>
+<p>  线程工厂，为线程池提供创建新线程的功能</p>
+</li>
+<li><p>RejectedExecutionHandler</p>
+<p>  线程池对拒绝任务的处理策略</p>
+</li>
+</ul>
+<h2 id="定制自己的线程池"><a href="#定制自己的线程池" class="headerlink" title="定制自己的线程池"></a>定制自己的线程池</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">public class ThreadPoolFactory &#123;</div><div class="line"></div><div class="line">    /** 核心线程数 */</div><div class="line">    private static final int CORE_POOL_SIZE = 5;</div><div class="line">    /** 最大线程数 */</div><div class="line">    private static final int MAX_POOL_SIZE = 128;</div><div class="line">    /** 非核心线程时超过时长 */</div><div class="line">    private static final int KEEP_ALIVE_TIME = 2;</div><div class="line">    /** 阻塞队列大小 */</div><div class="line">    private static final int BLOCK_SIZE = 2;</div><div class="line"></div><div class="line">    private ThreadPoolExecutor mThreadPoolExecutor ;</div><div class="line">    </div><div class="line">    private <span class="function"><span class="title">ThreadPoolFactory</span></span>()&#123;</div><div class="line">        createThreadPoolProxyFactory();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** 创建线程池 */</div><div class="line">    private void <span class="function"><span class="title">createThreadPoolProxyFactory</span></span>()&#123;</div><div class="line">        mThreadPoolExecutor  = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME,</div><div class="line">                TimeUnit.SECONDS, new ArrayBlockingQueue&lt;Runnable&gt;(BLOCK_SIZE),</div><div class="line">                Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());</div><div class="line">        //<span class="literal">true</span>: 线程池数量最后销毁到0个</div><div class="line">        //<span class="literal">false</span>: 超过核心线程数时,而且(超过最大值或者timeout过),就会销毁</div><div class="line">        mThreadPoolExecutor .allowCoreThreadTimeOut(<span class="literal">true</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 打印线程池状态</div><div class="line">     */</div><div class="line">    public void <span class="function"><span class="title">logThreadPoolInfo</span></span>() &#123;</div><div class="line">        Log.i(<span class="string">"threadPoolFactory"</span>, <span class="string">"monitor "</span></div><div class="line">                + <span class="string">" CorePoolSize:"</span> + mThreadPoolExecutor.getCorePoolSize()</div><div class="line">                + <span class="string">" PoolSize:"</span> + mThreadPoolExecutor.getPoolSize()</div><div class="line">                + <span class="string">" MaximumPoolSize:"</span> + mThreadPoolExecutor.getMaximumPoolSize()</div><div class="line">                + <span class="string">" ActiveCount:"</span> + mThreadPoolExecutor.getActiveCount()</div><div class="line">                + <span class="string">" TaskCount:"</span> + mThreadPoolExecutor.getTaskCount());</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月27日 17:33</p>
+        <p>原始链接： <a class="post-url" href="/2017/10/27/Android开发中定制自己的线程池/" title="Android开发中定制自己的线程池">http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/</a></p>
+        <footer>
+            <a href="http://yoursite.com">
+                <img src="/images/logo.png" alt="CaoZheng">
+                CaoZheng
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/&title=《Android开发中定制自己的线程池》 — 愤怒的泡面&pic=http://yoursite.comimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/&title=《Android开发中定制自己的线程池》 — 愤怒的泡面&source=工作是为了更好的生活" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android开发中定制自己的线程池》 — 愤怒的泡面&url=http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/&via=http://yoursite.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/线程/" class="color3">线程</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ThreadPoolExecutor的构造方法"><span class="post-toc-text">ThreadPoolExecutor的构造方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定制自己的线程池"><span class="post-toc-text">定制自己的线程池</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/10/27/Java线程池的使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Java线程池的使用</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 CaoZheng<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/旅行计划/">旅行计划</a><a class="category-link" href="/categories/生活/">生活</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/线程/" style="font-size: 10px;">线程</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/线程/" style="font-size: 10px;">线程</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>
