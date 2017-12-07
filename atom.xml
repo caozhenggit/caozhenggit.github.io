@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://caozhenggit.github.io/"/>
   <updated>2017-12-07T09:47:54.093Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://caozhenggit.github.io/</id>
   
   <author>
     <name>CaoZheng</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Android开发中定制自己的线程池</title>
-    <link href="http://yoursite.com/2017/10/27/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
-    <id>http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/</id>
+    <link href="http://caozhenggit.github.io/2017/10/27/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    <id>http://caozhenggit.github.io/2017/10/27/Android开发中定制自己的线程池/</id>
     <published>2017-10-27T09:05:04.000Z</published>
     <updated>2017-12-07T09:47:54.093Z</updated>
     
@@ -59,17 +59,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://caozhenggit.github.io/categories/Android/"/>
     
     
-      <category term="线程" scheme="http://yoursite.com/tags/%E7%BA%BF%E7%A8%8B/"/>
+      <category term="线程" scheme="http://caozhenggit.github.io/tags/%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>Java线程池的使用</title>
-    <link href="http://yoursite.com/2017/10/27/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>http://yoursite.com/2017/10/27/Java线程池的使用/</id>
+    <link href="http://caozhenggit.github.io/2017/10/27/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://caozhenggit.github.io/2017/10/27/Java线程池的使用/</id>
     <published>2017-10-27T03:30:18.000Z</published>
     <updated>2017-12-07T09:49:59.888Z</updated>
     
@@ -100,17 +100,17 @@
     
     </summary>
     
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+      <category term="Java" scheme="http://caozhenggit.github.io/categories/Java/"/>
     
     
-      <category term="线程" scheme="http://yoursite.com/tags/%E7%BA%BF%E7%A8%8B/"/>
+      <category term="线程" scheme="http://caozhenggit.github.io/tags/%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>【Android异常】关于Android方法数量限制的问题</title>
-    <link href="http://yoursite.com/2017/10/11/%E3%80%90Android%E5%BC%82%E5%B8%B8%E3%80%91%E5%85%B3%E4%BA%8EAndroid%E6%96%B9%E6%B3%95%E6%95%B0%E9%87%8F%E9%99%90%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2017/10/11/【Android异常】关于Android方法数量限制的问题/</id>
+    <link href="http://caozhenggit.github.io/2017/10/11/%E3%80%90Android%E5%BC%82%E5%B8%B8%E3%80%91%E5%85%B3%E4%BA%8EAndroid%E6%96%B9%E6%B3%95%E6%95%B0%E9%87%8F%E9%99%90%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://caozhenggit.github.io/2017/10/11/【Android异常】关于Android方法数量限制的问题/</id>
     <published>2017-10-11T03:44:58.000Z</published>
     <updated>2017-12-07T09:49:08.597Z</updated>
     
@@ -134,17 +134,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://caozhenggit.github.io/categories/Android/"/>
     
     
-      <category term="异常" scheme="http://yoursite.com/tags/%E5%BC%82%E5%B8%B8/"/>
+      <category term="异常" scheme="http://caozhenggit.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
     
   </entry>
   
   <entry>
     <title>【旅行计划】西藏自驾游</title>
-    <link href="http://yoursite.com/2017/10/01/%E3%80%90%E6%97%85%E8%A1%8C%E8%AE%A1%E5%88%92%E3%80%91%E8%A5%BF%E8%97%8F%E8%87%AA%E9%A9%BE%E6%B8%B8/"/>
-    <id>http://yoursite.com/2017/10/01/【旅行计划】西藏自驾游/</id>
+    <link href="http://caozhenggit.github.io/2017/10/01/%E3%80%90%E6%97%85%E8%A1%8C%E8%AE%A1%E5%88%92%E3%80%91%E8%A5%BF%E8%97%8F%E8%87%AA%E9%A9%BE%E6%B8%B8/"/>
+    <id>http://caozhenggit.github.io/2017/10/01/【旅行计划】西藏自驾游/</id>
     <published>2017-10-01T06:54:41.000Z</published>
     <updated>2017-12-07T09:49:15.614Z</updated>
     
@@ -214,15 +214,15 @@
     
     </summary>
     
-      <category term="旅行计划" scheme="http://yoursite.com/categories/%E6%97%85%E8%A1%8C%E8%AE%A1%E5%88%92/"/>
+      <category term="旅行计划" scheme="http://caozhenggit.github.io/categories/%E6%97%85%E8%A1%8C%E8%AE%A1%E5%88%92/"/>
     
     
   </entry>
   
   <entry>
     <title>【Android开源框架】之数据库框架</title>
-    <link href="http://yoursite.com/2017/09/27/%E3%80%90Android%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6%E3%80%91%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6/"/>
-    <id>http://yoursite.com/2017/09/27/【Android开源框架】之数据库框架/</id>
+    <link href="http://caozhenggit.github.io/2017/09/27/%E3%80%90Android%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6%E3%80%91%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6/"/>
+    <id>http://caozhenggit.github.io/2017/09/27/【Android开源框架】之数据库框架/</id>
     <published>2017-09-27T04:40:27.000Z</published>
     <updated>2017-12-07T09:48:59.790Z</updated>
     
@@ -259,17 +259,17 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://caozhenggit.github.io/categories/Android/"/>
     
     
-      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="http://caozhenggit.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
   <entry>
     <title>Hexo常用命令笔记</title>
-    <link href="http://yoursite.com/2017/07/31/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2017/07/31/Hexo常用命令笔记/</id>
+    <link href="http://caozhenggit.github.io/2017/07/31/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/"/>
+    <id>http://caozhenggit.github.io/2017/07/31/Hexo常用命令笔记/</id>
     <published>2017-07-31T02:44:40.000Z</published>
     <updated>2017-12-07T09:49:51.524Z</updated>
     
@@ -343,15 +343,15 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
     
     </summary>
     
-      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
+      <category term="Hexo" scheme="http://caozhenggit.github.io/categories/Hexo/"/>
     
     
   </entry>
   
   <entry>
     <title>Git 配置用户名、密码</title>
-    <link href="http://yoursite.com/2017/07/31/Git-%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E5%90%8D%E3%80%81%E5%AF%86%E7%A0%81/"/>
-    <id>http://yoursite.com/2017/07/31/Git-配置用户名、密码/</id>
+    <link href="http://caozhenggit.github.io/2017/07/31/Git-%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E5%90%8D%E3%80%81%E5%AF%86%E7%A0%81/"/>
+    <id>http://caozhenggit.github.io/2017/07/31/Git-配置用户名、密码/</id>
     <published>2017-07-31T02:40:10.000Z</published>
     <updated>2017-12-07T09:49:27.209Z</updated>
     
@@ -368,15 +368,15 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
     
     </summary>
     
-      <category term="Git" scheme="http://yoursite.com/categories/Git/"/>
+      <category term="Git" scheme="http://caozhenggit.github.io/categories/Git/"/>
     
     
   </entry>
   
   <entry>
     <title>Markdown 基本语法</title>
-    <link href="http://yoursite.com/2017/07/12/Markdown-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
-    <id>http://yoursite.com/2017/07/12/Markdown-基本语法/</id>
+    <link href="http://caozhenggit.github.io/2017/07/12/Markdown-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
+    <id>http://caozhenggit.github.io/2017/07/12/Markdown-基本语法/</id>
     <published>2017-07-12T02:51:11.000Z</published>
     <updated>2017-12-07T09:50:06.658Z</updated>
     
@@ -397,15 +397,15 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
     
     </summary>
     
-      <category term="Markdown" scheme="http://yoursite.com/categories/Markdown/"/>
+      <category term="Markdown" scheme="http://caozhenggit.github.io/categories/Markdown/"/>
     
     
   </entry>
   
   <entry>
     <title> 开源弹幕引擎·烈焰弹幕使(DanmakuFlameMaster)</title>
-    <link href="http://yoursite.com/2017/07/11/%E5%BC%80%E6%BA%90%E5%BC%B9%E5%B9%95%E5%BC%95%E6%93%8E%C2%B7%E7%83%88%E7%84%B0%E5%BC%B9%E5%B9%95%E4%BD%BF-DanmakuFlameMaster/"/>
-    <id>http://yoursite.com/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/</id>
+    <link href="http://caozhenggit.github.io/2017/07/11/%E5%BC%80%E6%BA%90%E5%BC%B9%E5%B9%95%E5%BC%95%E6%93%8E%C2%B7%E7%83%88%E7%84%B0%E5%BC%B9%E5%B9%95%E4%BD%BF-DanmakuFlameMaster/"/>
+    <id>http://caozhenggit.github.io/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/</id>
     <published>2017-07-11T05:35:13.000Z</published>
     <updated>2017-12-07T09:50:23.240Z</updated>
     
@@ -539,15 +539,15 @@ DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_ACFUN) //json文件格式�
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://caozhenggit.github.io/categories/Android/"/>
     
     
   </entry>
   
   <entry>
     <title>毕业后这一年的收获</title>
-    <link href="http://yoursite.com/2017/07/07/%E6%AF%95%E4%B8%9A%E5%90%8E%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%94%B6%E8%8E%B7/"/>
-    <id>http://yoursite.com/2017/07/07/毕业后这一年的收获/</id>
+    <link href="http://caozhenggit.github.io/2017/07/07/%E6%AF%95%E4%B8%9A%E5%90%8E%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%94%B6%E8%8E%B7/"/>
+    <id>http://caozhenggit.github.io/2017/07/07/毕业后这一年的收获/</id>
     <published>2017-07-07T07:00:11.000Z</published>
     <updated>2017-12-07T09:50:17.300Z</updated>
     
@@ -569,15 +569,15 @@ DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_ACFUN) //json文件格式�
     
     </summary>
     
-      <category term="生活" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB/"/>
+      <category term="生活" scheme="http://caozhenggit.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
   </entry>
   
   <entry>
     <title>Hexo安装</title>
-    <link href="http://yoursite.com/2017/07/07/Hexo%E5%AE%89%E8%A3%85/"/>
-    <id>http://yoursite.com/2017/07/07/Hexo安装/</id>
+    <link href="http://caozhenggit.github.io/2017/07/07/Hexo%E5%AE%89%E8%A3%85/"/>
+    <id>http://caozhenggit.github.io/2017/07/07/Hexo安装/</id>
     <published>2017-07-07T02:25:12.000Z</published>
     <updated>2017-12-07T09:49:44.160Z</updated>
     
@@ -656,15 +656,15 @@ comments: false
     
     </summary>
     
-      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
+      <category term="Hexo" scheme="http://caozhenggit.github.io/categories/Hexo/"/>
     
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2017/07/06/hello-world/"/>
-    <id>http://yoursite.com/2017/07/06/hello-world/</id>
+    <link href="http://caozhenggit.github.io/2017/07/06/hello-world/"/>
+    <id>http://caozhenggit.github.io/2017/07/06/hello-world/</id>
     <published>2017-07-06T03:19:47.025Z</published>
     <updated>2017-12-07T09:49:34.226Z</updated>
     
