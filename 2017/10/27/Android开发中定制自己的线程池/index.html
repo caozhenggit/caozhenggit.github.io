@@ -1,133 +1,397 @@
-<!doctype html>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
-    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Android开发中定制自己的线程池 | Hexo</title>
+  <meta name="description" content="线程池算是Android开发中非常常用的一个东西了，只要涉及到线程的地方，大多数情况下都会涉及到线程池。Android开发中线程池的使用和Java中线程池的使用基本一致。那么今天我想来总结一下Android开发中线程池的使用。 ThreadPoolExecutor的构造方法ThreadPoolExecutor的构造方法有四个，如下: 12345678910111213141516171819202">
+<meta name="keywords" content="线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发中定制自己的线程池">
+<meta property="og:url" content="http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/index.html">
+<meta property="og:site_name" content="Spider">
+<meta property="og:description" content="线程池算是Android开发中非常常用的一个东西了，只要涉及到线程的地方，大多数情况下都会涉及到线程池。Android开发中线程池的使用和Java中线程池的使用基本一致。那么今天我想来总结一下Android开发中线程池的使用。 ThreadPoolExecutor的构造方法ThreadPoolExecutor的构造方法有四个，如下: 12345678910111213141516171819202">
+<meta property="og:updated_time" content="2017-12-07T09:47:54.093Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android开发中定制自己的线程池">
+<meta name="twitter:description" content="线程池算是Android开发中非常常用的一个东西了，只要涉及到线程的地方，大多数情况下都会涉及到线程池。Android开发中线程池的使用和Java中线程池的使用基本一致。那么今天我想来总结一下Android开发中线程池的使用。 ThreadPoolExecutor的构造方法ThreadPoolExecutor的构造方法有四个，如下: 12345678910111213141516171819202">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Spider" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
     
-    <title>Android开发中定制自己的线程池 | Spider</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
-    <meta name="keywords" content="Spider，Android开发" >
-    <meta name="description" content="愤怒的泡面" >
-
     
-    <link rel="alternative" href="/atom.xml" title="Spider" type="application/atom+xml" >
-    
-    
-    <link rel="shortcut icon" href="/favicon.ico" >
-    
-    <link rel="stylesheet" href="/css/style.css">
-    <!--[if lt IE 9]>
-    <script src="/js/html5.js"></script>
-    <![endif]-->
-    
-<script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
 
 </head>
 
-<body class="home">
-    <!--[if lt IE 9]>
-    <div class="browsehappy">
-        当前网页 <strong>不支持</strong>
-        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
-    </div>
-    <![endif]-->
 
-    <!-- 博客头部 -->
-    <header class="header">
-    <section class="container header-main">
-        <div class="logo">
-            <a href="/">
-                <div class="cover">
-                    <span class="name">Spider</span>
-                    <span class="description">null</span>
-                </div>
-            </a>
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/caozhenggit" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">蹲在坟头逗鬼</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Android Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="fa fa-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="fa fa-search"></i></button>
+            </span>
         </div>
-        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
-        <ul class="menu hidden" id="JELON__menu">
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <!-- <span class="ins-close ins-selectable"><i class="fa fa-times"></i></span> -->
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav">
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
             
-            <li rel="/2017/10/27/Android开发中定制自己的线程池/index.html" class="item ">
-                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
-            </li>
+            <i class="fa fa-fw fa-dashboard"></i>
             
-            <li rel="/2017/10/27/Android开发中定制自己的线程池/index.html" class="item ">
-                <a href="/lab/" title="归档" class="icon-lab">&nbsp;归档</a>
-            </li>
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
             
-            <li rel="/2017/10/27/Android开发中定制自己的线程池/index.html" class="item ">
-                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
-            </li>
+            <i class="fa fa-fw fa-delicious"></i>
             
-            <li rel="/2017/10/27/Android开发中定制自己的线程池/index.html" class="item ">
-                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
-            </li>
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
             
-        </ul>
-        <div class="profile clearfix">
-            <div class="feeds fl">
-                
-                
-                <p class="links">
-                    
-                        <a href="https://github.com/jangdelong" target="_blank">Github</a>
-                        |
-                    
-                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
-                        
-                    
-                </p>
-                <p class="sns">
-                    
-                        <a href="http://weibo.com/jangdelong" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
-                    
-                        <a href="https://www.facebook.com/profile.php?id=100011855760219&amp;ref=bookmarks" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
-                    
-                    <a href="javascript: void(0);" class="wechat">
-                        <b>■</b>
-                        公众号
-                        <span class="popover">
-                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
-                            <i class="arrow"></i>
-                        </span>
-                    </a>
-                </p>
-                
-            </div>
-            <div class="avatar fr">
-                <img src="/img/jelon.jpg" alt="avatar" title="Jelon" >
-            </div>
-        </div>
-    </section>
+            <i class="fa fa-fw fa-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="fa fa-fw fa-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="fa fa-fw fa-code"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="fa fa-fw fa-leanpub"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="fa fa-fw fa-gg"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="fa fa-fw fa-coffee"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/caozhenggit" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="fa fa-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="fa fa-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="fa fa-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="fa fa-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="fa fa-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
 </header>
 
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/旅行计划/">旅行计划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
 
-    <!-- 博客正文 -->
-    <div class="container body clearfix">
-        <section class="content">
-            <div class="content-main widget">
-                <!-- 文章页 -->
-<!-- 文章 -->
-<article class="post article">
-    <header class="text-center">
-        <h3 class="post-title"><span>Android开发中定制自己的线程池</span></h3>
-    </header>
-    <p class="post-meta text-center">
-        Jelon 发表于
-        <time datetime="2017-10-27T09:05:04.000Z">2017-10-27</time>
-    </p>
-    <div class="post-content">
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/异常/">异常</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/异常/" style="font-size: 13px;">异常</a> <a href="/tags/数据库/" style="font-size: 13px;">数据库</a> <a href="/tags/线程/" style="font-size: 14px;">线程</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Android/">Android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/10/27/Android开发中定制自己的线程池/" class="title">Android开发中定制自己的线程池</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-10-27T09:05:04.000Z" itemprop="datePublished">2017-10-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Java/">Java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/10/27/Java线程池的使用/" class="title">Java线程池的使用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-10-27T03:30:18.000Z" itemprop="datePublished">2017-10-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Android/">Android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/10/11/【Android异常】关于Android方法数量限制的问题/" class="title">【Android异常】关于Android方法数量限制的问题</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-10-11T03:44:58.000Z" itemprop="datePublished">2017-10-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/旅行计划/">旅行计划</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/10/01/【旅行计划】西藏自驾游/" class="title">【旅行计划】西藏自驾游</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-10-01T06:54:41.000Z" itemprop="datePublished">2017-10-01</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Android/">Android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/09/27/【Android开源框架】之数据库框架/" class="title">【Android开源框架】之数据库框架</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-09-27T04:40:27.000Z" itemprop="datePublished">2017-09-27</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Android开发中定制自己的线程池" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android开发中定制自己的线程池
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="fa fa-calendar-check-o"></i>
+	<a href="/2017/10/27/Android开发中定制自己的线程池/" class="article-date">
+	  <time datetime="2017-10-27T09:05:04.000Z" itemprop="datePublished">2017-10-27</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="fa fa-tag"></i>
+	<a class="article-tag-link" href="/tags/线程/">线程</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="fa fa-eye" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="fa fa-commenting-o"></i> <a href="/2017/10/27/Android开发中定制自己的线程池/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+      
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
         <p>线程池算是Android开发中非常常用的一个东西了，只要涉及到线程的地方，大多数情况下都会涉及到线程池。Android开发中线程池的使用和Java中线程池的使用基本一致。那么今天我想来总结一下Android开发中线程池的使用。</p>
-<a id="more"></a>
 <h2 id="ThreadPoolExecutor的构造方法"><a href="#ThreadPoolExecutor的构造方法" class="headerlink" title="ThreadPoolExecutor的构造方法"></a>ThreadPoolExecutor的构造方法</h2><p>ThreadPoolExecutor的构造方法有四个，如下:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                           TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            threadFactory, defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          RejectedExecutionHandler handler) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), handler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit,BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory, RejectedExecutionHandler handler) &#123;</div><div class="line">    <span class="keyword">if</span> (corePoolSize &lt; 0 ||</div><div class="line">            maximumPoolSize &lt;= 0 ||</div><div class="line">            maximumPoolSize &lt; corePoolSize ||</div><div class="line">            keepAliveTime &lt; 0)</div><div class="line">        throw new IllegalArgumentException();</div><div class="line">    <span class="keyword">if</span> (workQueue == null || threadFactory == null || handler == null)</div><div class="line">        throw new NullPointerException();</div><div class="line">    this.corePoolSize = corePoolSize;</div><div class="line">    this.maximumPoolSize = maximumPoolSize;</div><div class="line">    this.workQueue = workQueue;</div><div class="line">    this.keepAliveTime = unit.toNanos(keepAliveTime);</div><div class="line">    this.threadFactory = threadFactory;</div><div class="line">    this.handler = handler;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>构造方法参数说明</strong></p>
@@ -156,241 +420,152 @@
 </ul>
 <h2 id="定制自己的线程池"><a href="#定制自己的线程池" class="headerlink" title="定制自己的线程池"></a>定制自己的线程池</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">public class ThreadPoolFactory &#123;</div><div class="line"></div><div class="line">    /** 核心线程数 */</div><div class="line">    private static final int CORE_POOL_SIZE = 5;</div><div class="line">    /** 最大线程数 */</div><div class="line">    private static final int MAX_POOL_SIZE = 128;</div><div class="line">    /** 非核心线程时超过时长 */</div><div class="line">    private static final int KEEP_ALIVE_TIME = 2;</div><div class="line">    /** 阻塞队列大小 */</div><div class="line">    private static final int BLOCK_SIZE = 2;</div><div class="line"></div><div class="line">    private ThreadPoolExecutor mThreadPoolExecutor ;</div><div class="line">    </div><div class="line">    private <span class="function"><span class="title">ThreadPoolFactory</span></span>()&#123;</div><div class="line">        createThreadPoolProxyFactory();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** 创建线程池 */</div><div class="line">    private void <span class="function"><span class="title">createThreadPoolProxyFactory</span></span>()&#123;</div><div class="line">        mThreadPoolExecutor  = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME,</div><div class="line">                TimeUnit.SECONDS, new ArrayBlockingQueue&lt;Runnable&gt;(BLOCK_SIZE),</div><div class="line">                Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());</div><div class="line">        //<span class="literal">true</span>: 线程池数量最后销毁到0个</div><div class="line">        //<span class="literal">false</span>: 超过核心线程数时,而且(超过最大值或者timeout过),就会销毁</div><div class="line">        mThreadPoolExecutor .allowCoreThreadTimeOut(<span class="literal">true</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 打印线程池状态</div><div class="line">     */</div><div class="line">    public void <span class="function"><span class="title">logThreadPoolInfo</span></span>() &#123;</div><div class="line">        Log.i(<span class="string">"threadPoolFactory"</span>, <span class="string">"monitor "</span></div><div class="line">                + <span class="string">" CorePoolSize:"</span> + mThreadPoolExecutor.getCorePoolSize()</div><div class="line">                + <span class="string">" PoolSize:"</span> + mThreadPoolExecutor.getPoolSize()</div><div class="line">                + <span class="string">" MaximumPoolSize:"</span> + mThreadPoolExecutor.getMaximumPoolSize()</div><div class="line">                + <span class="string">" ActiveCount:"</span> + mThreadPoolExecutor.getActiveCount()</div><div class="line">                + <span class="string">" TaskCount:"</span> + mThreadPoolExecutor.getTaskCount());</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 
+      
     </div>
-    <p class="post-meta">
-        <span class="post-cat">分类：
-            <a class="cat-link" href="/categories/Android/">Android</a>
-        </span>
-        <span class="post-tags">
-            标签：
-            
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
     
-        <a href="/tags/线程/" title="线程">线程</a>
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/" title="Android开发中定制自己的线程池" target="_blank" rel="external">http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/</a>
+    </li>
     
-
-        </span>
-    </p>
-</article>
-<!-- 分享按钮 -->
-
-  <div class="article-share clearfix text-center">
-    <div class="share-area">
-      <span class="share-txt">分享到：</span>
-      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
-      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
-      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
-      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=Jelon个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
-      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
-    </div>
-  </div>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
 
 
-<!-- 上一篇/下一篇 -->
-
-<div class="article-nav clearfix">
-    
-    <span class="prev fl">
-        上一篇<br >
-        <a href="javascript: void(0);">没有上一篇了</a>
-    </span>
-    
-
-    
-    <span class="next fr">
-        下一篇<br >
-        <a href="/2017/10/27/Java线程池的使用/">
-            
-                Java线程池的使用
-            
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/caozhenggit" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
         </a>
-    </span>
-    
-</div>
-
-<!-- 文章评论 -->
-
-  <script src="/js/comment.js"></script>
-  <div id="comments" class="comment">
-    <!--
-    <div class="sign-bar">
-      GitHub 已登录!
-      <span class="sign-link">登出</span>
-    </div>
-    <section class="box">
-      <div class="com-avatar"><img src="/img/jelon.jpg" alt="avatar"></div>
-      <div class="com-text">
-        <div class="main">
-          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
-          <div class="text-area-preview"></div>
-        </div>
-        <div class="switch">
-          <div class="switch-item on">编辑</div>
-          <div class="switch-item">预览</div>
-        </div>
-        <div class="button">提交</div>
       </div>
-    </section>
-    <section class="tips">注：评论支持 markdown 语法！</section>
-    <section class="list-wrap">
-      <ul class="list">
-        <li>
-          <div class="user-avatar">
-            <a href="/">
-              <img src="/img/jelon.jpg" alt="user-avatar">
-            </a>
-          </div>
-          <div class="user-comment">
-            <div class="user-comment-header">
-              <span class="post-name">张德龙</span>
-              <span class="post-time">2017年12月12日</span>
-              <span class="like liked">已赞</span>
-              <span class="like-num">2</span>
-            </div>
-            <div class="user-comment-body">333333</div>
-          </div>
-        </li>
-        <li>
-          <div class="user-avatar">
-            <a href="/">
-              <img src="/img/jelon.jpg" alt="user-avatar">
-            </a>
-          </div>
-          <div class="user-comment">
-            <div class="user-comment-header">
-              <span class="post-name">刘德华</span>
-              <span class="post-time">2017年12月12日</span>
-              <span class="like">点赞</span>
-              <span class="like-num">2</span>
-            </div>
-            <div class="user-comment-body">vvvvv</div>
-          </div>
-        </li>
-      </ul>
-      <div class="page-nav">
-        <a href="javascript: void(0);" class="item">1</a>
-        <a href="javascript: void(0);" class="item">2</a>
-        <a href="javascript: void(0);" class="item current">3</a>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/caozhenggit" target="_blank"><span class="text-dark">蹲在坟头逗鬼</span><small class="ml-1x">Android Developer</small></a></h3>
+        <div>个人简介。</div>
       </div>
-    </section>
-    -->
+    </figure>
   </div>
-  <script>
-  JELON.Comment({
-    container: 'comments',
-    label: 'Android开发中定制自己的线程池' || '2017/10/27/Android开发中定制自己的线程池/',
-    owner: 'jangdelong',
-    repo: 'blog_comments',
-    clientId: 'b08ed25e52c57993e69c',
-    clientSecret: '1cb9545488f0380904b87350e7c5a270ae03bab7'
-  });
-  </script>
+</div>
 
 
-            </div>
-
-        </section>
-        <!-- 侧栏部分 -->
-<aside class="sidebar">
-    <section class="widget">
-        <h3 class="widget-hd"><strong>文章分类</strong></h3>
-        <!-- 文章分类 -->
-<ul class="widget-bd">
-    
-    <li>
-        <a href="/categories/Android/">Android</a>
-        <span class="badge">(4)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Git/">Git</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Hexo/">Hexo</a>
-        <span class="badge">(2)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Java/">Java</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/Markdown/">Markdown</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/旅行计划/">旅行计划</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/生活/">生活</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-</ul>
-    </section>
-
-    
-    <section class="widget">
-        <h3 class="widget-hd"><strong>热门标签</strong></h3>
-        <!-- 文章标签 -->
-<div class="widget-bd tag-wrap">
+    </div>
+  </article>
   
-    <a class="tag-item" href="/tags/线程/" title="线程">线程 (2)</a>
-  
-    <a class="tag-item" href="/tags/数据库/" title="数据库">数据库 (1)</a>
-  
-    <a class="tag-item" href="/tags/异常/" title="异常">异常 (1)</a>
+    
+  <section id="comments">
+  	
+       
+    <div id="uyan_frame"></div>
+
+    
+  </section>
+
+
   
 </div>
-    </section>
-    
 
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
     
+    
+    <li class="next">
+      <a href="/2017/10/27/Java线程池的使用/" title="Java线程池的使用">Older&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+  </div>
+  
+  </div>
+</nav>
+  
 
-    
-    <!-- 友情链接 -->
-    <section class="widget">
-        <h3 class="widget-hd"><strong>友情链接</strong></h3>
-        <!-- 文章分类 -->
-<ul class="widget-bd">
-    
-        <li>
-            <a href="http://blog.sina.com.cn/u/1825875765" target="_blank" title="网络安全博客">Haoren博客</a>
-        </li>
-    
-        <li>
-            <a href="http://blog.csdn.net/yeweiouyang" target="_blank" title="技术博客">Maxwell博客</a>
-        </li>
-    
-        <li>
-            <a href="http://xuanzh.cc/" target="_blank" title="技术博客">朱旋个人博客</a>
-        </li>
-    
-</ul>
-    </section>
-    
-</aside>
-<!-- / 侧栏部分 -->
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/caozhenggit" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="fa fa-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="fa fa-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="fa fa-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="fa fa-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="fa fa-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
     </div>
-
-    <!-- 博客底部 -->
-    <footer class="footer">
-    &copy;
-    
-        2016-2017
-    
-
-    <a href="/">Jelon Loves You</a>
 </footer>
-<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+<script defer src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-    <!--博客js脚本 -->
-    <!-- 这里放网站js脚本 -->
-<script src="/js/main.js"></script>
+
+
+    
+    
+        
+    
+    <script defer type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=[object Object]"></script>
+
+
+    
+    
+
+
+
 </body>
 </html>

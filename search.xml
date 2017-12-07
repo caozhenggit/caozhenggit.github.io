@@ -6,7 +6,6 @@
       <title><![CDATA[Android开发中定制自己的线程池]]></title>
       <url>/2017/10/27/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0/</url>
       <content type="html"><![CDATA[<p>线程池算是Android开发中非常常用的一个东西了，只要涉及到线程的地方，大多数情况下都会涉及到线程池。Android开发中线程池的使用和Java中线程池的使用基本一致。那么今天我想来总结一下Android开发中线程池的使用。</p>
-<a id="more"></a>
 <h2 id="ThreadPoolExecutor的构造方法"><a href="#ThreadPoolExecutor的构造方法" class="headerlink" title="ThreadPoolExecutor的构造方法"></a>ThreadPoolExecutor的构造方法</h2><p>ThreadPoolExecutor的构造方法有四个，如下:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                           TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            threadFactory, defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          RejectedExecutionHandler handler) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), handler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit,BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory, RejectedExecutionHandler handler) &#123;</div><div class="line">    <span class="keyword">if</span> (corePoolSize &lt; 0 ||</div><div class="line">            maximumPoolSize &lt;= 0 ||</div><div class="line">            maximumPoolSize &lt; corePoolSize ||</div><div class="line">            keepAliveTime &lt; 0)</div><div class="line">        throw new IllegalArgumentException();</div><div class="line">    <span class="keyword">if</span> (workQueue == null || threadFactory == null || handler == null)</div><div class="line">        throw new NullPointerException();</div><div class="line">    this.corePoolSize = corePoolSize;</div><div class="line">    this.maximumPoolSize = maximumPoolSize;</div><div class="line">    this.workQueue = workQueue;</div><div class="line">    this.keepAliveTime = unit.toNanos(keepAliveTime);</div><div class="line">    this.threadFactory = threadFactory;</div><div class="line">    this.handler = handler;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>构造方法参数说明</strong></p>
@@ -60,7 +59,6 @@
 <li>线程缺乏统一管理，可能无限制新建线程，相互之间竞争，及可能占用过多系统资源导致死机或oom。</li>
 <li>缺乏更多功能，如定时执行、定期执行、线程中断。</li>
 </ul>
-<a id="more"></a>
 <p><strong>相比new Thread，Java提供的四种线程池的好处在于：</strong></p>
 <ul>
 <li>重用存在的线程，减少对象创建、消亡的开销，性能佳。</li>
@@ -96,7 +94,6 @@
       <url>/2017/10/11/%E3%80%90Android%E5%BC%82%E5%B8%B8%E3%80%91%E5%85%B3%E4%BA%8EAndroid%E6%96%B9%E6%B3%95%E6%95%B0%E9%87%8F%E9%99%90%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/</url>
       <content type="html"><![CDATA[<h2 id="异常错误信息"><a href="#异常错误信息" class="headerlink" title="异常错误信息"></a>异常错误信息</h2><p>错误信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Error:Errorconverting bytecode to dex:</div><div class="line">Cause:com.android.dex.DexIndexOverflowException:field ID not <span class="keyword">in</span> [0, 0xffff]: 65536</div><div class="line">:XXXXXX:transformClassesWithDexForDebug FAILED</div><div class="line">Error:Executionfailed <span class="keyword">for</span> task <span class="string">':XXXXXX:transformClassesWithDexForDebug'</span>.</div><div class="line">&gt;com.android.build.api.transform.TransformException:com.android.ide.common.process.ProcessException:java.util.concurrent.ExecutionException:com.android.ide.common.process.ProcessException:org.gradle.process.internal.ExecException: Process <span class="string">'command '</span>C:\ProgramFiles\Java\jdk1.8.0_73\bin\java.exe<span class="string">''</span> finished withnon-zero <span class="built_in">exit</span> value 2</div></pre></td></tr></table></figure>
-<a id="more"></a>
 <h2 id="限制Android方法数量的原因"><a href="#限制Android方法数量的原因" class="headerlink" title="限制Android方法数量的原因"></a>限制Android方法数量的原因</h2><p>Android应用以DEX文件的形式存储字节码文件，在Dalvik字节码规范里，方法引用索引method referenceindex只有16位,即65536个。<br>注意是method reference，这里限制的是自己代码、Android框架、第三方库三者方法数量的总和。</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p><a href="http://developer.android.com/intl/es/tools/building/multidex.html" target="_blank" rel="external">Google官方出的分包方案</a>，采用MultiDex支持库</p>
 <p>1，配置building.gradle，开启MultiDex</p>
@@ -128,7 +125,6 @@
       <url>/2017/10/01/%E3%80%90%E6%97%85%E8%A1%8C%E8%AE%A1%E5%88%92%E3%80%91%E8%A5%BF%E8%97%8F%E8%87%AA%E9%A9%BE%E6%B8%B8/</url>
       <content type="html"><![CDATA[<h2 id="大致路线"><a href="#大致路线" class="headerlink" title="大致路线"></a>大致路线</h2><p>川藏线 + 青藏线</p>
 <p><img src="https://i.imgur.com/L0GME2y.png" alt=""></p>
-<a id="more"></a>
 <h2 id="详细计划"><a href="#详细计划" class="headerlink" title="详细计划"></a>详细计划</h2><h3 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h3><p>路线：重庆－泸定（1337）－新都桥（3469）－雅江（2600）</p>
 <p>里程：760km，路况好</p>
 <h3 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h3><p>路线：雅江－理塘（3950）－芒康（3883）<br>里程：400km，路况一般，弯多灰大</p>
@@ -206,7 +202,6 @@
 <li>支持protobuf</li>
 <li>自动生成数据库访问代码</li>
 </ul>
-<a id="more"></a>
 <h2 id="Realm"><a href="#Realm" class="headerlink" title="Realm"></a><a href="https://github.com/chennaione/sugar" target="_blank" rel="external">Realm</a></h2><p>移动端的数据库，适用于 Phone、Tablet、Wearable，支持 ORM，线程安全、支持连表及数据库加密，比 SQLite 性能更好。<br>特性:</p>
 <ul>
 <li>着重移动端</li>
@@ -249,7 +244,6 @@
 <li>npm update hexo -g #升级  </li>
 <li>hexo init #初始化</li>
 </ul>
-<a id="more"></a>
 <h2 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h2><ul>
 <li>hexo n “我的博客” == hexo new “我的博客” #新建文章</li>
 <li>hexo p == hexo publish</li>
@@ -321,7 +315,6 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
       <url>/2017/07/31/Git-%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E5%90%8D%E3%80%81%E5%AF%86%E7%A0%81/</url>
       <content type="html"><![CDATA[<p>在终端输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git config --global credential.helper store</div></pre></td></tr></table></figure>
-<a id="more"></a>
 <p>然后git pull一次，输入一次用户名密码就会自动保存该用户名密码；</p>
 <p>查看配置的用户信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git config --list</div></pre></td></tr></table></figure>]]></content>
@@ -345,7 +338,6 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
 <li>格式转换方便，Markdown文本可以轻松转换为 html、pdf等</li>
 <li>Markdown 的标记语法有极好的可读性</li>
 </ul>
-<a id="more"></a>
 <h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><p><a href="http://www.jianshu.com/p/815788f4b01d" target="_blank" rel="external">基础语法</a></p>
 <h2 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法"></a>高级语法</h2><p><a href="http://www.jianshu.com/p/0b257de21eb5" target="_blank" rel="external">高级语法</a></p>
 ]]></content>
@@ -363,7 +355,6 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
       <title><![CDATA[ 开源弹幕引擎·烈焰弹幕使(DanmakuFlameMaster)]]></title>
       <url>/2017/07/11/%E5%BC%80%E6%BA%90%E5%BC%B9%E5%B9%95%E5%BC%95%E6%93%8E%C2%B7%E7%83%88%E7%84%B0%E5%BC%B9%E5%B9%95%E4%BD%BF-DanmakuFlameMaster/</url>
       <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>DanmakuFlameMaster 是 Android 上开源弹幕解析绘制引擎项目，也是 Android 上最好的开源弹幕引擎·烈焰弹幕。其架构清晰，简单易用，支持多种高效绘制</p>
-<a id="more"></a>
 <ul>
 <li><p>B站xml弹幕格式解析</p>
 </li>
@@ -500,7 +491,6 @@ DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_ACFUN) //json文件格式�
       <title><![CDATA[毕业后这一年的收获]]></title>
       <url>/2017/07/07/%E6%AF%95%E4%B8%9A%E5%90%8E%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%94%B6%E8%8E%B7/</url>
       <content type="html"><![CDATA[<p>去年的七月拿到毕业证正式毕业，一转眼就又是七月了，这一年还是经历了不少事，回头看看，这一年中的大多数选择还是比较满意的。今天趁着懒癌没发作，总结一下这一年的收获吧。</p>
-<a id="more"></a>
 <h2 id="当前状况"><a href="#当前状况" class="headerlink" title="当前状况"></a>当前状况</h2><p>毕业一年，上海，创业公司，安卓开发，无房无车，几乎无存款，身体还算健康，但缺乏锻炼免疫力差，离家很远。</p>
 <h2 id="工作方面"><a href="#工作方面" class="headerlink" title="工作方面"></a>工作方面</h2><p>毕业后与毕业前最大的改变就是进入社会，开始工作。</p>
 <p>庆幸今年没有因为工作中的一点不顺心就离职，毕竟工作还不满一年，那会儿换工作的话还需要花时间适应新工作新环境，能够用来学习提升的时间就更少了。</p>
@@ -528,7 +518,6 @@ DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_ACFUN) //json文件格式�
 <li><a href="https://git-scm.com/downloads" target="_blank" rel="external">下载Git</a></li>
 </ul>
 <p>选择合适的版本下载然后安装，我们稍后将会用上。</p>
-<a id="more"></a>
 <h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>因为Hexo是一款基于Node.js的静态博客框架，所以我们还需要安装好它：</p>
 <ul>
 <li><a href="https://nodejs.org/en/download/" target="_blank" rel="external">下载Node.js</a></li>
@@ -604,7 +593,6 @@ comments: false
       <title><![CDATA[Hello World]]></title>
       <url>/2017/07/06/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<a id="more"></a>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
