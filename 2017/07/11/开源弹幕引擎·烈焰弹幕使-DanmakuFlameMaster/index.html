@@ -1,150 +1,133 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  <title> 开源弹幕引擎·烈焰弹幕使(DanmakuFlameMaster) | 愤怒的泡面</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-    <meta name="keywords" content="愤怒的泡面" />
-  
-  <meta name="description" content="简介DanmakuFlameMaster 是 Android 上开源弹幕解析绘制引擎项目，也是 Android 上最好的开源弹幕引擎·烈焰弹幕。其架构清晰，简单易用，支持多种高效绘制  B站xml弹幕格式解析  基础弹幕精确还原绘制  支持mode7特殊弹幕  多核机型优化，高效的预缓存机制  支持多种显示效果选项实时切换  实时弹幕显示支持  换行弹幕支持/运动弹幕支持  支持自定义字体  支持">
-<meta property="og:type" content="article">
-<meta property="og:title" content=" 开源弹幕引擎·烈焰弹幕使(DanmakuFlameMaster)">
-<meta property="og:url" content="http://yoursite.com/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/index.html">
-<meta property="og:site_name" content="愤怒的泡面">
-<meta property="og:description" content="简介DanmakuFlameMaster 是 Android 上开源弹幕解析绘制引擎项目，也是 Android 上最好的开源弹幕引擎·烈焰弹幕。其架构清晰，简单易用，支持多种高效绘制  B站xml弹幕格式解析  基础弹幕精确还原绘制  支持mode7特殊弹幕  多核机型优化，高效的预缓存机制  支持多种显示效果选项实时切换  实时弹幕显示支持  换行弹幕支持/运动弹幕支持  支持自定义字体  支持">
-<meta property="og:updated_time" content="2017-09-27T05:39:12.166Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" 开源弹幕引擎·烈焰弹幕使(DanmakuFlameMaster)">
-<meta name="twitter:description" content="简介DanmakuFlameMaster 是 Android 上开源弹幕解析绘制引擎项目，也是 Android 上最好的开源弹幕引擎·烈焰弹幕。其架构清晰，简单易用，支持多种高效绘制  B站xml弹幕格式解析  基础弹幕精确还原绘制  支持mode7特殊弹幕  多核机型优化，高效的预缓存机制  支持多种显示效果选项实时切换  实时弹幕显示支持  换行弹幕支持/运动弹幕支持  支持自定义字体  支持">
-  
-  
-    <link rel="icon" href="/favicon.ico">
-  
-  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/pace.min.js"></script>
-  
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    
+    <title> 开源弹幕引擎·烈焰弹幕使(DanmakuFlameMaster) | Spider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Spider，Android开发" >
+    <meta name="description" content="愤怒的泡面" >
 
-  
-  
+    
+    <link rel="alternative" href="/atom.xml" title="Spider" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
 
 </head>
 
-<body>
-  <div id="container">
-      <header id="header">
-    <div id="banner"></div>
-    <div id="header-outer">
-        <div id="header-menu" class="header-menu-pos animated">
-            <div class="header-menu-container">
-                <a href="/" class="left">
-                    <span class="site-title">愤怒的泡面</span>
-                </a>
-                <nav id="header-menu-nav" class="right">
-                    
-                    <a  href="/">
-                        <i class="fa fa-home"></i>
-                        <span>主页</span>
-                    </a>
-                    
-                    <a  href="/archives">
-                        <i class="fa fa-archive"></i>
-                        <span>归档</span>
-                    </a>
-                    
-                    <a  href="/about">
-                        <i class="fa fa-user"></i>
-                        <span>关于</span>
-                    </a>
-                    
-                </nav>
-                <a class="mobile-header-menu-button">
-                    <i class="fa fa-bars"></i>
-                </a>
-            </div>
-        </div>
-        <div id="header-row">
-            <div id="logo">
-                <a href="/">
-                    <img src="/images/logo.png" alt="logo">
-                </a>
-            </div>
-            <div class="header-info">
-                <div id="header-title">
-                    
-                    <h2>
-                        愤怒的泡面
-                    </h2>
-                    
-                </div>
-                <div id="header-description">
-                    
-                    <h3>
-                        天下难事，必作于易；天下大事，必作于细
-                    </h3>
-                    
-                </div>
-            </div>
-            <nav class="header-nav">
-                <div class="social">
-                    
-                        <a title="MinHow" target="_blank" ">
-                            <i class="fa fa-home fa-2x"></i></a>
-                    
-                        <a title="Github" target="_blank" ">
-                            <i class="fa fa-github fa-2x"></i></a>
-                    
-                        <a title="Weibo" target="_blank" ">
-                            <i class="fa fa-weibo fa-2x"></i></a>
-                    
-                        <a title="Twitter" target="_blank" ">
-                            <i class="fa fa-twitter fa-2x"></i></a>
-                    
-                </div>
-            </nav>
-        </div>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
     </div>
-</header>
-      <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="post-title" itemprop="name">
-       开源弹幕引擎·烈焰弹幕使(DanmakuFlameMaster)
-    </h1>
-    <div class="post-title-bar">
-      <ul>
-          
-              <li>
-                  <i class="fa fa-book"></i>
-                  
-                      <a href="/categories/Android/">Android</a>
-                  
-              </li>
-          
-        <li>
-          <i class="fa fa-calendar"></i>  2017-07-11
-        </li>
-        <li>
-          <i class="fa fa-eye"></i>
-          <span id="busuanzi_value_page_pv"></span>
-        </li>
-      </ul>
-    </div>
-  
+    <![endif]-->
 
-          
-      </header>
-    
-    <div class="article-entry post-content" itemprop="articleBody">
-      
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">Spider</span>
+                    <span class="description">null</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
             
-            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>DanmakuFlameMaster 是 Android 上开源弹幕解析绘制引擎项目，也是 Android 上最好的开源弹幕引擎·烈焰弹幕。其架构清晰，简单易用，支持多种高效绘制</p>
+            <li rel="/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/index.html" class="item ">
+                <a href="/lab/" title="归档" class="icon-lab">&nbsp;归档</a>
+            </li>
+            
+            <li rel="/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/jangdelong" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/jangdelong" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/profile.php?id=100011855760219&amp;ref=bookmarks" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span> 开源弹幕引擎·烈焰弹幕使(DanmakuFlameMaster)</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        Jelon 发表于
+        <time datetime="2017-07-11T05:35:13.000Z">2017-07-11</time>
+    </p>
+    <div class="post-content">
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>DanmakuFlameMaster 是 Android 上开源弹幕解析绘制引擎项目，也是 Android 上最好的开源弹幕引擎·烈焰弹幕。其架构清晰，简单易用，支持多种高效绘制</p>
+<a id="more"></a>
 <ul>
 <li><p>B站xml弹幕格式解析</p>
 </li>
@@ -267,244 +250,241 @@ DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_ACFUN) //json文件格式�
     }
 }
 </code></pre>
-            <div class="post-copyright">
-    <div class="content">
-        <p>最后更新： 2017年09月27日 13:39</p>
-        <p>原始链接： <a class="post-url" href="/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/" title=" 开源弹幕引擎·烈焰弹幕使(DanmakuFlameMaster)">http://yoursite.com/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/</a></p>
-        <footer>
-            <a href="http://yoursite.com">
-                <img src="/images/logo.png" alt="CaoZheng">
-                CaoZheng
-            </a>
-        </footer>
     </div>
-</div>
-
-      
-    </div>
-    <footer class="article-footer">
-        
-        
-<div class="post-share">
-    <a href="javascript:;" id="share-sub" class="post-share-fab">
-        <i class="fa fa-share-alt"></i>
-    </a>
-    <div class="post-share-list" id="share-list">
-        <ul class="share-icons">
-          <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/&title=《 开源弹幕引擎·烈焰弹幕使(DanmakuFlameMaster)》 — 愤怒的泡面&pic=http://yoursite.comimages/logo.png" data-title="微博">
-              <i class="fa fa-weibo"></i>
-            </a>
-          </li>
-          <li>
-            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
-              <i class="fa fa-weixin"></i>
-            </a>
-          </li>
-          <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/&title=《 开源弹幕引擎·烈焰弹幕使(DanmakuFlameMaster)》 — 愤怒的泡面&source=工作是为了更好的生活" data-title="QQ">
-              <i class="fa fa-qq"></i>
-            </a>
-          </li>
-          <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/" data-title="Facebook">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《 开源弹幕引擎·烈焰弹幕使(DanmakuFlameMaster)》 — 愤怒的泡面&url=http://yoursite.com/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/&via=http://yoursite.com" data-title="Twitter">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/" data-title="Google+">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        </ul>
-     </div>
-</div>
-<div class="post-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;" id="wxShare-close">×</a>
-    <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/" alt="微信分享二维码">
-</div>
-
-<div class="mask"></div>
-
-        
-        <ul class="article-footer-menu">
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/Android/">Android</a>
+        </span>
+        <span class="post-tags">
+            标签：
             
-            
-        </ul>
-        
-    </footer>
-  </div>
+        </span>
+    </p>
 </article>
+<!-- 分享按钮 -->
+
+  <div class="article-share clearfix text-center">
+    <div class="share-area">
+      <span class="share-txt">分享到：</span>
+      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=Jelon个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+    </div>
+  </div>
 
 
-    <aside class="post-toc-pos post-toc-top" id="post-toc">
-        <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简介"><span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#项目地址"><span class="post-toc-text">项目地址</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Android-Studio集成方法"><span class="post-toc-text">Android Studio集成方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用方法"><span class="post-toc-text">使用方法</span></a></li></ol>
-        </nav>
-    </aside>
+<!-- 上一篇/下一篇 -->
+
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/2017/07/12/Markdown-基本语法/">
+            
+                Markdown 基本语法
+            
+        </a>
+    </span>
     
 
-<nav id="article-nav">
-  
-    <a href="/2017/07/12/Markdown-基本语法/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          Markdown 基本语法
-        
-      </span>
-    </a>
-  
-  
-    <a href="/2017/07/07/毕业后这一年的收获/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">毕业后这一年的收获</span>
-      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-    </a>
-  
-</nav>
-
-
-
     
-</section>
-        
+    <span class="next fr">
+        下一篇<br >
+        <a href="/2017/07/07/毕业后这一年的收获/">
+            
+                毕业后这一年的收获
+            
+        </a>
+    </span>
+    
+</div>
+
+<!-- 文章评论 -->
+
+  <script src="/js/comment.js"></script>
+  <div id="comments" class="comment">
+    <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/jelon.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
       </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-      <p>
-        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
-        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
-      &copy; 2017 CaoZheng<br>
-      </p>
-    </div>
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
+      </div>
+    </section>
+    -->
   </div>
-</footer>
-    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script>
-  var mihoConfig = {
-      root: "http://yoursite.com",
-      animate: true,
-      isHome: false,
-      share: true
-  }
-</script>
-<div class="sidebar">
-    <div id="sidebar-search" title="Search">
-        <i class="fa fa-search"></i>
-    </div>
-    <div id="sidebar-category" title="Categories">
-        <i class="fa fa-book"></i>
-    </div>
-    <div id="sidebar-tag" title="Tags">
-        <i class="fa fa-tags"></i>
-    </div>
-    <div id="sidebar-top">
-        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
-    </div>
-</div>
-<div class="sidebar-menu-box" id="sidebar-menu-box">
-    <div class="sidebar-menu-box-container">
-        <div id="sidebar-menu-box-categories">
-            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/旅行计划/">旅行计划</a><a class="category-link" href="/categories/生活/">生活</a>
-        </div>
-        <div id="sidebar-menu-box-tags">
-            <a href="/tags/线程/" style="font-size: 10px;">线程</a>
-        </div>
-    </div>
-    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
-</div>
-<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
-    <div class="mobile-header-menu-container">
-        <span class="title">Menus</span>
-        <ul class="mobile-header-menu-navbar">
-            
-            <li>
-                <a  href="/">
-                    <i class="fa fa-home"></i><span>主页</span>
-                </a>
-            </li>
-            
-            <li>
-                <a  href="/archives">
-                    <i class="fa fa-archive"></i><span>归档</span>
-                </a>
-            </li>
-            
-            <li>
-                <a  href="/about">
-                    <i class="fa fa-user"></i><span>关于</span>
-                </a>
-            </li>
-            
-        </ul>
-    </div>
-    <div class="mobile-header-tag-container">
-        <span class="title">Tags</span>
-        <div id="mobile-header-container-tags">
-            <a href="/tags/线程/" style="font-size: 10px;">线程</a>
-        </div>
-    </div>
-</div>
-<div class="search-wrap">
-    <span class="search-close">&times;</span>
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-            <i class="icon icon-lg icon-chevron-left"></i>
-        </a>
-        <input class="search-field" placeholder="Search..." id="keywords">
-        <a id="search-submit" href="javascript:;">
-            <i class="fa fa-search"></i>
-        </a>
-    <div class="search-container" id="search-container">
-        <ul class="search-result" id="search-result">
-        </ul>
-    </div>
-</div>
+  <script>
+  JELON.Comment({
+    container: 'comments',
+    label: '开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster' || '2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/',
+    owner: 'jangdelong',
+    repo: 'blog_comments',
+    clientId: 'b08ed25e52c57993e69c',
+    clientSecret: '1cb9545488f0380904b87350e7c5a270ae03bab7'
+  });
+  </script>
 
-<div id="search-tpl">
-    <li class="search-result-item">
-        <a href="{url}" class="search-item-li">
-            <span class="search-item-li-title" title="{title}">{title}</span>
-        </a>
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/Android/">Android</a>
+        <span class="badge">(4)</span>
     </li>
+    
+    <li>
+        <a href="/categories/Git/">Git</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Hexo/">Hexo</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Java/">Java</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Markdown/">Markdown</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/旅行计划/">旅行计划</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/生活/">生活</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/线程/" title="线程">线程 (2)</a>
+  
+    <a class="tag-item" href="/tags/数据库/" title="数据库">数据库 (1)</a>
+  
+    <a class="tag-item" href="/tags/异常/" title="异常">异常 (1)</a>
+  
 </div>
-<script src="/js/search.js"></script>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://blog.sina.com.cn/u/1825875765" target="_blank" title="网络安全博客">Haoren博客</a>
+        </li>
+    
+        <li>
+            <a href="http://blog.csdn.net/yeweiouyang" target="_blank" title="技术博客">Maxwell博客</a>
+        </li>
+    
+        <li>
+            <a href="http://xuanzh.cc/" target="_blank" title="技术博客">朱旋个人博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2017
+    
+
+    <a href="/">Jelon Loves You</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
 <script src="/js/main.js"></script>
-
-
-  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
-  <div id="particles"></div>
-  <script src="/js/particles.js"></script>
-
-
-
-
-
-
-
-  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
-  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
-  <script src="/js/animate.js"></script>
-
-  </div>
 </body>
 </html>

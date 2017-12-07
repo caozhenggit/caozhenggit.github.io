@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>愤怒的泡面</title>
+  <title>Spider</title>
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-10-27T09:33:08.479Z</updated>
+  <updated>2017-12-07T08:16:55.922Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,11 @@
     <link href="http://yoursite.com/2017/10/27/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
     <id>http://yoursite.com/2017/10/27/Android开发中定制自己的线程池/</id>
     <published>2017-10-27T09:05:04.000Z</published>
-    <updated>2017-10-27T09:33:08.479Z</updated>
+    <updated>2017-12-07T08:16:55.922Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="ThreadPoolExecutor的构造方法"><a href="#ThreadPoolExecutor的构造方法" class="headerlink" title="ThreadPoolExecutor的构造方法"></a>ThreadPoolExecutor的构造方法</h2><p>ThreadPoolExecutor的构造方法有四个，如下:</p>
+    <content type="html"><![CDATA[<p>线程池算是Android开发中非常常用的一个东西了，只要涉及到线程的地方，大多数情况下都会涉及到线程池。Android开发中线程池的使用和Java中线程池的使用基本一致。那么今天我想来总结一下Android开发中线程池的使用。</p>
+<a id="more"></a>
+<h2 id="ThreadPoolExecutor的构造方法"><a href="#ThreadPoolExecutor的构造方法" class="headerlink" title="ThreadPoolExecutor的构造方法"></a>ThreadPoolExecutor的构造方法</h2><p>ThreadPoolExecutor的构造方法有四个，如下:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                           TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            threadFactory, defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          RejectedExecutionHandler handler) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), handler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit,BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory, RejectedExecutionHandler handler) &#123;</div><div class="line">    <span class="keyword">if</span> (corePoolSize &lt; 0 ||</div><div class="line">            maximumPoolSize &lt;= 0 ||</div><div class="line">            maximumPoolSize &lt; corePoolSize ||</div><div class="line">            keepAliveTime &lt; 0)</div><div class="line">        throw new IllegalArgumentException();</div><div class="line">    <span class="keyword">if</span> (workQueue == null || threadFactory == null || handler == null)</div><div class="line">        throw new NullPointerException();</div><div class="line">    this.corePoolSize = corePoolSize;</div><div class="line">    this.maximumPoolSize = maximumPoolSize;</div><div class="line">    this.workQueue = workQueue;</div><div class="line">    this.keepAliveTime = unit.toNanos(keepAliveTime);</div><div class="line">    this.threadFactory = threadFactory;</div><div class="line">    this.handler = handler;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>构造方法参数说明</strong></p>
 <ul>
@@ -53,7 +55,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;ThreadPoolExecutor的构造方法&quot;&gt;&lt;a href=&quot;#ThreadPoolExecutor的构造方法&quot; class=&quot;headerlink&quot; title=&quot;ThreadPoolExecutor的构造方法&quot;&gt;&lt;/a&gt;ThreadPoolExecuto
+      &lt;p&gt;线程池算是Android开发中非常常用的一个东西了，只要涉及到线程的地方，大多数情况下都会涉及到线程池。Android开发中线程池的使用和Java中线程池的使用基本一致。那么今天我想来总结一下Android开发中线程池的使用。&lt;/p&gt;
     
     </summary>
     
@@ -69,7 +71,7 @@
     <link href="http://yoursite.com/2017/10/27/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2017/10/27/Java线程池的使用/</id>
     <published>2017-10-27T03:30:18.000Z</published>
-    <updated>2017-10-27T04:02:04.533Z</updated>
+    <updated>2017-12-07T08:18:17.716Z</updated>
     
     <content type="html"><![CDATA[<h2 id="new-Thread与线程池"><a href="#new-Thread与线程池" class="headerlink" title="new Thread与线程池"></a>new Thread与线程池</h2><p><strong>new Thread的弊端</strong></p>
 <ul>
@@ -77,6 +79,7 @@
 <li>线程缺乏统一管理，可能无限制新建线程，相互之间竞争，及可能占用过多系统资源导致死机或oom。</li>
 <li>缺乏更多功能，如定时执行、定期执行、线程中断。</li>
 </ul>
+<a id="more"></a>
 <p><strong>相比new Thread，Java提供的四种线程池的好处在于：</strong></p>
 <ul>
 <li>重用存在的线程，减少对象创建、消亡的开销，性能佳。</li>
@@ -94,7 +97,12 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;new-Thread与线程池&quot;&gt;&lt;a href=&quot;#new-Thread与线程池&quot; class=&quot;headerlink&quot; title=&quot;new Thread与线程池&quot;&gt;&lt;/a&gt;new Thread与线程池&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;new Thread的弊端&lt;
+      &lt;h2 id=&quot;new-Thread与线程池&quot;&gt;&lt;a href=&quot;#new-Thread与线程池&quot; class=&quot;headerlink&quot; title=&quot;new Thread与线程池&quot;&gt;&lt;/a&gt;new Thread与线程池&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;new Thread的弊端&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每次new Thread新建对象性能差。&lt;/li&gt;
+&lt;li&gt;线程缺乏统一管理，可能无限制新建线程，相互之间竞争，及可能占用过多系统资源导致死机或oom。&lt;/li&gt;
+&lt;li&gt;缺乏更多功能，如定时执行、定期执行、线程中断。&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -110,10 +118,11 @@
     <link href="http://yoursite.com/2017/10/11/%E3%80%90Android%E5%BC%82%E5%B8%B8%E3%80%91%E5%85%B3%E4%BA%8EAndroid%E6%96%B9%E6%B3%95%E6%95%B0%E9%87%8F%E9%99%90%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>http://yoursite.com/2017/10/11/【Android异常】关于Android方法数量限制的问题/</id>
     <published>2017-10-11T03:44:58.000Z</published>
-    <updated>2017-10-11T06:25:56.619Z</updated>
+    <updated>2017-12-07T08:17:05.161Z</updated>
     
     <content type="html"><![CDATA[<h2 id="异常错误信息"><a href="#异常错误信息" class="headerlink" title="异常错误信息"></a>异常错误信息</h2><p>错误信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Error:Errorconverting bytecode to dex:</div><div class="line">Cause:com.android.dex.DexIndexOverflowException:field ID not <span class="keyword">in</span> [0, 0xffff]: 65536</div><div class="line">:XXXXXX:transformClassesWithDexForDebug FAILED</div><div class="line">Error:Executionfailed <span class="keyword">for</span> task <span class="string">':XXXXXX:transformClassesWithDexForDebug'</span>.</div><div class="line">&gt;com.android.build.api.transform.TransformException:com.android.ide.common.process.ProcessException:java.util.concurrent.ExecutionException:com.android.ide.common.process.ProcessException:org.gradle.process.internal.ExecException: Process <span class="string">'command '</span>C:\ProgramFiles\Java\jdk1.8.0_73\bin\java.exe<span class="string">''</span> finished withnon-zero <span class="built_in">exit</span> value 2</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="限制Android方法数量的原因"><a href="#限制Android方法数量的原因" class="headerlink" title="限制Android方法数量的原因"></a>限制Android方法数量的原因</h2><p>Android应用以DEX文件的形式存储字节码文件，在Dalvik字节码规范里，方法引用索引method referenceindex只有16位,即65536个。<br>注意是method reference，这里限制的是自己代码、Android框架、第三方库三者方法数量的总和。</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p><a href="http://developer.android.com/intl/es/tools/building/multidex.html" target="_blank" rel="external">Google官方出的分包方案</a>，采用MultiDex支持库</p>
 <p>1，配置building.gradle，开启MultiDex</p>
@@ -128,12 +137,14 @@
     <summary type="html">
     
       &lt;h2 id=&quot;异常错误信息&quot;&gt;&lt;a href=&quot;#异常错误信息&quot; class=&quot;headerlink&quot; title=&quot;异常错误信息&quot;&gt;&lt;/a&gt;异常错误信息&lt;/h2&gt;&lt;p&gt;错误信息：&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Error:Errorconverting bytecode to dex:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Cause:com.android.dex.DexIndexOverflowException:field ID not &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; [0, 0xffff]: 65536&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;:XXXXXX:transformClassesWithDexForDebug FAILED&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Error:Executionfailed &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; task &lt;span class=&quot;string&quot;&gt;&#39;:XXXXXX:transformClassesWithDexForDebug&#39;&lt;/span&gt;.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;com.android.build.api.transform.TransformException:com.android.ide.common.process.ProcessException:java.util.concurrent.ExecutionException:com.android.ide.common.process.ProcessException:org.gradle.process.internal.ExecException: Process &lt;span class=&quot;string&quot;&gt;&#39;command &#39;&lt;/span&gt;C:\ProgramFiles\Java\jdk1.8.0_73\bin\java.exe&lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt; finished withnon-zero &lt;span class=&quot;built_in&quot;&gt;exit&lt;/span&gt; value 2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
       <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
     
+    
+      <category term="异常" scheme="http://yoursite.com/tags/%E5%BC%82%E5%B8%B8/"/>
     
   </entry>
   
@@ -142,10 +153,11 @@
     <link href="http://yoursite.com/2017/10/01/%E3%80%90%E6%97%85%E8%A1%8C%E8%AE%A1%E5%88%92%E3%80%91%E8%A5%BF%E8%97%8F%E8%87%AA%E9%A9%BE%E6%B8%B8/"/>
     <id>http://yoursite.com/2017/10/01/【旅行计划】西藏自驾游/</id>
     <published>2017-10-01T06:54:41.000Z</published>
-    <updated>2017-10-02T08:48:35.470Z</updated>
+    <updated>2017-12-07T08:20:26.931Z</updated>
     
     <content type="html"><![CDATA[<h2 id="大致路线"><a href="#大致路线" class="headerlink" title="大致路线"></a>大致路线</h2><p>川藏线 + 青藏线</p>
 <p><img src="https://i.imgur.com/L0GME2y.png" alt=""></p>
+<a id="more"></a>
 <h2 id="详细计划"><a href="#详细计划" class="headerlink" title="详细计划"></a>详细计划</h2><h3 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h3><p>路线：重庆－泸定（1337）－新都桥（3469）－雅江（2600）</p>
 <p>里程：760km，路况好</p>
 <h3 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h3><p>路线：雅江－理塘（3950）－芒康（3883）<br>里程：400km，路况一般，弯多灰大</p>
@@ -206,7 +218,7 @@
     <summary type="html">
     
       &lt;h2 id=&quot;大致路线&quot;&gt;&lt;a href=&quot;#大致路线&quot; class=&quot;headerlink&quot; title=&quot;大致路线&quot;&gt;&lt;/a&gt;大致路线&lt;/h2&gt;&lt;p&gt;川藏线 + 青藏线&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/L0GME2y.png&quot; al
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/L0GME2y.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -220,7 +232,7 @@
     <link href="http://yoursite.com/2017/09/27/%E3%80%90Android%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6%E3%80%91%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6/"/>
     <id>http://yoursite.com/2017/09/27/【Android开源框架】之数据库框架/</id>
     <published>2017-09-27T04:40:27.000Z</published>
-    <updated>2017-09-27T05:42:07.254Z</updated>
+    <updated>2017-12-07T08:16:55.920Z</updated>
     
     <content type="html"><![CDATA[<h2 id="GreenDAO"><a href="#GreenDAO" class="headerlink" title="GreenDAO"></a><a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external">GreenDAO</a></h2><p>GreenDAO是一个轻量级，快速的orm框架。简化建表、查询、更新、插入、事务、索引的操作<br>特性:</p>
 <ul>
@@ -230,6 +242,7 @@
 <li>支持protobuf</li>
 <li>自动生成数据库访问代码</li>
 </ul>
+<a id="more"></a>
 <h2 id="Realm"><a href="#Realm" class="headerlink" title="Realm"></a><a href="https://github.com/chennaione/sugar" target="_blank" rel="external">Realm</a></h2><p>移动端的数据库，适用于 Phone、Tablet、Wearable，支持 ORM，线程安全、支持连表及数据库加密，比 SQLite 性能更好。<br>特性:</p>
 <ul>
 <li>着重移动端</li>
@@ -251,12 +264,21 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;GreenDAO&quot;&gt;&lt;a href=&quot;#GreenDAO&quot; class=&quot;headerlink&quot; title=&quot;GreenDAO&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/greenrobot/greenDAO&quot; target=&quot;_blan
+      &lt;h2 id=&quot;GreenDAO&quot;&gt;&lt;a href=&quot;#GreenDAO&quot; class=&quot;headerlink&quot; title=&quot;GreenDAO&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/greenrobot/greenDAO&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GreenDAO&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;GreenDAO是一个轻量级，快速的orm框架。简化建表、查询、更新、插入、事务、索引的操作&lt;br&gt;特性:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;性能突出(比ormlite快4-5倍), performance&lt;/li&gt;
+&lt;li&gt;库小，核心包小于100k&lt;/li&gt;
+&lt;li&gt;简单易用的API&lt;/li&gt;
+&lt;li&gt;支持protobuf&lt;/li&gt;
+&lt;li&gt;自动生成数据库访问代码&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
       <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
     
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -265,13 +287,14 @@
     <link href="http://yoursite.com/2017/07/31/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2017/07/31/Hexo常用命令笔记/</id>
     <published>2017-07-31T02:44:40.000Z</published>
-    <updated>2017-07-31T02:57:53.456Z</updated>
+    <updated>2017-12-07T08:21:50.747Z</updated>
     
     <content type="html"><![CDATA[<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><ul>
 <li>npm install hexo -g #安装  </li>
 <li>npm update hexo -g #升级  </li>
 <li>hexo init #初始化</li>
 </ul>
+<a id="more"></a>
 <h2 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h2><ul>
 <li>hexo n “我的博客” == hexo new “我的博客” #新建文章</li>
 <li>hexo p == hexo publish</li>
@@ -333,7 +356,9 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
     
       &lt;h2 id=&quot;hexo&quot;&gt;&lt;a href=&quot;#hexo&quot; class=&quot;headerlink&quot; title=&quot;hexo&quot;&gt;&lt;/a&gt;hexo&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;npm install hexo -g #安装  &lt;/li&gt;
-&lt;li&gt;npm update hexo -g #升
+&lt;li&gt;npm update hexo -g #升级  &lt;/li&gt;
+&lt;li&gt;hexo init #初始化&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -347,10 +372,11 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
     <link href="http://yoursite.com/2017/07/31/Git-%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E5%90%8D%E3%80%81%E5%AF%86%E7%A0%81/"/>
     <id>http://yoursite.com/2017/07/31/Git-配置用户名、密码/</id>
     <published>2017-07-31T02:40:10.000Z</published>
-    <updated>2017-07-31T02:43:05.429Z</updated>
+    <updated>2017-12-07T08:22:16.925Z</updated>
     
     <content type="html"><![CDATA[<p>在终端输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git config --global credential.helper store</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>然后git pull一次，输入一次用户名密码就会自动保存该用户名密码；</p>
 <p>查看配置的用户信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git config --list</div></pre></td></tr></table></figure>]]></content>
@@ -358,7 +384,7 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
     <summary type="html">
     
       &lt;p&gt;在终端输入：&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;d
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ git config --global credential.helper store&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -372,7 +398,7 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
     <link href="http://yoursite.com/2017/07/12/Markdown-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
     <id>http://yoursite.com/2017/07/12/Markdown-基本语法/</id>
     <published>2017-07-12T02:51:11.000Z</published>
-    <updated>2017-07-12T03:02:51.768Z</updated>
+    <updated>2017-12-07T08:17:54.606Z</updated>
     
     <content type="html"><![CDATA[<h2 id="关于Markdown"><a href="#关于Markdown" class="headerlink" title="关于Markdown"></a>关于Markdown</h2><p>Markdown是一个 Web 上使用的文本到HTML的转换工具，可以通过简单、易读易写的文本格式生成结构化的HTML文档。</p>
 <ul>
@@ -381,13 +407,20 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
 <li>格式转换方便，Markdown文本可以轻松转换为 html、pdf等</li>
 <li>Markdown 的标记语法有极好的可读性</li>
 </ul>
+<a id="more"></a>
 <h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><p><a href="http://www.jianshu.com/p/815788f4b01d" target="_blank" rel="external">基础语法</a></p>
 <h2 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法"></a>高级语法</h2><p><a href="http://www.jianshu.com/p/0b257de21eb5" target="_blank" rel="external">高级语法</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;关于Markdown&quot;&gt;&lt;a href=&quot;#关于Markdown&quot; class=&quot;headerlink&quot; title=&quot;关于Markdown&quot;&gt;&lt;/a&gt;关于Markdown&lt;/h2&gt;&lt;p&gt;Markdown是一个 Web 上使用的文本到HTML的转换工具，可以通过简
+      &lt;h2 id=&quot;关于Markdown&quot;&gt;&lt;a href=&quot;#关于Markdown&quot; class=&quot;headerlink&quot; title=&quot;关于Markdown&quot;&gt;&lt;/a&gt;关于Markdown&lt;/h2&gt;&lt;p&gt;Markdown是一个 Web 上使用的文本到HTML的转换工具，可以通过简单、易读易写的文本格式生成结构化的HTML文档。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;简单标记符完成排版，所写即所见，让你专注于文字而不是排版&lt;/li&gt;
+&lt;li&gt;纯文本，所以兼容性极强，可以用所有文本编辑器打开&lt;/li&gt;
+&lt;li&gt;格式转换方便，Markdown文本可以轻松转换为 html、pdf等&lt;/li&gt;
+&lt;li&gt;Markdown 的标记语法有极好的可读性&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -401,9 +434,10 @@ description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞�
     <link href="http://yoursite.com/2017/07/11/%E5%BC%80%E6%BA%90%E5%BC%B9%E5%B9%95%E5%BC%95%E6%93%8E%C2%B7%E7%83%88%E7%84%B0%E5%BC%B9%E5%B9%95%E4%BD%BF-DanmakuFlameMaster/"/>
     <id>http://yoursite.com/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/</id>
     <published>2017-07-11T05:35:13.000Z</published>
-    <updated>2017-09-27T05:39:12.166Z</updated>
+    <updated>2017-12-07T08:18:14.673Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>DanmakuFlameMaster 是 Android 上开源弹幕解析绘制引擎项目，也是 Android 上最好的开源弹幕引擎·烈焰弹幕。其架构清晰，简单易用，支持多种高效绘制</p>
+<a id="more"></a>
 <ul>
 <li><p>B站xml弹幕格式解析</p>
 </li>
@@ -529,7 +563,7 @@ DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_ACFUN) //json文件格式�
     
     <summary type="html">
     
-      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;DanmakuFlameMaster 是 Android 上开源弹幕解析绘制引擎项目，也是 Android 上最好的开源弹幕引擎·烈焰弹幕。
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;DanmakuFlameMaster 是 Android 上开源弹幕解析绘制引擎项目，也是 Android 上最好的开源弹幕引擎·烈焰弹幕。其架构清晰，简单易用，支持多种高效绘制&lt;/p&gt;
     
     </summary>
     
@@ -543,9 +577,10 @@ DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_ACFUN) //json文件格式�
     <link href="http://yoursite.com/2017/07/07/%E6%AF%95%E4%B8%9A%E5%90%8E%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%94%B6%E8%8E%B7/"/>
     <id>http://yoursite.com/2017/07/07/毕业后这一年的收获/</id>
     <published>2017-07-07T07:00:11.000Z</published>
-    <updated>2017-10-01T11:23:52.287Z</updated>
+    <updated>2017-12-07T08:18:03.451Z</updated>
     
     <content type="html"><![CDATA[<p>去年的七月拿到毕业证正式毕业，一转眼就又是七月了，这一年还是经历了不少事，回头看看，这一年中的大多数选择还是比较满意的。今天趁着懒癌没发作，总结一下这一年的收获吧。</p>
+<a id="more"></a>
 <h2 id="当前状况"><a href="#当前状况" class="headerlink" title="当前状况"></a>当前状况</h2><p>毕业一年，上海，创业公司，安卓开发，无房无车，几乎无存款，身体还算健康，但缺乏锻炼免疫力差，离家很远。</p>
 <h2 id="工作方面"><a href="#工作方面" class="headerlink" title="工作方面"></a>工作方面</h2><p>毕业后与毕业前最大的改变就是进入社会，开始工作。</p>
 <p>庆幸今年没有因为工作中的一点不顺心就离职，毕竟工作还不满一年，那会儿换工作的话还需要花时间适应新工作新环境，能够用来学习提升的时间就更少了。</p>
@@ -559,7 +594,6 @@ DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_ACFUN) //json文件格式�
     <summary type="html">
     
       &lt;p&gt;去年的七月拿到毕业证正式毕业，一转眼就又是七月了，这一年还是经历了不少事，回头看看，这一年中的大多数选择还是比较满意的。今天趁着懒癌没发作，总结一下这一年的收获吧。&lt;/p&gt;
-&lt;h2 id=&quot;当前状况&quot;&gt;&lt;a href=&quot;#当前状况&quot; class=&quot;headerlink&quot; t
     
     </summary>
     
@@ -573,13 +607,14 @@ DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_ACFUN) //json文件格式�
     <link href="http://yoursite.com/2017/07/07/Hexo%E5%AE%89%E8%A3%85/"/>
     <id>http://yoursite.com/2017/07/07/Hexo安装/</id>
     <published>2017-07-07T02:25:12.000Z</published>
-    <updated>2017-07-07T08:17:31.528Z</updated>
+    <updated>2017-12-07T08:20:29.390Z</updated>
     
     <content type="html"><![CDATA[<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>我们很经常会要用到Git以及Github，首先来安装Git：</p>
 <ul>
 <li><a href="https://git-scm.com/downloads" target="_blank" rel="external">下载Git</a></li>
 </ul>
 <p>选择合适的版本下载然后安装，我们稍后将会用上。</p>
+<a id="more"></a>
 <h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>因为Hexo是一款基于Node.js的静态博客框架，所以我们还需要安装好它：</p>
 <ul>
 <li><a href="https://nodejs.org/en/download/" target="_blank" rel="external">下载Node.js</a></li>
@@ -646,7 +681,9 @@ comments: false
     
       &lt;h2 id=&quot;安装Git&quot;&gt;&lt;a href=&quot;#安装Git&quot; class=&quot;headerlink&quot; title=&quot;安装Git&quot;&gt;&lt;/a&gt;安装Git&lt;/h2&gt;&lt;p&gt;我们很经常会要用到Git以及Github，首先来安装Git：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https
+&lt;li&gt;&lt;a href=&quot;https://git-scm.com/downloads&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;下载Git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;选择合适的版本下载然后安装，我们稍后将会用上。&lt;/p&gt;
     
     </summary>
     
@@ -660,9 +697,10 @@ comments: false
     <link href="http://yoursite.com/2017/07/06/hello-world/"/>
     <id>http://yoursite.com/2017/07/06/hello-world/</id>
     <published>2017-07-06T03:19:47.025Z</published>
-    <updated>2017-07-06T03:19:47.026Z</updated>
+    <updated>2017-12-07T08:20:29.391Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<a id="more"></a>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
@@ -675,7 +713,7 @@ comments: false
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
     
     </summary>
     
