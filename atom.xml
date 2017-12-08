@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Spider</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://caozhenggit.github.io/"/>
+  <updated>2017-12-08T12:53:51.454Z</updated>
+  <id>http://caozhenggit.github.io/</id>
+  
+  <author>
+    <name>CaoZheng</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://caozhenggit.github.io/2017/12/08/hello-world/"/>
+    <id>http://caozhenggit.github.io/2017/12/08/hello-world/</id>
+    <published>2017-12-08T12:53:51.453Z</published>
+    <updated>2017-12-08T12:53:51.454Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git 分支管理</title>
+    <link href="http://caozhenggit.github.io/2017/12/08/Git-%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/"/>
+    <id>http://caozhenggit.github.io/2017/12/08/Git-分支管理/</id>
+    <published>2017-12-08T02:17:42.000Z</published>
+    <updated>2017-12-08T13:32:44.399Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="创建本地分支"><a href="#创建本地分支" class="headerlink" title="创建本地分支"></a>创建本地分支</h3><p>git branch &lt;分支名&gt;</p>
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p>git checkout &lt;分支名&gt;</p>
+<h3 id="推送本地分支关联远程分支"><a href="#推送本地分支关联远程分支" class="headerlink" title="推送本地分支关联远程分支"></a>推送本地分支关联远程分支</h3><ul>
+<li>远程分支存在并且已关联本地分支：    git push</li>
+<li>远程分支存在且本地分支也存在，但未关联：git push -u origin &lt;远程分支名&gt;</li>
+<li>远程分支不存在但本地分支存在：git push origin &lt;本地分支名&gt;:&lt;远程分支名&gt;</li>
+</ul>
+<h3 id="拉取远程分支并创建本地分支"><a href="#拉取远程分支并创建本地分支" class="headerlink" title="拉取远程分支并创建本地分支"></a>拉取远程分支并创建本地分支</h3><p>git checkout -b &lt;本地分支名&gt; origin/&lt;远程分支名&gt;</p>
+<h3 id="重命名分支"><a href="#重命名分支" class="headerlink" title="重命名分支"></a>重命名分支</h3><p> git branch -m | -M &lt;旧分支名&gt; &lt;新分支名&gt;</p>
+<h3 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h3><p> git branch -d &lt;分支名&gt;</p>
+<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p> git branch -d -r &lt;分支名&gt;</p>
+<h3 id="查看本地分支"><a href="#查看本地分支" class="headerlink" title="查看本地分支"></a>查看本地分支</h3><p> git branch</p>
+<h3 id="查看本地与远程分支"><a href="#查看本地与远程分支" class="headerlink" title="查看本地与远程分支"></a>查看本地与远程分支</h3><p> git branch -a</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;创建本地分支&quot;&gt;&lt;a href=&quot;#创建本地分支&quot; class=&quot;headerlink&quot; title=&quot;创建本地分支&quot;&gt;&lt;/a&gt;创建本地分支&lt;/h3&gt;&lt;p&gt;git branch &amp;lt;分支名&amp;gt;&lt;/p&gt;
+&lt;h3 id=&quot;切换分支&quot;&gt;&lt;a href=&quot;#切换分
+    
+    </summary>
+    
+      <category term="Git" scheme="http://caozhenggit.github.io/categories/Git/"/>
+    
+    
+      <category term="git" scheme="http://caozhenggit.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android开发中定制自己的线程池</title>
+    <link href="http://caozhenggit.github.io/2017/10/27/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    <id>http://caozhenggit.github.io/2017/10/27/Android开发中定制自己的线程池/</id>
+    <published>2017-10-27T09:05:04.000Z</published>
+    <updated>2017-12-08T12:53:51.449Z</updated>
+    
+    <content type="html"><![CDATA[<p>线程池算是Android开发中非常常用的一个东西了，只要涉及到线程的地方，大多数情况下都会涉及到线程池。Android开发中线程池的使用和Java中线程池的使用基本一致。那么今天我想来总结一下Android开发中线程池的使用。</p>
+<h2 id="ThreadPoolExecutor的构造方法"><a href="#ThreadPoolExecutor的构造方法" class="headerlink" title="ThreadPoolExecutor的构造方法"></a>ThreadPoolExecutor的构造方法</h2><p>ThreadPoolExecutor的构造方法有四个，如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                           TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            threadFactory, defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          RejectedExecutionHandler handler) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), handler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit,BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory, RejectedExecutionHandler handler) &#123;</div><div class="line">    <span class="keyword">if</span> (corePoolSize &lt; 0 ||</div><div class="line">            maximumPoolSize &lt;= 0 ||</div><div class="line">            maximumPoolSize &lt; corePoolSize ||</div><div class="line">            keepAliveTime &lt; 0)</div><div class="line">        throw new IllegalArgumentException();</div><div class="line">    <span class="keyword">if</span> (workQueue == null || threadFactory == null || handler == null)</div><div class="line">        throw new NullPointerException();</div><div class="line">    this.corePoolSize = corePoolSize;</div><div class="line">    this.maximumPoolSize = maximumPoolSize;</div><div class="line">    this.workQueue = workQueue;</div><div class="line">    this.keepAliveTime = unit.toNanos(keepAliveTime);</div><div class="line">    this.threadFactory = threadFactory;</div><div class="line">    this.handler = handler;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>构造方法参数说明</strong></p>
+<ul>
+<li><p>corePoolSize</p>
+<p>  线程池的核心线程数，即线程池中的最小线程数</p>
+</li>
+<li><p>maximumPoolSize</p>
+<p>  最大线程池大小,当活动线程数达到这个值，后续任务会被阻塞</p>
+</li>
+<li><p>keepAliveTime</p>
+<p>  线程池中超过corePoolSize数目的非核心线程最大存活时间</p>
+</li>
+<li><p>unit</p>
+<p>  keepAliveTime 参数的时间单位</p>
+</li>
+<li><p>workQueue</p>
+<p>  执行前用于保持任务的队列，也就是线程池的缓存队列</p>
+</li>
+<li><p>threadFactory</p>
+<p>  线程工厂，为线程池提供创建新线程的功能</p>
+</li>
+<li><p>RejectedExecutionHandler</p>
+<p>  线程池对拒绝任务的处理策略</p>
+</li>
+</ul>
+<h2 id="定制自己的线程池"><a href="#定制自己的线程池" class="headerlink" title="定制自己的线程池"></a>定制自己的线程池</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">public class ThreadPoolFactory &#123;</div><div class="line"></div><div class="line">    /** 核心线程数 */</div><div class="line">    private static final int CORE_POOL_SIZE = 5;</div><div class="line">    /** 最大线程数 */</div><div class="line">    private static final int MAX_POOL_SIZE = 128;</div><div class="line">    /** 非核心线程时超过时长 */</div><div class="line">    private static final int KEEP_ALIVE_TIME = 2;</div><div class="line">    /** 阻塞队列大小 */</div><div class="line">    private static final int BLOCK_SIZE = 2;</div><div class="line"></div><div class="line">    private ThreadPoolExecutor mThreadPoolExecutor ;</div><div class="line">    </div><div class="line">    private <span class="function"><span class="title">ThreadPoolFactory</span></span>()&#123;</div><div class="line">        createThreadPoolProxyFactory();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** 创建线程池 */</div><div class="line">    private void <span class="function"><span class="title">createThreadPoolProxyFactory</span></span>()&#123;</div><div class="line">        mThreadPoolExecutor  = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME,</div><div class="line">                TimeUnit.SECONDS, new ArrayBlockingQueue&lt;Runnable&gt;(BLOCK_SIZE),</div><div class="line">                Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());</div><div class="line">        //<span class="literal">true</span>: 线程池数量最后销毁到0个</div><div class="line">        //<span class="literal">false</span>: 超过核心线程数时,而且(超过最大值或者timeout过),就会销毁</div><div class="line">        mThreadPoolExecutor .allowCoreThreadTimeOut(<span class="literal">true</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 打印线程池状态</div><div class="line">     */</div><div class="line">    public void <span class="function"><span class="title">logThreadPoolInfo</span></span>() &#123;</div><div class="line">        Log.i(<span class="string">"threadPoolFactory"</span>, <span class="string">"monitor "</span></div><div class="line">                + <span class="string">" CorePoolSize:"</span> + mThreadPoolExecutor.getCorePoolSize()</div><div class="line">                + <span class="string">" PoolSize:"</span> + mThreadPoolExecutor.getPoolSize()</div><div class="line">                + <span class="string">" MaximumPoolSize:"</span> + mThreadPoolExecutor.getMaximumPoolSize()</div><div class="line">                + <span class="string">" ActiveCount:"</span> + mThreadPoolExecutor.getActiveCount()</div><div class="line">                + <span class="string">" TaskCount:"</span> + mThreadPoolExecutor.getTaskCount());</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;线程池算是Android开发中非常常用的一个东西了，只要涉及到线程的地方，大多数情况下都会涉及到线程池。Android开发中线程池的使用和Java中线程池的使用基本一致。那么今天我想来总结一下Android开发中线程池的使用。&lt;/p&gt;
+&lt;h2 id=&quot;ThreadPoolE
+    
+    </summary>
+    
+      <category term="Android" scheme="http://caozhenggit.github.io/categories/Android/"/>
+    
+    
+      <category term="线程" scheme="http://caozhenggit.github.io/tags/%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java线程池的使用</title>
+    <link href="http://caozhenggit.github.io/2017/10/27/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://caozhenggit.github.io/2017/10/27/Java线程池的使用/</id>
+    <published>2017-10-27T03:30:18.000Z</published>
+    <updated>2017-12-08T12:53:51.452Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="new-Thread与线程池"><a href="#new-Thread与线程池" class="headerlink" title="new Thread与线程池"></a>new Thread与线程池</h2><p><strong>new Thread的弊端</strong></p>
+<ul>
+<li>每次new Thread新建对象性能差。</li>
+<li>线程缺乏统一管理，可能无限制新建线程，相互之间竞争，及可能占用过多系统资源导致死机或oom。</li>
+<li>缺乏更多功能，如定时执行、定期执行、线程中断。</li>
+</ul>
+<p><strong>相比new Thread，Java提供的四种线程池的好处在于：</strong></p>
+<ul>
+<li>重用存在的线程，减少对象创建、消亡的开销，性能佳。</li>
+<li>可有效控制最大并发线程数，提高系统资源的使用率，同时避免过多资源竞争，避免堵塞。</li>
+<li>提供定时执行、定期执行、单线程、并发数控制等功能。</li>
+</ul>
+<h2 id="四种线程池"><a href="#四种线程池" class="headerlink" title="四种线程池"></a>四种线程池</h2><h3 id="newCachedThreadPool"><a href="#newCachedThreadPool" class="headerlink" title="newCachedThreadPool"></a>newCachedThreadPool</h3><p>创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ExecutorService cacheThreadPool = Executors.newCachedThreadPool();</div><div class="line"> cacheThreadPool.execute(runnable);</div></pre></td></tr></table></figure>
+<h3 id="newFixedThreadPool"><a href="#newFixedThreadPool" class="headerlink" title="newFixedThreadPool"></a>newFixedThreadPool</h3><p>创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ExecutorService fixedThreadPool = Executors.newFixedThreadPool(4);       </div><div class="line">fixedThreadPool.execute(runnable);</div></pre></td></tr></table></figure>
+<h3 id="newScheduledThreadPool"><a href="#newScheduledThreadPool" class="headerlink" title="newScheduledThreadPool"></a>newScheduledThreadPool</h3><p>创建一个定长线程池，支持定时及周期性任务执行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(4);</div><div class="line"> scheduledThreadPool.schedule(runnable3, 2000, TimeUnit.MILLISECONDS);</div></pre></td></tr></table></figure>
+<h3 id="newSingleThreadExecutor"><a href="#newSingleThreadExecutor" class="headerlink" title="newSingleThreadExecutor"></a>newSingleThreadExecutor</h3><p>创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();</div><div class="line">singleThreadExecutor.execute(runnable);</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;new-Thread与线程池&quot;&gt;&lt;a href=&quot;#new-Thread与线程池&quot; class=&quot;headerlink&quot; title=&quot;new Thread与线程池&quot;&gt;&lt;/a&gt;new Thread与线程池&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;new Thread的弊端&lt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://caozhenggit.github.io/categories/Java/"/>
+    
+    
+      <category term="线程" scheme="http://caozhenggit.github.io/tags/%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Android异常】关于Android方法数量限制的问题</title>
+    <link href="http://caozhenggit.github.io/2017/10/11/%E3%80%90Android%E5%BC%82%E5%B8%B8%E3%80%91%E5%85%B3%E4%BA%8EAndroid%E6%96%B9%E6%B3%95%E6%95%B0%E9%87%8F%E9%99%90%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://caozhenggit.github.io/2017/10/11/【Android异常】关于Android方法数量限制的问题/</id>
+    <published>2017-10-11T03:44:58.000Z</published>
+    <updated>2017-12-08T12:53:51.455Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="异常错误信息"><a href="#异常错误信息" class="headerlink" title="异常错误信息"></a>异常错误信息</h2><p>错误信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Error:Errorconverting bytecode to dex:</div><div class="line">Cause:com.android.dex.DexIndexOverflowException:field ID not <span class="keyword">in</span> [0, 0xffff]: 65536</div><div class="line">:XXXXXX:transformClassesWithDexForDebug FAILED</div><div class="line">Error:Executionfailed <span class="keyword">for</span> task <span class="string">':XXXXXX:transformClassesWithDexForDebug'</span>.</div><div class="line">&gt;com.android.build.api.transform.TransformException:com.android.ide.common.process.ProcessException:java.util.concurrent.ExecutionException:com.android.ide.common.process.ProcessException:org.gradle.process.internal.ExecException: Process <span class="string">'command '</span>C:\ProgramFiles\Java\jdk1.8.0_73\bin\java.exe<span class="string">''</span> finished withnon-zero <span class="built_in">exit</span> value 2</div></pre></td></tr></table></figure>
+<h2 id="限制Android方法数量的原因"><a href="#限制Android方法数量的原因" class="headerlink" title="限制Android方法数量的原因"></a>限制Android方法数量的原因</h2><p>Android应用以DEX文件的形式存储字节码文件，在Dalvik字节码规范里，方法引用索引method referenceindex只有16位,即65536个。<br>注意是method reference，这里限制的是自己代码、Android框架、第三方库三者方法数量的总和。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p><a href="http://developer.android.com/intl/es/tools/building/multidex.html" target="_blank" rel="external">Google官方出的分包方案</a>，采用MultiDex支持库</p>
+<p>1，配置building.gradle，开启MultiDex</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    defaultConfig &#123;</div><div class="line">        multiDexEnabled <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">dependencies&#123;</div><div class="line">    compile<span class="string">'com.android.support:multidex:1.0.0'</span></div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2，配置应用</p>
+<p>方法1：在AndroidManifest.xml的application中声明android.support.multidex.MultiDexApplication；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xmlversion=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</div><div class="line">&lt;manifestxmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></div><div class="line">   package=<span class="string">"com.example.android.multidex.myapplication"</span>&gt;</div><div class="line">    &lt;application</div><div class="line">        ...</div><div class="line">       android:name=<span class="string">"android.support.multidex.MultiDexApplication"</span>&gt;</div><div class="line">        ...</div><div class="line">    &lt;/application&gt;</div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure>
+<p>方法2：让你自己的Application类继承MultiDexApplication</p>
+<p>方法3：让你自己的Application类重写attachBaseContext 方法，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void attachBaseContext(Context base) &#123;</div><div class="line">super.attachBaseContext(base);</div><div class="line">MultiDex.install(this);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;异常错误信息&quot;&gt;&lt;a href=&quot;#异常错误信息&quot; class=&quot;headerlink&quot; title=&quot;异常错误信息&quot;&gt;&lt;/a&gt;异常错误信息&lt;/h2&gt;&lt;p&gt;错误信息：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t
+    
+    </summary>
+    
+      <category term="Android" scheme="http://caozhenggit.github.io/categories/Android/"/>
+    
+    
+      <category term="异常" scheme="http://caozhenggit.github.io/tags/%E5%BC%82%E5%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【旅行计划】西藏自驾游</title>
+    <link href="http://caozhenggit.github.io/2017/10/01/%E3%80%90%E6%97%85%E8%A1%8C%E8%AE%A1%E5%88%92%E3%80%91%E8%A5%BF%E8%97%8F%E8%87%AA%E9%A9%BE%E6%B8%B8/"/>
+    <id>http://caozhenggit.github.io/2017/10/01/【旅行计划】西藏自驾游/</id>
+    <published>2017-10-01T06:54:41.000Z</published>
+    <updated>2017-12-08T12:53:51.456Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="大致路线"><a href="#大致路线" class="headerlink" title="大致路线"></a>大致路线</h2><p>川藏线 + 青藏线</p>
+<p><img src="https://i.imgur.com/L0GME2y.png" alt=""></p>
+<h2 id="详细计划"><a href="#详细计划" class="headerlink" title="详细计划"></a>详细计划</h2><h3 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h3><p>路线：重庆－泸定（1337）－新都桥（3469）－雅江（2600）</p>
+<p>里程：760km，路况好</p>
+<h3 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h3><p>路线：雅江－理塘（3950）－芒康（3883）<br>里程：400km，路况一般，弯多灰大</p>
+<h3 id="Day-3"><a href="#Day-3" class="headerlink" title="Day 3"></a>Day 3</h3><p>路线：芒康—左贡（3807）—八宿（3268）</p>
+<p>里程：360km，路况一般，有涉水路段</p>
+<p>景点：<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F624220500562.jpg" target="_blank" rel="external">怒江七十二拐</a>、川藏318经典垭口</p>
+<h3 id="Day-4"><a href="#Day-4" class="headerlink" title="Day 4"></a>Day 4</h3><p>路线：八宿—然乌湖（3900）—米堆冰川（3820）—波密（2724）</p>
+<p>里程：220km，路况一般，有涉水路段，有落石路段</p>
+<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F62422112RO.jpg" target="_blank" rel="external">然乌湖</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F624221103507.jpg" target="_blank" rel="external">米堆冰川</a>、波密景观大道</p>
+<h3 id="Day-5"><a href="#Day-5" class="headerlink" title="Day 5"></a>Day 5</h3><p>路线：波密—鲁朗（3383）—林芝</p>
+<p>里程：230km，路况一般</p>
+<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F62422233cR.jpg" target="_blank" rel="external">通麦天险</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F624222331108.jpg" target="_blank" rel="external">鲁朗林海</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F624222351148.jpg" target="_blank" rel="external">南迦巴瓦峰</a></p>
+<h3 id="Day-6"><a href="#Day-6" class="headerlink" title="Day 6"></a>Day 6</h3><p>路线：林芝（3150）—工布江达（3419）—墨竹工卡（3820）—拉萨（3658）</p>
+<p>里程：400km，路况好</p>
+<p>行程亮点：拉林高速、尼洋河风光、米拉山</p>
+<h3 id="Day-7"><a href="#Day-7" class="headerlink" title="Day 7"></a>Day 7</h3><p>路线：拉萨—羊卓雍措（4440）—拉萨</p>
+<p>里程：200km，路况好</p>
+<p>行程亮点：<a href="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=e57532f62f9759ee5e5d6899d3922873/5ab5c9ea15ce36d338b6d5cb33f33a87e850b19f.jpg" target="_blank" rel="external">羊卓雍措</a>、<a href="http://img0.ph.126.net/JtP50sq9g8hgJRdUjRFcgw==/1597370492834466417.jpg" target="_blank" rel="external">雅鲁藏布江风光</a></p>
+<h3 id="Day-8"><a href="#Day-8" class="headerlink" title="Day 8"></a>Day 8</h3><p>路线：拉萨—当雄（4300）—纳木措（4718）</p>
+<p>里程：220km，路况好</p>
+<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625114H4518.jpg" target="_blank" rel="external">纳木措</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625114G0C9.jpg" target="_blank" rel="external">星空</a></p>
+<h3 id="Day-9"><a href="#Day-9" class="headerlink" title="Day 9"></a>Day 9</h3><p>路线：纳木措—那曲（4500）－安多（4700）</p>
+<p>里程：360km，路况好</p>
+<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F6251159595E.jpg" target="_blank" rel="external">纳木措日出</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F62512000H39.jpg" target="_blank" rel="external">青藏铁路</a></p>
+<h3 id="Day-10"><a href="#Day-10" class="headerlink" title="Day 10"></a>Day 10</h3><p>路线：安多—唐古拉山（4900）－可可西里（4000）－格尔木（2900）</p>
+<p>里程：700km（12小时），路况好</p>
+<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F6251216354W.jpg" target="_blank" rel="external">唐古拉山垭口</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625121A0c3.jpg" target="_blank" rel="external">沱沱河</a>、可可西里</p>
+<h3 id="Day-11"><a href="#Day-11" class="headerlink" title="Day 11"></a>Day 11</h3><p>路线：格尔木－茶卡盐湖（3100）－青海湖（3000）</p>
+<p>里程：620km（7小时），路况好</p>
+<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625123523649.jpg" target="_blank" rel="external">茶卡盐湖</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625123531103.jpg" target="_blank" rel="external">青海湖</a></p>
+<h3 id="Day-12"><a href="#Day-12" class="headerlink" title="Day 12"></a>Day 12</h3><p>路线：青海湖－天水 - 重庆</p>
+<p>里程：1500km，路况好</p>
+<h2 id="费用"><a href="#费用" class="headerlink" title="费用"></a>费用</h2><p><strong>油费：</strong>4000元</p>
+<p><strong>停车费：</strong>500元</p>
+<p><strong>食宿（2人）：</strong>吃150元/日，住200元/日，总计350元</p>
+<p><strong>景区门票：</strong><br>海螺沟景区：门票80元/人，观光车票60元/人（双程），观光索道150元/人（双程）；</p>
+<p>亚丁风景区：门票150元/人，观光车120元/人，电瓶观光车80元，景区马费80—300元/人；</p>
+<p>米堆冰川：50元/人；来古冰川：30/人；雅鲁藏布江大峡谷290元/人</p>
+<p>布达拉宫：旺季200元/人，淡季100元/人；大昭寺：85元/人</p>
+<p>哲蚌寺：55元/人；色拉寺：55元/人</p>
+<p>小昭寺：20元/人；药王山：20元/人</p>
+<p>甘丹寺：45元/人；纳木错：淡季100元/人，旺季120元/人</p>
+<p>楚布寺：45元/人；直贡梯寺：45元/人</p>
+<p><strong>车辆保养和维修：</strong>大约在1000—3000元左右</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>在藏区加油一定需要出示三个证件：身份证、驾驶证、行驶证</li>
+<li>住酒店需要登记2人的身份证</li>
+<li>过检查站时，除了司机是在车上检查，因为司机需要将车辆开过去，其余每个人都要下车到检查站里刷身份证才能通行，而且车上的行李都需要在旁边过安检，所以不要带违禁物品</li>
+<li>除了正式的检查站之外，路上也有一些临时检查点，他们一般会在车上抽查一到二个人，然后检查身份证</li>
+<li>高原地区的气候特点是早晚温差比较大</li>
+<li>随车装备可准备充分一些，吃的喝的，自带了电热水壶和矿泉水</li>
+<li>高原地区非常干燥，因此要多带一些保湿性比较好的护肤品，补水面膜也可以带着</li>
+<li>高反药品：氧气包肯定必备，一旦高反吸氧是最好的治疗方法，其他高反药品</li>
+<li>随车的工具箱、备胎、充气泵、搭电装备、拉车绳都需要带上</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;大致路线&quot;&gt;&lt;a href=&quot;#大致路线&quot; class=&quot;headerlink&quot; title=&quot;大致路线&quot;&gt;&lt;/a&gt;大致路线&lt;/h2&gt;&lt;p&gt;川藏线 + 青藏线&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/L0GME2y.png&quot; al
+    
+    </summary>
+    
+      <category term="旅行计划" scheme="http://caozhenggit.github.io/categories/%E6%97%85%E8%A1%8C%E8%AE%A1%E5%88%92/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>【Android开源框架】之数据库框架</title>
+    <link href="http://caozhenggit.github.io/2017/09/27/%E3%80%90Android%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6%E3%80%91%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6/"/>
+    <id>http://caozhenggit.github.io/2017/09/27/【Android开源框架】之数据库框架/</id>
+    <published>2017-09-27T04:40:27.000Z</published>
+    <updated>2017-12-08T12:53:51.455Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="GreenDAO"><a href="#GreenDAO" class="headerlink" title="GreenDAO"></a><a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external">GreenDAO</a></h2><p>GreenDAO是一个轻量级，快速的orm框架。简化建表、查询、更新、插入、事务、索引的操作<br>特性:</p>
+<ul>
+<li>性能突出(比ormlite快4-5倍), performance</li>
+<li>库小，核心包小于100k</li>
+<li>简单易用的API</li>
+<li>支持protobuf</li>
+<li>自动生成数据库访问代码</li>
+</ul>
+<h2 id="Realm"><a href="#Realm" class="headerlink" title="Realm"></a><a href="https://github.com/chennaione/sugar" target="_blank" rel="external">Realm</a></h2><p>移动端的数据库，适用于 Phone、Tablet、Wearable，支持 ORM，线程安全、支持连表及数据库加密，比 SQLite 性能更好。<br>特性:</p>
+<ul>
+<li>着重移动端</li>
+<li>简单易用的API</li>
+<li>支持线程安全，关系数据库和加密</li>
+<li>访问快速</li>
+<li>跨平台</li>
+</ul>
+<h2 id="OrmLite"><a href="#OrmLite" class="headerlink" title="OrmLite"></a><a href="https://sourceforge.net/projects/ormlite/files/releases/com/j256/ormlite/" target="_blank" rel="external">OrmLite</a></h2><p>OrmLite不是Android平台专用的orm框架，它是一个Java orm，OrmLite For Android增加了对Android平台的支持。</p>
+<h2 id="ActiveAndroid"><a href="#ActiveAndroid" class="headerlink" title="ActiveAndroid"></a><a href="https://github.com/pardom/ActiveAndroid" target="_blank" rel="external">ActiveAndroid</a></h2><p>ActiveAndroid是一个轻量级的orm框架，名称命令方式类似于Yii、Rails等使用的orm框架ActiveRecord</p>
+<h2 id="DBFlow"><a href="#DBFlow" class="headerlink" title="DBFlow"></a><a href="https://github.com/Raizlabs/DBFlow" target="_blank" rel="external">DBFlow</a></h2><p>一个速度极快，功能强大，而且非常简单的 Android 数据库 ORM 库</p>
+<h2 id="Sugar"><a href="#Sugar" class="headerlink" title="Sugar"></a><a href="https://github.com/chennaione/sugar" target="_blank" rel="external">Sugar</a></h2><p>用超级简单的方法处理Android数据库<br>特性:</p>
+<ul>
+<li>配置少</li>
+<li>自动生成表结构</li>
+<li>支持在不同模式版本直接切换</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;GreenDAO&quot;&gt;&lt;a href=&quot;#GreenDAO&quot; class=&quot;headerlink&quot; title=&quot;GreenDAO&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/greenrobot/greenDAO&quot; target=&quot;_blan
+    
+    </summary>
+    
+      <category term="Android" scheme="http://caozhenggit.github.io/categories/Android/"/>
+    
+    
+      <category term="数据库" scheme="http://caozhenggit.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo常用命令笔记</title>
+    <link href="http://caozhenggit.github.io/2017/07/31/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/"/>
+    <id>http://caozhenggit.github.io/2017/07/31/Hexo常用命令笔记/</id>
+    <published>2017-07-31T02:44:40.000Z</published>
+    <updated>2017-12-08T12:53:51.452Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><ul>
+<li>npm install hexo -g #安装  </li>
+<li>npm update hexo -g #升级  </li>
+<li>hexo init #初始化</li>
+</ul>
+<h2 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h2><ul>
+<li>hexo n “我的博客” == hexo new “我的博客” #新建文章</li>
+<li>hexo p == hexo publish</li>
+<li>hexo g == hexo generate#生成</li>
+<li>hexo s == hexo server #启动服务预览</li>
+<li>hexo d == hexo deploy#部署</li>
+</ul>
+<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><ul>
+<li>hexo server #Hexo 会监视文件变动并自动更新，您无须重启服务器</li>
+<li>hexo server -s #静态模式</li>
+<li>hexo server -p 5000 #更改端口</li>
+<li><p>hexo server -i 192.168.1.1 #自定义 IP</p>
+</li>
+<li><p>hexo clean #清除缓存 网页正常情况下可以忽略此条命令</p>
+</li>
+<li>hexo g #生成静态网页</li>
+<li>hexo d #开始部署</li>
+</ul>
+<h2 id="监视文件变动"><a href="#监视文件变动" class="headerlink" title="监视文件变动"></a>监视文件变动</h2><ul>
+<li>hexo generate #使用 Hexo 生成静态文件快速而且简单</li>
+<li>hexo generate –watch #监视文件变动</li>
+</ul>
+<p>完成后部署<br>两个命令的作用是相同的</p>
+<ul>
+<li>hexo generate –deploy</li>
+<li>hexo deploy –generate</li>
+<li>hexo deploy -g</li>
+<li>hexo server -g</li>
+</ul>
+<h2 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h2><ul>
+<li>hexo publish [layout] <title></title></li>
+</ul>
+<h2 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h2><ul>
+<li>hexo new “postName” #新建文章</li>
+<li>hexo new page “pageName” #新建页面</li>
+<li>hexo generate #生成静态页面至public目录</li>
+<li>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）</li>
+<li><p>hexo deploy #将.deploy目录部署到GitHub</p>
+</li>
+<li><p>hexo new [layout] <title></title></p>
+</li>
+<li>hexo new photo “My Gallery”</li>
+<li>hexo new “Hello World” –lang tw</li>
+</ul>
+<h2 id="变量-描述"><a href="#变量-描述" class="headerlink" title="变量    描述"></a>变量    描述</h2><pre><code>layout    布局
+title    标题
+date    文件建立日期
+title: 使用Hexo搭建个人博客
+layout: post
+date: 2014-03-03 19:07:43
+comments: true
+categories: Blog
+tags: [Hexo]
+keywords: Hexo, Blog
+description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;hexo&quot;&gt;&lt;a href=&quot;#hexo&quot; class=&quot;headerlink&quot; title=&quot;hexo&quot;&gt;&lt;/a&gt;hexo&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;npm install hexo -g #安装  &lt;/li&gt;
+&lt;li&gt;npm update hexo -g #升
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://caozhenggit.github.io/categories/Hexo/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git 配置用户名、密码</title>
+    <link href="http://caozhenggit.github.io/2017/07/31/Git-%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E5%90%8D%E3%80%81%E5%AF%86%E7%A0%81/"/>
+    <id>http://caozhenggit.github.io/2017/07/31/Git-配置用户名、密码/</id>
+    <published>2017-07-31T02:40:10.000Z</published>
+    <updated>2017-12-08T12:53:51.450Z</updated>
+    
+    <content type="html"><![CDATA[<p>在终端输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git config --global credential.helper store</div></pre></td></tr></table></figure>
+<p>然后git pull一次，输入一次用户名密码就会自动保存该用户名密码；</p>
+<p>查看配置的用户信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git config --list</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在终端输入：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;d
+    
+    </summary>
+    
+      <category term="Git" scheme="http://caozhenggit.github.io/categories/Git/"/>
+    
+    
+      <category term="git" scheme="http://caozhenggit.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown 基本语法</title>
+    <link href="http://caozhenggit.github.io/2017/07/12/Markdown-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
+    <id>http://caozhenggit.github.io/2017/07/12/Markdown-基本语法/</id>
+    <published>2017-07-12T02:51:11.000Z</published>
+    <updated>2017-12-08T12:53:51.453Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="关于Markdown"><a href="#关于Markdown" class="headerlink" title="关于Markdown"></a>关于Markdown</h2><p>Markdown是一个 Web 上使用的文本到HTML的转换工具，可以通过简单、易读易写的文本格式生成结构化的HTML文档。</p>
+<ul>
+<li>简单标记符完成排版，所写即所见，让你专注于文字而不是排版</li>
+<li>纯文本，所以兼容性极强，可以用所有文本编辑器打开</li>
+<li>格式转换方便，Markdown文本可以轻松转换为 html、pdf等</li>
+<li>Markdown 的标记语法有极好的可读性</li>
+</ul>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><p><a href="http://www.jianshu.com/p/815788f4b01d" target="_blank" rel="external">基础语法</a></p>
+<h2 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法"></a>高级语法</h2><p><a href="http://www.jianshu.com/p/0b257de21eb5" target="_blank" rel="external">高级语法</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;关于Markdown&quot;&gt;&lt;a href=&quot;#关于Markdown&quot; class=&quot;headerlink&quot; title=&quot;关于Markdown&quot;&gt;&lt;/a&gt;关于Markdown&lt;/h2&gt;&lt;p&gt;Markdown是一个 Web 上使用的文本到HTML的转换工具，可以通过简
+    
+    </summary>
+    
+      <category term="Markdown" scheme="http://caozhenggit.github.io/categories/Markdown/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title> 开源弹幕引擎·烈焰弹幕使(DanmakuFlameMaster)</title>
+    <link href="http://caozhenggit.github.io/2017/07/11/%E5%BC%80%E6%BA%90%E5%BC%B9%E5%B9%95%E5%BC%95%E6%93%8E%C2%B7%E7%83%88%E7%84%B0%E5%BC%B9%E5%B9%95%E4%BD%BF-DanmakuFlameMaster/"/>
+    <id>http://caozhenggit.github.io/2017/07/11/开源弹幕引擎·烈焰弹幕使-DanmakuFlameMaster/</id>
+    <published>2017-07-11T05:35:13.000Z</published>
+    <updated>2017-12-08T12:53:51.457Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>DanmakuFlameMaster 是 Android 上开源弹幕解析绘制引擎项目，也是 Android 上最好的开源弹幕引擎·烈焰弹幕。其架构清晰，简单易用，支持多种高效绘制</p>
+<ul>
+<li><p>B站xml弹幕格式解析</p>
+</li>
+<li><p>基础弹幕精确还原绘制</p>
+</li>
+<li><p>支持mode7特殊弹幕</p>
+</li>
+<li><p>多核机型优化，高效的预缓存机制</p>
+</li>
+<li><p>支持多种显示效果选项实时切换</p>
+</li>
+<li><p>实时弹幕显示支持</p>
+</li>
+<li><p>换行弹幕支持/运动弹幕支持</p>
+</li>
+<li><p>支持自定义字体</p>
+</li>
+<li><p>支持多种弹幕参数设置</p>
+</li>
+<li><p>支持多种方式的弹幕屏蔽</p>
+</li>
+</ul>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><p>github地址：<a href="https://github.com/Bilibili/DanmakuFlameMaster" target="_blank" rel="external">https://github.com/Bilibili/DanmakuFlameMaster</a></p>
+<h2 id="Android-Studio集成方法"><a href="#Android-Studio集成方法" class="headerlink" title="Android Studio集成方法"></a>Android Studio集成方法</h2><p>build.gradle中添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    compile <span class="string">'com.github.ctiao:dfm:0.4.2'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>1.布局文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;master.flame.danmaku.ui.widget.DanmakuView</div><div class="line">	android:id=<span class="string">"@+id/sv_danmaku"</span></div><div class="line">	android:layout_width=<span class="string">"match_parent"</span></div><div class="line">	android:layout_height=<span class="string">"match_parent"</span> /&gt;</div></pre></td></tr></table></figure>
+<p>2.初始化</p>
+<pre><code>private BaseDanmakuParser mParser;//解析器对象
+private IDanmakuView mDanmakuView;
+private DanmakuContext mContext;
+mDanmakuView = (IDanmakuView) findViewById(R.id.sv_danmaku);
+mContext = DanmakuContext.create();
+// 设置弹幕的最大显示行数
+HashMap&lt;Integer, Integer&gt; maxLinesPair = new HashMap&lt;Integer, Integer&gt;();
+// 滚动弹幕最大显示3行
+maxLinesPair.put(BaseDanmaku.TYPE_SCROLL_RL, 3); 
+// 设置是否禁止重叠
+HashMap&lt;Integer, Boolean&gt; overlappingEnablePair = new HashMap&lt;Integer, Boolean&gt;();
+overlappingEnablePair.put(BaseDanmaku.TYPE_SCROLL_LR, true);
+overlappingEnablePair.put(BaseDanmaku.TYPE_FIX_BOTTOM, true);
+mContext.setDanmakuStyle(IDisplayer.DANMAKU_STYLE_STROKEN, 3)
+        .setDuplicateMergingEnabled(false)
+        .setScrollSpeedFactor(1.2f) //是否启用合并重复弹幕
+        .setScaleTextSize(1.2f) //设置弹幕滚动速度系数,只对滚动弹幕有效
+        .setCacheStuffer(new SpannedCacheStuffer(), mCacheStufferAdapter) // 图文混排使用SpannedCacheStuffer  设置缓存绘制填充器，默认使用{@link SimpleTextCacheStuffer}只支持纯文字显示, 如果需要图文混排请设置{@link SpannedCacheStuffer}如果需要定制其他样式请扩展{@link SimpleTextCacheStuffer}|{@link SpannedCacheStuffer}
+        .setMaximumLines(maxLinesPair) //设置最大显示行数
+        .preventOverlapping(overlappingEnablePair); //设置防弹幕重叠，null为允许重叠
+if (mDanmakuView != null) {
+    mParser = createParser(this.getResources().openRawResource(R.raw.comments)); //创建解析器对象，从raw资源目录下解析comments.xml文本
+    mDanmakuView.setCallback(new master.flame.danmaku.controller.DrawHandler.Callback() {
+        @Override
+        public void updateTimer(DanmakuTimer timer) {
+        }
+
+        @Override
+        public void drawingFinished() {
+        }
+
+        @Override
+        public void danmakuShown(BaseDanmaku danmaku) {
+        }
+
+        @Override
+        public void prepared() {
+            mDanmakuView.start();
+        }
+    });
+mDanmakuView.prepare(mParser, mContext);
+mDanmakuView.showFPS(false); //是否显示FPS
+mDanmakuView.enableDanmakuDrawingCache(true);
+</code></pre><p>3.创建解析器对象</p>
+<pre><code>/**
+ * 创建解析器对象，解析输入流
+ * @param stream
+ * @return
+ */
+private BaseDanmakuParser createParser(InputStream stream) {
+    if (stream == null) {
+        return new BaseDanmakuParser() {
+            @Override
+            protected Danmakus parse() {
+                return new Danmakus();
+            }
+        };
+    }
+    ILoader loader = DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_BILI);
+    try {
+        loader.load(stream);
+    } catch (IllegalDataException e) {
+        e.printStackTrace();
+    }
+    BaseDanmakuParser parser = new BiliDanmukuParser();
+    IDataSource&lt;?&gt; dataSource = loader.getDataSource();
+    parser.load(dataSource);
+    return parser;
+}
+注：
+DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_BILI) //xml解析
+DanmakuLoaderFactory.create(DanmakuLoaderFactory.TAG_ACFUN) //json文件格式解析
+</code></pre><p>4.自定义弹幕背景和边距</p>
+<pre><code>private static class BackgroundCacheStuffer extends SpannedCacheStuffer {
+    // 通过扩展SimpleTextCacheStuffer或SpannedCacheStuffer个性化你的弹幕样式
+    final Paint paint = new Paint();
+    @Override
+    public void measure(BaseDanmaku danmaku, TextPaint paint) {
+        danmaku.padding = 10;  // 在背景绘制模式下增加padding
+        super.measure(danmaku, paint);
+    }
+
+    @Override
+    public void drawBackground(BaseDanmaku danmaku, Canvas canvas, float left, float top) {
+        paint.setColor(0x8125309b);  //弹幕背景颜色
+        canvas.drawRect(left + 2, top + 2, left + danmaku.paintWidth - 2, top + danmaku.paintHeight - 2, paint);
+    }
+
+    @Override
+    public void drawStroke(BaseDanmaku danmaku, String lineText, Canvas canvas, float left, float top, Paint paint) {
+        // 禁用描边绘制
+    }
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;DanmakuFlameMaster 是 Android 上开源弹幕解析绘制引擎项目，也是 Android 上最好的开源弹幕引擎·烈焰弹幕。
+    
+    </summary>
+    
+      <category term="Android" scheme="http://caozhenggit.github.io/categories/Android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>毕业后这一年的收获</title>
+    <link href="http://caozhenggit.github.io/2017/07/07/%E6%AF%95%E4%B8%9A%E5%90%8E%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%94%B6%E8%8E%B7/"/>
+    <id>http://caozhenggit.github.io/2017/07/07/毕业后这一年的收获/</id>
+    <published>2017-07-07T07:00:11.000Z</published>
+    <updated>2017-12-08T12:53:51.457Z</updated>
+    
+    <content type="html"><![CDATA[<p>去年的七月拿到毕业证正式毕业，一转眼就又是七月了，这一年还是经历了不少事，回头看看，这一年中的大多数选择还是比较满意的。今天趁着懒癌没发作，总结一下这一年的收获吧。</p>
+<h2 id="当前状况"><a href="#当前状况" class="headerlink" title="当前状况"></a>当前状况</h2><p>毕业一年，上海，创业公司，安卓开发，无房无车，几乎无存款，身体还算健康，但缺乏锻炼免疫力差，离家很远。</p>
+<h2 id="工作方面"><a href="#工作方面" class="headerlink" title="工作方面"></a>工作方面</h2><p>毕业后与毕业前最大的改变就是进入社会，开始工作。</p>
+<p>庆幸今年没有因为工作中的一点不顺心就离职，毕竟工作还不满一年，那会儿换工作的话还需要花时间适应新工作新环境，能够用来学习提升的时间就更少了。</p>
+<p>人们常说第一份工作会影响人的很多方面，包括人生观、价值观，的确如此，在过去一年工作中，我所在的公司在不停地变化，处在这个环境中的我，受益很多。</p>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><h3 id="业务"><a href="#业务" class="headerlink" title="业务"></a>业务</h3><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h3 id="沟通协作"><a href="#沟通协作" class="headerlink" title="沟通协作"></a>沟通协作</h3><h2 id="未来目标"><a href="#未来目标" class="headerlink" title="未来目标"></a>未来目标</h2><p>在开始工作之前，我并没有思考过我为什么工作，因此在过去一年里我浪费了很多时间纠结迷茫徘徊，如果连目标都没设定，怎么能走得直走得快呢？</p>
+<p>工作的目的有很多，除了钱是一部分原因，有的人是不知道该干什么就先工作着吧，有的人是为了学技能攒经验去做更好的事，有的人是为了做些事业实现梦想，也有的人只是无聊找点事做。</p>
+<p>我的中期目标是多年后回老家自己开家信息技术公司，具体业务还不清楚，但是前几年需要比较广地掌握三端（APP、WEB、后台）技能。</p>
+<p>因此头两年的小目标就是先夯实安卓开发。</p>
+<h2 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;去年的七月拿到毕业证正式毕业，一转眼就又是七月了，这一年还是经历了不少事，回头看看，这一年中的大多数选择还是比较满意的。今天趁着懒癌没发作，总结一下这一年的收获吧。&lt;/p&gt;
+&lt;h2 id=&quot;当前状况&quot;&gt;&lt;a href=&quot;#当前状况&quot; class=&quot;headerlink&quot; t
+    
+    </summary>
+    
+      <category term="生活" scheme="http://caozhenggit.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo安装</title>
+    <link href="http://caozhenggit.github.io/2017/07/07/Hexo%E5%AE%89%E8%A3%85/"/>
+    <id>http://caozhenggit.github.io/2017/07/07/Hexo安装/</id>
+    <published>2017-07-07T02:25:12.000Z</published>
+    <updated>2017-12-08T12:53:51.451Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>我们很经常会要用到Git以及Github，首先来安装Git：</p>
+<ul>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="external">下载Git</a></li>
+</ul>
+<p>选择合适的版本下载然后安装，我们稍后将会用上。</p>
+<h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>因为Hexo是一款基于Node.js的静态博客框架，所以我们还需要安装好它：</p>
+<ul>
+<li><a href="https://nodejs.org/en/download/" target="_blank" rel="external">下载Node.js</a></li>
+</ul>
+<p>同样选择对应自己电脑的版本下载安装。</p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>安装好Git和Node.js之后，轮到我们今天的主角登场了~先打开Git Bash，然后输入下面这条命令来安装Hexo：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div></pre></td></tr></table></figure>
+<p>来试试安装成功没有，输入以下命令查看Hexo的版本信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo -v</div></pre></td></tr></table></figure>
+<p>如果出现类似内容说明安装成功啦！</p>
+<pre><code>hexo-cli: 0.1.9
+os: Windows_NT 6.1.7601 win32 ia32
+http_parser: 2.3
+node: 0.12.2
+v8: 3.28.73
+uv: 1.4.2-node1
+zlib: 1.2.8
+modules: 14
+openssl: 1.0.1m
+</code></pre><h2 id="Hexo的使用"><a href="#Hexo的使用" class="headerlink" title="Hexo的使用"></a>Hexo的使用</h2><p>现在我们可以开始创建博客写文章了！是不是很快~下面会介绍几个Hexo的常用命令，掌握之后就能愉悦地开始写作之旅了XD</p>
+<h3 id="新建博客"><a href="#新建博客" class="headerlink" title="新建博客"></a>新建博客</h3><p>假设我在E盘有个叫blog的文件夹，现在我们用Git Bash进去这个文件夹里，然后将它初始化为我们的博客目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure>
+<p>安装成功的提示信息：</p>
+<pre><code>INFO  Copying data to E:\blog
+INFO  You are almost done! Don&apos;t forget to run &apos;npm install&apos; before you start blogging with Hexo!
+</code></pre><p>注意看到第二条！提示我们在开始使用前要先执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install</div></pre></td></tr></table></figure>
+<p>这条命令是用来安装依赖包的，具体安装内容可以在package.json文件里找到。安装好了之后会看到一大串的信息，这里就不贴出来了。现在我们可以看到blog目录下的文件结构是这样的：</p>
+<pre><code>.
+├── _config.yml
+├── node_modules
+├── package.json
+├── scaffolds
+├── source
+|   └── _posts
+└── themes
+</code></pre><h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"我的第一篇文章"</span></div></pre></td></tr></table></figure>
+<h3 id="生成界面"><a href="#生成界面" class="headerlink" title="生成界面"></a>生成界面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate 或者 hexo g</div></pre></td></tr></table></figure>
+<h3 id="界面预览"><a href="#界面预览" class="headerlink" title="界面预览"></a>界面预览</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server 或者 hexo s</div></pre></td></tr></table></figure>
+<p>我们会看到这样一条提示：</p>
+<pre><code>INFO  Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop.
+</code></pre><p>打开浏览器访问<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
+<h3 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h3><p>是不是很激动！成功了有木有~不过等等，博客名写着Hexo，可不是我想的那样噢，还有还有，页面底部的版权信息里作者名字也不是我啊喂！来，我们来改掉它们！</p>
+<p>找到博客根目录下的配置文件_config.yml，用自己喜欢的文本编辑器编辑它。看到# Site的那一部分，里面的title就是博客的名字，subtitle就是副标题，author对应的那个就是作者名字啦，把自己的大名写上去吧！</p>
+<p>还有很多配置项可以修改，这里就不详细讲了，可以查看<a href="https://hexo.io/docs/configuration.html" target="_blank" rel="external">Hexo官方文档</a>对照着修改配置。</p>
+<h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><p>在这个看脸的世界，我们的博客怎么可以没有颜值呢，折腾完上面的那些之后，是时候给博客挑上件漂亮的“衣服”了。</p>
+<p>Hexo官方网站上展示了多套主题，可以按自己的口味挑选，或者动手能力强的，可以试着自己写一套独一无二的主题噢XD</p>
+<p>这里以<a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank" rel="external">Apollo</a>这个主题为例，进去github页面之后可以看到很详细的安装和启动方法，这里就不展开来讲了。</p>
+<h3 id="添加分类"><a href="#添加分类" class="headerlink" title="添加分类"></a>添加分类</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new page categories</div></pre></td></tr></table></figure>
+<p>编辑站点的source/categories/index.md，添加</p>
+<pre><code>title: categories
+date: 2015-10-20 06:49:50
+type: &quot;categories&quot;
+comments: false
+</code></pre><h3 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new page tags</div></pre></td></tr></table></figure>
+<p>编辑站点的source/tags/index.md，添加</p>
+<pre><code>title: tags
+date: 2015-10-20 06:49:50
+type: &quot;tags&quot;
+comments: false
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;安装Git&quot;&gt;&lt;a href=&quot;#安装Git&quot; class=&quot;headerlink&quot; title=&quot;安装Git&quot;&gt;&lt;/a&gt;安装Git&lt;/h2&gt;&lt;p&gt;我们很经常会要用到Git以及Github，首先来安装Git：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://caozhenggit.github.io/categories/Hexo/"/>
+    
+    
+  </entry>
+  
+</feed>

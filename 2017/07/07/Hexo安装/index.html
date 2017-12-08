@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo安装 | 蹲在坟头逗鬼</title>
+  <meta name="description" content="安装Git我们很经常会要用到Git以及Github，首先来安装Git：  下载Git  选择合适的版本下载然后安装，我们稍后将会用上。 安装Node.js因为Hexo是一款基于Node.js的静态博客框架，所以我们还需要安装好它：  下载Node.js  同样选择对应自己电脑的版本下载安装。 安装Hexo安装好Git和Node.js之后，轮到我们今天的主角登场了~先打开Git Bash，然后输入下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo安装">
+<meta property="og:url" content="http://caozhenggit.github.io/2017/07/07/Hexo安装/index.html">
+<meta property="og:site_name" content="Spider">
+<meta property="og:description" content="安装Git我们很经常会要用到Git以及Github，首先来安装Git：  下载Git  选择合适的版本下载然后安装，我们稍后将会用上。 安装Node.js因为Hexo是一款基于Node.js的静态博客框架，所以我们还需要安装好它：  下载Node.js  同样选择对应自己电脑的版本下载安装。 安装Hexo安装好Git和Node.js之后，轮到我们今天的主角登场了~先打开Git Bash，然后输入下">
+<meta property="og:updated_time" content="2017-12-08T12:53:51.451Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo安装">
+<meta name="twitter:description" content="安装Git我们很经常会要用到Git以及Github，首先来安装Git：  下载Git  选择合适的版本下载然后安装，我们稍后将会用上。 安装Node.js因为Hexo是一款基于Node.js的静态博客框架，所以我们还需要安装好它：  下载Node.js  同样选择对应自己电脑的版本下载安装。 安装Hexo安装好Git和Node.js之后，轮到我们今天的主角登场了~先打开Git Bash，然后输入下">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://caozhenggit.github.io/2017/07/07/Hexo安装/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Spider" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  
+    
+    
+
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/caozhenggit" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">蹲在坟头逗鬼</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Android Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="fa fa-map-marker"></i> Shanghai, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <!-- <span class="ins-close ins-selectable"><i class="fa fa-times"></i></span> -->
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav">
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="fa fa-fw fa-dashboard"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="fa fa-fw fa-delicious"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="fa fa-fw fa-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="fa fa-fw fa-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="fa fa-fw fa-leanpub"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="fa fa-fw fa-gg"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="fa fa-fw fa-coffee"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/caozhenggit" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="fa fa-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="fa fa-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="fa fa-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="fa fa-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="fa fa-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/旅行计划/">旅行计划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/异常/">异常</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/git/" style="font-size: 14px;">git</a> <a href="/tags/异常/" style="font-size: 13px;">异常</a> <a href="/tags/数据库/" style="font-size: 13px;">数据库</a> <a href="/tags/线程/" style="font-size: 14px;">线程</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2017/12/08/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-12-08T12:53:51.453Z" itemprop="datePublished">2017-12-08</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Git/">Git</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/12/08/Git-分支管理/" class="title">Git 分支管理</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-12-08T02:17:42.000Z" itemprop="datePublished">2017-12-08</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Android/">Android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/10/27/Android开发中定制自己的线程池/" class="title">Android开发中定制自己的线程池</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-10-27T09:05:04.000Z" itemprop="datePublished">2017-10-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Java/">Java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/10/27/Java线程池的使用/" class="title">Java线程池的使用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-10-27T03:30:18.000Z" itemprop="datePublished">2017-10-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Android/">Android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/10/11/【Android异常】关于Android方法数量限制的问题/" class="title">【Android异常】关于Android方法数量限制的问题</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-10-11T03:44:58.000Z" itemprop="datePublished">2017-10-11</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Hexo安装" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo安装
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="fa fa-calendar-check-o"></i>
+	<a href="/2017/07/07/Hexo安装/" class="article-date">
+	  <time datetime="2017-07-07T02:25:12.000Z" itemprop="datePublished">2017-07-07</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="fa fa-eye" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="fa fa-commenting-o"></i> <a href="/2017/07/07/Hexo安装/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+      
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>我们很经常会要用到Git以及Github，首先来安装Git：</p>
+<ul>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="external">下载Git</a></li>
+</ul>
+<p>选择合适的版本下载然后安装，我们稍后将会用上。</p>
+<h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p>因为Hexo是一款基于Node.js的静态博客框架，所以我们还需要安装好它：</p>
+<ul>
+<li><a href="https://nodejs.org/en/download/" target="_blank" rel="external">下载Node.js</a></li>
+</ul>
+<p>同样选择对应自己电脑的版本下载安装。</p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>安装好Git和Node.js之后，轮到我们今天的主角登场了~先打开Git Bash，然后输入下面这条命令来安装Hexo：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div></pre></td></tr></table></figure>
+<p>来试试安装成功没有，输入以下命令查看Hexo的版本信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo -v</div></pre></td></tr></table></figure>
+<p>如果出现类似内容说明安装成功啦！</p>
+<pre><code>hexo-cli: 0.1.9
+os: Windows_NT 6.1.7601 win32 ia32
+http_parser: 2.3
+node: 0.12.2
+v8: 3.28.73
+uv: 1.4.2-node1
+zlib: 1.2.8
+modules: 14
+openssl: 1.0.1m
+</code></pre><h2 id="Hexo的使用"><a href="#Hexo的使用" class="headerlink" title="Hexo的使用"></a>Hexo的使用</h2><p>现在我们可以开始创建博客写文章了！是不是很快~下面会介绍几个Hexo的常用命令，掌握之后就能愉悦地开始写作之旅了XD</p>
+<h3 id="新建博客"><a href="#新建博客" class="headerlink" title="新建博客"></a>新建博客</h3><p>假设我在E盘有个叫blog的文件夹，现在我们用Git Bash进去这个文件夹里，然后将它初始化为我们的博客目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure>
+<p>安装成功的提示信息：</p>
+<pre><code>INFO  Copying data to E:\blog
+INFO  You are almost done! Don&apos;t forget to run &apos;npm install&apos; before you start blogging with Hexo!
+</code></pre><p>注意看到第二条！提示我们在开始使用前要先执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install</div></pre></td></tr></table></figure>
+<p>这条命令是用来安装依赖包的，具体安装内容可以在package.json文件里找到。安装好了之后会看到一大串的信息，这里就不贴出来了。现在我们可以看到blog目录下的文件结构是这样的：</p>
+<pre><code>.
+├── _config.yml
+├── node_modules
+├── package.json
+├── scaffolds
+├── source
+|   └── _posts
+└── themes
+</code></pre><h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"我的第一篇文章"</span></div></pre></td></tr></table></figure>
+<h3 id="生成界面"><a href="#生成界面" class="headerlink" title="生成界面"></a>生成界面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate 或者 hexo g</div></pre></td></tr></table></figure>
+<h3 id="界面预览"><a href="#界面预览" class="headerlink" title="界面预览"></a>界面预览</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server 或者 hexo s</div></pre></td></tr></table></figure>
+<p>我们会看到这样一条提示：</p>
+<pre><code>INFO  Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop.
+</code></pre><p>打开浏览器访问<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
+<h3 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h3><p>是不是很激动！成功了有木有~不过等等，博客名写着Hexo，可不是我想的那样噢，还有还有，页面底部的版权信息里作者名字也不是我啊喂！来，我们来改掉它们！</p>
+<p>找到博客根目录下的配置文件_config.yml，用自己喜欢的文本编辑器编辑它。看到# Site的那一部分，里面的title就是博客的名字，subtitle就是副标题，author对应的那个就是作者名字啦，把自己的大名写上去吧！</p>
+<p>还有很多配置项可以修改，这里就不详细讲了，可以查看<a href="https://hexo.io/docs/configuration.html" target="_blank" rel="external">Hexo官方文档</a>对照着修改配置。</p>
+<h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><p>在这个看脸的世界，我们的博客怎么可以没有颜值呢，折腾完上面的那些之后，是时候给博客挑上件漂亮的“衣服”了。</p>
+<p>Hexo官方网站上展示了多套主题，可以按自己的口味挑选，或者动手能力强的，可以试着自己写一套独一无二的主题噢XD</p>
+<p>这里以<a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank" rel="external">Apollo</a>这个主题为例，进去github页面之后可以看到很详细的安装和启动方法，这里就不展开来讲了。</p>
+<h3 id="添加分类"><a href="#添加分类" class="headerlink" title="添加分类"></a>添加分类</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new page categories</div></pre></td></tr></table></figure>
+<p>编辑站点的source/categories/index.md，添加</p>
+<pre><code>title: categories
+date: 2015-10-20 06:49:50
+type: &quot;categories&quot;
+comments: false
+</code></pre><h3 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new page tags</div></pre></td></tr></table></figure>
+<p>编辑站点的source/tags/index.md，添加</p>
+<pre><code>title: tags
+date: 2015-10-20 06:49:50
+type: &quot;tags&quot;
+comments: false
+</code></pre>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://caozhenggit.github.io/2017/07/07/Hexo安装/" title="Hexo安装" target="_blank" rel="external">http://caozhenggit.github.io/2017/07/07/Hexo安装/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/caozhenggit" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/caozhenggit" target="_blank"><span class="text-dark">蹲在坟头逗鬼</span><small class="ml-1x">Android Developer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+       
+    <div id="uyan_frame"></div>
+
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2017/07/07/毕业后这一年的收获/" title="毕业后这一年的收获"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;上一篇</a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+  </div>
+  
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/caozhenggit" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="fa fa-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="fa fa-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="fa fa-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="fa fa-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="fa fa-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+<script defer src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+        
+    
+    <script defer type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=[object Object]"></script>
+
+
+    
+    
+
+
+
+</body>
+</html>
