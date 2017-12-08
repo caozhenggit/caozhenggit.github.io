@@ -26,8 +26,8 @@ rss: /atom.xml
 site:
   logo:
     enabled: true
-    width: 40
-    height: 40
+    width: 70
+    height: 70
     url: ../images/logo.png
   title: 蹲在坟头逗鬼 # 页面title
   favicon: /favicon.png
