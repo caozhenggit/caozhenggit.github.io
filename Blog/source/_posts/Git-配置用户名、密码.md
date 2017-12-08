@@ -2,6 +2,7 @@
 title: Git 配置用户名、密码
 date: 2017-07-31 10:40:10
 categories: "Git"
+tags: "git"
 ---
 
 在终端输入：
