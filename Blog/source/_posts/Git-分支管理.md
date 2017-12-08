@@ -17,6 +17,9 @@ git checkout <分支名>
 - 远程分支存在且本地分支也存在，但未关联：git push -u origin <远程分支名>
 - 远程分支不存在但本地分支存在：git push origin <本地分支名>:<远程分支名>
 
+### 拉取远程分支并创建本地分支 ###
+git checkout -b <本地分支名> origin/<远程分支名>
+
 ### 重命名分支 ###
  git branch -m | -M <旧分支名> <新分支名>
 
