@@ -36,36 +36,134 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Android开发中定制自己的线程池]]></title>
-      <url>/2017/10/27/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0/</url>
-      <content type="html"><![CDATA[<p>线程池算是Android开发中非常常用的一个东西了，只要涉及到线程的地方，大多数情况下都会涉及到线程池。Android开发中线程池的使用和Java中线程池的使用基本一致。那么今天我想来总结一下Android开发中线程池的使用。</p>
-<h2 id="ThreadPoolExecutor的构造方法"><a href="#ThreadPoolExecutor的构造方法" class="headerlink" title="ThreadPoolExecutor的构造方法"></a>ThreadPoolExecutor的构造方法</h2><p>ThreadPoolExecutor的构造方法有四个，如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                           TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            threadFactory, defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          RejectedExecutionHandler handler) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), handler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit,BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory, RejectedExecutionHandler handler) &#123;</div><div class="line">    <span class="keyword">if</span> (corePoolSize &lt; 0 ||</div><div class="line">            maximumPoolSize &lt;= 0 ||</div><div class="line">            maximumPoolSize &lt; corePoolSize ||</div><div class="line">            keepAliveTime &lt; 0)</div><div class="line">        throw new IllegalArgumentException();</div><div class="line">    <span class="keyword">if</span> (workQueue == null || threadFactory == null || handler == null)</div><div class="line">        throw new NullPointerException();</div><div class="line">    this.corePoolSize = corePoolSize;</div><div class="line">    this.maximumPoolSize = maximumPoolSize;</div><div class="line">    this.workQueue = workQueue;</div><div class="line">    this.keepAliveTime = unit.toNanos(keepAliveTime);</div><div class="line">    this.threadFactory = threadFactory;</div><div class="line">    this.handler = handler;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>构造方法参数说明</strong></p>
-<ul>
-<li><p>corePoolSize</p>
-<p>  线程池的核心线程数，即线程池中的最小线程数</p>
-</li>
-<li><p>maximumPoolSize</p>
-<p>  最大线程池大小,当活动线程数达到这个值，后续任务会被阻塞</p>
-</li>
-<li><p>keepAliveTime</p>
-<p>  线程池中超过corePoolSize数目的非核心线程最大存活时间</p>
-</li>
-<li><p>unit</p>
-<p>  keepAliveTime 参数的时间单位</p>
-</li>
-<li><p>workQueue</p>
-<p>  执行前用于保持任务的队列，也就是线程池的缓存队列</p>
-</li>
-<li><p>threadFactory</p>
-<p>  线程工厂，为线程池提供创建新线程的功能</p>
-</li>
-<li><p>RejectedExecutionHandler</p>
-<p>  线程池对拒绝任务的处理策略</p>
-</li>
-</ul>
-<h2 id="定制自己的线程池"><a href="#定制自己的线程池" class="headerlink" title="定制自己的线程池"></a>定制自己的线程池</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">public class ThreadPoolFactory &#123;</div><div class="line"></div><div class="line">    /** 核心线程数 */</div><div class="line">    private static final int CORE_POOL_SIZE = 5;</div><div class="line">    /** 最大线程数 */</div><div class="line">    private static final int MAX_POOL_SIZE = 128;</div><div class="line">    /** 非核心线程时超过时长 */</div><div class="line">    private static final int KEEP_ALIVE_TIME = 2;</div><div class="line">    /** 阻塞队列大小 */</div><div class="line">    private static final int BLOCK_SIZE = 2;</div><div class="line"></div><div class="line">    private ThreadPoolExecutor mThreadPoolExecutor ;</div><div class="line">    </div><div class="line">    private <span class="function"><span class="title">ThreadPoolFactory</span></span>()&#123;</div><div class="line">        createThreadPoolProxyFactory();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** 创建线程池 */</div><div class="line">    private void <span class="function"><span class="title">createThreadPoolProxyFactory</span></span>()&#123;</div><div class="line">        mThreadPoolExecutor  = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME,</div><div class="line">                TimeUnit.SECONDS, new ArrayBlockingQueue&lt;Runnable&gt;(BLOCK_SIZE),</div><div class="line">                Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());</div><div class="line">        //<span class="literal">true</span>: 线程池数量最后销毁到0个</div><div class="line">        //<span class="literal">false</span>: 超过核心线程数时,而且(超过最大值或者timeout过),就会销毁</div><div class="line">        mThreadPoolExecutor .allowCoreThreadTimeOut(<span class="literal">true</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 打印线程池状态</div><div class="line">     */</div><div class="line">    public void <span class="function"><span class="title">logThreadPoolInfo</span></span>() &#123;</div><div class="line">        Log.i(<span class="string">"threadPoolFactory"</span>, <span class="string">"monitor "</span></div><div class="line">                + <span class="string">" CorePoolSize:"</span> + mThreadPoolExecutor.getCorePoolSize()</div><div class="line">                + <span class="string">" PoolSize:"</span> + mThreadPoolExecutor.getPoolSize()</div><div class="line">                + <span class="string">" MaximumPoolSize:"</span> + mThreadPoolExecutor.getMaximumPoolSize()</div><div class="line">                + <span class="string">" ActiveCount:"</span> + mThreadPoolExecutor.getActiveCount()</div><div class="line">                + <span class="string">" TaskCount:"</span> + mThreadPoolExecutor.getTaskCount());</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+      <title><![CDATA[【广告篇】仿知乎长图片广告滚动效果]]></title>
+      <url>/2017/11/20/%E3%80%90%E5%B9%BF%E5%91%8A%E7%AF%87%E3%80%91%E4%BB%BF%E7%9F%A5%E4%B9%8E%E9%95%BF%E5%9B%BE%E7%89%87%E5%B9%BF%E5%91%8A%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/</url>
+      <content type="html"><![CDATA[<h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><p>最近刷知乎的时候看到一个广告，着实被惊艳到了，现在找不到了，大致的样式就是随着列表滚动长图片也跟着滚动。</p>
+<p>先看看自己实现的效果图：</p>
+<p><img src="https://camo.githubusercontent.com/08f533e6e4df9d475c0597017be68d26bad1ee44/68747470733a2f2f692e696d6775722e636f6d2f684a58773167752e676966" alt=""></p>
+<p><strong>思路：</strong></p>
+<ol>
+<li>捕获列表滚动的滑动距离，不管是ListView还是RecyclerView都可以</li>
+<li>自定义View, 图片显示部分变化随着列表滚动变化，我们可以利用canvas.translate</li>
+</ol>
+<p><strong>实现代码：</strong></p>
+<pre><code>public class ZhiHuAdvertsView extends AppCompatImageView {
+
+private RectF mBitmapRectF;
+private Bitmap mBitmap;
+
+private int mHeight;
+private int mDy;
+
+public ZhiHuAdvertsView(Context context){
+    super(context);
+}
+
+public ZhiHuAdvertsView(Context context, @Nullable AttributeSet attrs) {
+    super(context, attrs);
+}
+
+@Override
+protected void onSizeChanged(int width, int height, int oldWidth, int oldHeight) {
+    super.onSizeChanged(width, height, oldWidth, oldHeight);
+
+    mHeight = height;
+    Drawable drawable = getDrawable();
+
+    if (drawable == null) {
+        return;
+    }
+
+    mBitmap = drawableToBitmap(drawable);
+    mBitmapRectF = new RectF(0, 0, width,
+            mBitmap.getHeight() * width / mBitmap.getWidth());
+
+}
+
+private Bitmap drawableToBitmap(Drawable drawable) {
+    if (drawable instanceof BitmapDrawable) {
+        BitmapDrawable bd = (BitmapDrawable) drawable;
+        return bd.getBitmap();
+    }
+    int width = drawable.getIntrinsicWidth();
+    int height = drawable.getIntrinsicHeight();
+    Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+    Canvas canvas = new Canvas(bitmap);
+    drawable.setBounds(0, 0, width, height);
+    drawable.draw(canvas);
+    return bitmap;
+}
+
+public void setDy(int dy) {
+    if (getDrawable() == null) {
+        return;
+    }
+
+    mDy = dy - mHeight;
+    if (mDy &lt;= 0) {
+        mDy = 0;
+    }
+
+    if (mDy &gt; mBitmapRectF.height() - mHeight) {
+        mDy = (int) (mBitmapRectF.height() - mHeight);
+    }
+
+    invalidate();
+}
+
+public void bindView(final ViewGroup parent){
+    if(parent instanceof RecyclerView){
+        ((RecyclerView) parent).addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                int[] location = getLocation();
+                int y = location[1];
+                //view距离屏幕顶部的高度 + view自身高度
+                int heightTotal = y + getHeight();
+
+                if(getVisibility() == View.VISIBLE){
+                    LinearLayoutManager mLinearLayoutManager = (LinearLayoutManager) ((RecyclerView) parent).getLayoutManager();
+
+                    //view完全可见时,开始滑动
+                    if (y &gt; 0 &amp;&amp; getScreenHeight() &gt;= heightTotal) {
+                        setDy(mLinearLayoutManager.getHeight() - y);
+                    }
+                }
+            }
+        });
+    }else {
+        Log.i(TAG, &quot;不支持的ViewGroup类型&quot;);
+    }
+}
+
+private int getScreenHeight(){
+    Resources resources = this.getResources();
+    DisplayMetrics dm = resources.getDisplayMetrics();
+
+    return dm.heightPixels;
+}
+
+private int[] getLocation(){
+    int[] location = new int[2];
+    //获取view坐标
+    this.getLocationOnScreen(location);
+
+    return location;
+}
+
+@Override
+protected void onDraw(Canvas canvas) {
+    if (mBitmap == null) {
+        return;
+    }
+    canvas.save();
+    canvas.translate(0, -mDy);
+    canvas.drawBitmap(mBitmap, null, mBitmapRectF, null);
+    canvas.restore();
+}
+</code></pre><h4 id="开源大法好"><a href="#开源大法好" class="headerlink" title="开源大法好"></a>开源大法好</h4><p><a href="https://github.com/caozhenggit/Advertise" target="_blank" rel="external">源代码地址</a></p>
 ]]></content>
       
         <categories>
@@ -75,56 +173,11 @@
         </categories>
         
         
-        <tags>
-            
-            <tag> 线程 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Java线程池的使用]]></title>
-      <url>/2017/10/27/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-      <content type="html"><![CDATA[<h2 id="new-Thread与线程池"><a href="#new-Thread与线程池" class="headerlink" title="new Thread与线程池"></a>new Thread与线程池</h2><p><strong>new Thread的弊端</strong></p>
-<ul>
-<li>每次new Thread新建对象性能差。</li>
-<li>线程缺乏统一管理，可能无限制新建线程，相互之间竞争，及可能占用过多系统资源导致死机或oom。</li>
-<li>缺乏更多功能，如定时执行、定期执行、线程中断。</li>
-</ul>
-<p><strong>相比new Thread，Java提供的四种线程池的好处在于：</strong></p>
-<ul>
-<li>重用存在的线程，减少对象创建、消亡的开销，性能佳。</li>
-<li>可有效控制最大并发线程数，提高系统资源的使用率，同时避免过多资源竞争，避免堵塞。</li>
-<li>提供定时执行、定期执行、单线程、并发数控制等功能。</li>
-</ul>
-<h2 id="四种线程池"><a href="#四种线程池" class="headerlink" title="四种线程池"></a>四种线程池</h2><h3 id="newCachedThreadPool"><a href="#newCachedThreadPool" class="headerlink" title="newCachedThreadPool"></a>newCachedThreadPool</h3><p>创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ExecutorService cacheThreadPool = Executors.newCachedThreadPool();</div><div class="line"> cacheThreadPool.execute(runnable);</div></pre></td></tr></table></figure>
-<h3 id="newFixedThreadPool"><a href="#newFixedThreadPool" class="headerlink" title="newFixedThreadPool"></a>newFixedThreadPool</h3><p>创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ExecutorService fixedThreadPool = Executors.newFixedThreadPool(4);       </div><div class="line">fixedThreadPool.execute(runnable);</div></pre></td></tr></table></figure>
-<h3 id="newScheduledThreadPool"><a href="#newScheduledThreadPool" class="headerlink" title="newScheduledThreadPool"></a>newScheduledThreadPool</h3><p>创建一个定长线程池，支持定时及周期性任务执行。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(4);</div><div class="line"> scheduledThreadPool.schedule(runnable3, 2000, TimeUnit.MILLISECONDS);</div></pre></td></tr></table></figure>
-<h3 id="newSingleThreadExecutor"><a href="#newSingleThreadExecutor" class="headerlink" title="newSingleThreadExecutor"></a>newSingleThreadExecutor</h3><p>创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();</div><div class="line">singleThreadExecutor.execute(runnable);</div></pre></td></tr></table></figure>]]></content>
-      
-        <categories>
-            
-            <category> Java </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 线程 </tag>
-            
-        </tags>
-        
     </entry>
     
     <entry>
       <title><![CDATA[【广告篇】仿QQ空间图片广告切换效果]]></title>
-      <url>/2017/10/13/%E3%80%90%E5%B9%BF%E5%91%8A%E7%AF%87%E3%80%91%E4%BB%BFQQ%E7%A9%BA%E9%97%B4%E5%9B%BE%E7%89%87%E5%B9%BF%E5%91%8A%E5%88%87%E6%8D%A2%E6%95%88%E6%9E%9C/</url>
+      <url>/2017/11/13/%E3%80%90%E5%B9%BF%E5%91%8A%E7%AF%87%E3%80%91%E4%BB%BFQQ%E7%A9%BA%E9%97%B4%E5%9B%BE%E7%89%87%E5%B9%BF%E5%91%8A%E5%88%87%E6%8D%A2%E6%95%88%E6%9E%9C/</url>
       <content type="html"><![CDATA[<h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><p>最近看到很多创意的广告效果，今天挑了一个QQ空间里面的广告切换效果，在将列表中的item显示广告，随着列表的滚动切换图片。</p>
 <p>效果图如下：</p>
 <p><img src="https://camo.githubusercontent.com/ff0462b1f4b266dea6be30957903e67a5d806cfc/68747470733a2f2f692e696d6775722e636f6d2f314742784364732e676966" alt=""></p>
@@ -263,77 +316,6 @@ private void getLocation() {
     </entry>
     
     <entry>
-      <title><![CDATA[【旅行计划】西藏自驾游]]></title>
-      <url>/2017/10/01/%E3%80%90%E6%97%85%E8%A1%8C%E8%AE%A1%E5%88%92%E3%80%91%E8%A5%BF%E8%97%8F%E8%87%AA%E9%A9%BE%E6%B8%B8/</url>
-      <content type="html"><![CDATA[<h2 id="大致路线"><a href="#大致路线" class="headerlink" title="大致路线"></a>大致路线</h2><p>川藏线 + 青藏线</p>
-<p><img src="https://i.imgur.com/L0GME2y.png" alt=""></p>
-<h2 id="详细计划"><a href="#详细计划" class="headerlink" title="详细计划"></a>详细计划</h2><h3 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h3><p>路线：重庆－泸定（1337）－新都桥（3469）－雅江（2600）</p>
-<p>里程：760km，路况好</p>
-<h3 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h3><p>路线：雅江－理塘（3950）－芒康（3883）<br>里程：400km，路况一般，弯多灰大</p>
-<h3 id="Day-3"><a href="#Day-3" class="headerlink" title="Day 3"></a>Day 3</h3><p>路线：芒康—左贡（3807）—八宿（3268）</p>
-<p>里程：360km，路况一般，有涉水路段</p>
-<p>景点：<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F624220500562.jpg" target="_blank" rel="external">怒江七十二拐</a>、川藏318经典垭口</p>
-<h3 id="Day-4"><a href="#Day-4" class="headerlink" title="Day 4"></a>Day 4</h3><p>路线：八宿—然乌湖（3900）—米堆冰川（3820）—波密（2724）</p>
-<p>里程：220km，路况一般，有涉水路段，有落石路段</p>
-<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F62422112RO.jpg" target="_blank" rel="external">然乌湖</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F624221103507.jpg" target="_blank" rel="external">米堆冰川</a>、波密景观大道</p>
-<h3 id="Day-5"><a href="#Day-5" class="headerlink" title="Day 5"></a>Day 5</h3><p>路线：波密—鲁朗（3383）—林芝</p>
-<p>里程：230km，路况一般</p>
-<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F62422233cR.jpg" target="_blank" rel="external">通麦天险</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F624222331108.jpg" target="_blank" rel="external">鲁朗林海</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F624222351148.jpg" target="_blank" rel="external">南迦巴瓦峰</a></p>
-<h3 id="Day-6"><a href="#Day-6" class="headerlink" title="Day 6"></a>Day 6</h3><p>路线：林芝（3150）—工布江达（3419）—墨竹工卡（3820）—拉萨（3658）</p>
-<p>里程：400km，路况好</p>
-<p>行程亮点：拉林高速、尼洋河风光、米拉山</p>
-<h3 id="Day-7"><a href="#Day-7" class="headerlink" title="Day 7"></a>Day 7</h3><p>路线：拉萨—羊卓雍措（4440）—拉萨</p>
-<p>里程：200km，路况好</p>
-<p>行程亮点：<a href="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=e57532f62f9759ee5e5d6899d3922873/5ab5c9ea15ce36d338b6d5cb33f33a87e850b19f.jpg" target="_blank" rel="external">羊卓雍措</a>、<a href="http://img0.ph.126.net/JtP50sq9g8hgJRdUjRFcgw==/1597370492834466417.jpg" target="_blank" rel="external">雅鲁藏布江风光</a></p>
-<h3 id="Day-8"><a href="#Day-8" class="headerlink" title="Day 8"></a>Day 8</h3><p>路线：拉萨—当雄（4300）—纳木措（4718）</p>
-<p>里程：220km，路况好</p>
-<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625114H4518.jpg" target="_blank" rel="external">纳木措</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625114G0C9.jpg" target="_blank" rel="external">星空</a></p>
-<h3 id="Day-9"><a href="#Day-9" class="headerlink" title="Day 9"></a>Day 9</h3><p>路线：纳木措—那曲（4500）－安多（4700）</p>
-<p>里程：360km，路况好</p>
-<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F6251159595E.jpg" target="_blank" rel="external">纳木措日出</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F62512000H39.jpg" target="_blank" rel="external">青藏铁路</a></p>
-<h3 id="Day-10"><a href="#Day-10" class="headerlink" title="Day 10"></a>Day 10</h3><p>路线：安多—唐古拉山（4900）－可可西里（4000）－格尔木（2900）</p>
-<p>里程：700km（12小时），路况好</p>
-<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F6251216354W.jpg" target="_blank" rel="external">唐古拉山垭口</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625121A0c3.jpg" target="_blank" rel="external">沱沱河</a>、可可西里</p>
-<h3 id="Day-11"><a href="#Day-11" class="headerlink" title="Day 11"></a>Day 11</h3><p>路线：格尔木－茶卡盐湖（3100）－青海湖（3000）</p>
-<p>里程：620km（7小时），路况好</p>
-<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625123523649.jpg" target="_blank" rel="external">茶卡盐湖</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625123531103.jpg" target="_blank" rel="external">青海湖</a></p>
-<h3 id="Day-12"><a href="#Day-12" class="headerlink" title="Day 12"></a>Day 12</h3><p>路线：青海湖－天水 - 重庆</p>
-<p>里程：1500km，路况好</p>
-<h2 id="费用"><a href="#费用" class="headerlink" title="费用"></a>费用</h2><p><strong>油费：</strong>4000元</p>
-<p><strong>停车费：</strong>500元</p>
-<p><strong>食宿（2人）：</strong>吃150元/日，住200元/日，总计350元</p>
-<p><strong>景区门票：</strong><br>海螺沟景区：门票80元/人，观光车票60元/人（双程），观光索道150元/人（双程）；</p>
-<p>亚丁风景区：门票150元/人，观光车120元/人，电瓶观光车80元，景区马费80—300元/人；</p>
-<p>米堆冰川：50元/人；来古冰川：30/人；雅鲁藏布江大峡谷290元/人</p>
-<p>布达拉宫：旺季200元/人，淡季100元/人；大昭寺：85元/人</p>
-<p>哲蚌寺：55元/人；色拉寺：55元/人</p>
-<p>小昭寺：20元/人；药王山：20元/人</p>
-<p>甘丹寺：45元/人；纳木错：淡季100元/人，旺季120元/人</p>
-<p>楚布寺：45元/人；直贡梯寺：45元/人</p>
-<p><strong>车辆保养和维修：</strong>大约在1000—3000元左右</p>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
-<li>在藏区加油一定需要出示三个证件：身份证、驾驶证、行驶证</li>
-<li>住酒店需要登记2人的身份证</li>
-<li>过检查站时，除了司机是在车上检查，因为司机需要将车辆开过去，其余每个人都要下车到检查站里刷身份证才能通行，而且车上的行李都需要在旁边过安检，所以不要带违禁物品</li>
-<li>除了正式的检查站之外，路上也有一些临时检查点，他们一般会在车上抽查一到二个人，然后检查身份证</li>
-<li>高原地区的气候特点是早晚温差比较大</li>
-<li>随车装备可准备充分一些，吃的喝的，自带了电热水壶和矿泉水</li>
-<li>高原地区非常干燥，因此要多带一些保湿性比较好的护肤品，补水面膜也可以带着</li>
-<li>高反药品：氧气包肯定必备，一旦高反吸氧是最好的治疗方法，其他高反药品</li>
-<li>随车的工具箱、备胎、充气泵、搭电装备、拉车绳都需要带上</li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> 旅行计划 </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[【Android开源框架】之数据库框架]]></title>
       <url>/2017/09/27/%E3%80%90Android%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6%E3%80%91%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6/</url>
       <content type="html"><![CDATA[<h2 id="GreenDAO"><a href="#GreenDAO" class="headerlink" title="GreenDAO"></a><a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external">GreenDAO</a></h2><p>GreenDAO是一个轻量级，快速的orm框架。简化建表、查询、更新、插入、事务、索引的操作<br>特性:</p>
@@ -457,6 +439,93 @@ private void getLocation() {
         <tags>
             
             <tag> 面试题 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android开发中定制自己的线程池]]></title>
+      <url>/2017/08/27/Android%E5%BC%80%E5%8F%91%E4%B8%AD%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0/</url>
+      <content type="html"><![CDATA[<p>线程池算是Android开发中非常常用的一个东西了，只要涉及到线程的地方，大多数情况下都会涉及到线程池。Android开发中线程池的使用和Java中线程池的使用基本一致。那么今天我想来总结一下Android开发中线程池的使用。</p>
+<h2 id="ThreadPoolExecutor的构造方法"><a href="#ThreadPoolExecutor的构造方法" class="headerlink" title="ThreadPoolExecutor的构造方法"></a>ThreadPoolExecutor的构造方法</h2><p>ThreadPoolExecutor的构造方法有四个，如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                           TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            threadFactory, defaultHandler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit, BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          RejectedExecutionHandler handler) &#123;</div><div class="line">    this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</div><div class="line">            Executors.defaultThreadFactory(), handler);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,</div><div class="line">                          TimeUnit unit,BlockingQueue&lt;Runnable&gt; workQueue,</div><div class="line">                          ThreadFactory threadFactory, RejectedExecutionHandler handler) &#123;</div><div class="line">    <span class="keyword">if</span> (corePoolSize &lt; 0 ||</div><div class="line">            maximumPoolSize &lt;= 0 ||</div><div class="line">            maximumPoolSize &lt; corePoolSize ||</div><div class="line">            keepAliveTime &lt; 0)</div><div class="line">        throw new IllegalArgumentException();</div><div class="line">    <span class="keyword">if</span> (workQueue == null || threadFactory == null || handler == null)</div><div class="line">        throw new NullPointerException();</div><div class="line">    this.corePoolSize = corePoolSize;</div><div class="line">    this.maximumPoolSize = maximumPoolSize;</div><div class="line">    this.workQueue = workQueue;</div><div class="line">    this.keepAliveTime = unit.toNanos(keepAliveTime);</div><div class="line">    this.threadFactory = threadFactory;</div><div class="line">    this.handler = handler;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>构造方法参数说明</strong></p>
+<ul>
+<li><p>corePoolSize</p>
+<p>  线程池的核心线程数，即线程池中的最小线程数</p>
+</li>
+<li><p>maximumPoolSize</p>
+<p>  最大线程池大小,当活动线程数达到这个值，后续任务会被阻塞</p>
+</li>
+<li><p>keepAliveTime</p>
+<p>  线程池中超过corePoolSize数目的非核心线程最大存活时间</p>
+</li>
+<li><p>unit</p>
+<p>  keepAliveTime 参数的时间单位</p>
+</li>
+<li><p>workQueue</p>
+<p>  执行前用于保持任务的队列，也就是线程池的缓存队列</p>
+</li>
+<li><p>threadFactory</p>
+<p>  线程工厂，为线程池提供创建新线程的功能</p>
+</li>
+<li><p>RejectedExecutionHandler</p>
+<p>  线程池对拒绝任务的处理策略</p>
+</li>
+</ul>
+<h2 id="定制自己的线程池"><a href="#定制自己的线程池" class="headerlink" title="定制自己的线程池"></a>定制自己的线程池</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">public class ThreadPoolFactory &#123;</div><div class="line"></div><div class="line">    /** 核心线程数 */</div><div class="line">    private static final int CORE_POOL_SIZE = 5;</div><div class="line">    /** 最大线程数 */</div><div class="line">    private static final int MAX_POOL_SIZE = 128;</div><div class="line">    /** 非核心线程时超过时长 */</div><div class="line">    private static final int KEEP_ALIVE_TIME = 2;</div><div class="line">    /** 阻塞队列大小 */</div><div class="line">    private static final int BLOCK_SIZE = 2;</div><div class="line"></div><div class="line">    private ThreadPoolExecutor mThreadPoolExecutor ;</div><div class="line">    </div><div class="line">    private <span class="function"><span class="title">ThreadPoolFactory</span></span>()&#123;</div><div class="line">        createThreadPoolProxyFactory();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /** 创建线程池 */</div><div class="line">    private void <span class="function"><span class="title">createThreadPoolProxyFactory</span></span>()&#123;</div><div class="line">        mThreadPoolExecutor  = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME,</div><div class="line">                TimeUnit.SECONDS, new ArrayBlockingQueue&lt;Runnable&gt;(BLOCK_SIZE),</div><div class="line">                Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());</div><div class="line">        //<span class="literal">true</span>: 线程池数量最后销毁到0个</div><div class="line">        //<span class="literal">false</span>: 超过核心线程数时,而且(超过最大值或者timeout过),就会销毁</div><div class="line">        mThreadPoolExecutor .allowCoreThreadTimeOut(<span class="literal">true</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 打印线程池状态</div><div class="line">     */</div><div class="line">    public void <span class="function"><span class="title">logThreadPoolInfo</span></span>() &#123;</div><div class="line">        Log.i(<span class="string">"threadPoolFactory"</span>, <span class="string">"monitor "</span></div><div class="line">                + <span class="string">" CorePoolSize:"</span> + mThreadPoolExecutor.getCorePoolSize()</div><div class="line">                + <span class="string">" PoolSize:"</span> + mThreadPoolExecutor.getPoolSize()</div><div class="line">                + <span class="string">" MaximumPoolSize:"</span> + mThreadPoolExecutor.getMaximumPoolSize()</div><div class="line">                + <span class="string">" ActiveCount:"</span> + mThreadPoolExecutor.getActiveCount()</div><div class="line">                + <span class="string">" TaskCount:"</span> + mThreadPoolExecutor.getTaskCount());</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 线程 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Java线程池的使用]]></title>
+      <url>/2017/08/27/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<h2 id="new-Thread与线程池"><a href="#new-Thread与线程池" class="headerlink" title="new Thread与线程池"></a>new Thread与线程池</h2><p><strong>new Thread的弊端</strong></p>
+<ul>
+<li>每次new Thread新建对象性能差。</li>
+<li>线程缺乏统一管理，可能无限制新建线程，相互之间竞争，及可能占用过多系统资源导致死机或oom。</li>
+<li>缺乏更多功能，如定时执行、定期执行、线程中断。</li>
+</ul>
+<p><strong>相比new Thread，Java提供的四种线程池的好处在于：</strong></p>
+<ul>
+<li>重用存在的线程，减少对象创建、消亡的开销，性能佳。</li>
+<li>可有效控制最大并发线程数，提高系统资源的使用率，同时避免过多资源竞争，避免堵塞。</li>
+<li>提供定时执行、定期执行、单线程、并发数控制等功能。</li>
+</ul>
+<h2 id="四种线程池"><a href="#四种线程池" class="headerlink" title="四种线程池"></a>四种线程池</h2><h3 id="newCachedThreadPool"><a href="#newCachedThreadPool" class="headerlink" title="newCachedThreadPool"></a>newCachedThreadPool</h3><p>创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ExecutorService cacheThreadPool = Executors.newCachedThreadPool();</div><div class="line"> cacheThreadPool.execute(runnable);</div></pre></td></tr></table></figure>
+<h3 id="newFixedThreadPool"><a href="#newFixedThreadPool" class="headerlink" title="newFixedThreadPool"></a>newFixedThreadPool</h3><p>创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ExecutorService fixedThreadPool = Executors.newFixedThreadPool(4);       </div><div class="line">fixedThreadPool.execute(runnable);</div></pre></td></tr></table></figure>
+<h3 id="newScheduledThreadPool"><a href="#newScheduledThreadPool" class="headerlink" title="newScheduledThreadPool"></a>newScheduledThreadPool</h3><p>创建一个定长线程池，支持定时及周期性任务执行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(4);</div><div class="line"> scheduledThreadPool.schedule(runnable3, 2000, TimeUnit.MILLISECONDS);</div></pre></td></tr></table></figure>
+<h3 id="newSingleThreadExecutor"><a href="#newSingleThreadExecutor" class="headerlink" title="newSingleThreadExecutor"></a>newSingleThreadExecutor</h3><p>创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();</div><div class="line">singleThreadExecutor.execute(runnable);</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 线程 </tag>
             
         </tags>
         
@@ -815,6 +884,77 @@ comments: false
         <categories>
             
             <category> Hexo </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【旅行计划】西藏自驾游]]></title>
+      <url>/2017/05/01/%E3%80%90%E6%97%85%E8%A1%8C%E8%AE%A1%E5%88%92%E3%80%91%E8%A5%BF%E8%97%8F%E8%87%AA%E9%A9%BE%E6%B8%B8/</url>
+      <content type="html"><![CDATA[<h2 id="大致路线"><a href="#大致路线" class="headerlink" title="大致路线"></a>大致路线</h2><p>川藏线 + 青藏线</p>
+<p><img src="https://i.imgur.com/L0GME2y.png" alt=""></p>
+<h2 id="详细计划"><a href="#详细计划" class="headerlink" title="详细计划"></a>详细计划</h2><h3 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h3><p>路线：重庆－泸定（1337）－新都桥（3469）－雅江（2600）</p>
+<p>里程：760km，路况好</p>
+<h3 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h3><p>路线：雅江－理塘（3950）－芒康（3883）<br>里程：400km，路况一般，弯多灰大</p>
+<h3 id="Day-3"><a href="#Day-3" class="headerlink" title="Day 3"></a>Day 3</h3><p>路线：芒康—左贡（3807）—八宿（3268）</p>
+<p>里程：360km，路况一般，有涉水路段</p>
+<p>景点：<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F624220500562.jpg" target="_blank" rel="external">怒江七十二拐</a>、川藏318经典垭口</p>
+<h3 id="Day-4"><a href="#Day-4" class="headerlink" title="Day 4"></a>Day 4</h3><p>路线：八宿—然乌湖（3900）—米堆冰川（3820）—波密（2724）</p>
+<p>里程：220km，路况一般，有涉水路段，有落石路段</p>
+<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F62422112RO.jpg" target="_blank" rel="external">然乌湖</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F624221103507.jpg" target="_blank" rel="external">米堆冰川</a>、波密景观大道</p>
+<h3 id="Day-5"><a href="#Day-5" class="headerlink" title="Day 5"></a>Day 5</h3><p>路线：波密—鲁朗（3383）—林芝</p>
+<p>里程：230km，路况一般</p>
+<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F62422233cR.jpg" target="_blank" rel="external">通麦天险</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F624222331108.jpg" target="_blank" rel="external">鲁朗林海</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170624/1-1F624222351148.jpg" target="_blank" rel="external">南迦巴瓦峰</a></p>
+<h3 id="Day-6"><a href="#Day-6" class="headerlink" title="Day 6"></a>Day 6</h3><p>路线：林芝（3150）—工布江达（3419）—墨竹工卡（3820）—拉萨（3658）</p>
+<p>里程：400km，路况好</p>
+<p>行程亮点：拉林高速、尼洋河风光、米拉山</p>
+<h3 id="Day-7"><a href="#Day-7" class="headerlink" title="Day 7"></a>Day 7</h3><p>路线：拉萨—羊卓雍措（4440）—拉萨</p>
+<p>里程：200km，路况好</p>
+<p>行程亮点：<a href="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=e57532f62f9759ee5e5d6899d3922873/5ab5c9ea15ce36d338b6d5cb33f33a87e850b19f.jpg" target="_blank" rel="external">羊卓雍措</a>、<a href="http://img0.ph.126.net/JtP50sq9g8hgJRdUjRFcgw==/1597370492834466417.jpg" target="_blank" rel="external">雅鲁藏布江风光</a></p>
+<h3 id="Day-8"><a href="#Day-8" class="headerlink" title="Day 8"></a>Day 8</h3><p>路线：拉萨—当雄（4300）—纳木措（4718）</p>
+<p>里程：220km，路况好</p>
+<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625114H4518.jpg" target="_blank" rel="external">纳木措</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625114G0C9.jpg" target="_blank" rel="external">星空</a></p>
+<h3 id="Day-9"><a href="#Day-9" class="headerlink" title="Day 9"></a>Day 9</h3><p>路线：纳木措—那曲（4500）－安多（4700）</p>
+<p>里程：360km，路况好</p>
+<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F6251159595E.jpg" target="_blank" rel="external">纳木措日出</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F62512000H39.jpg" target="_blank" rel="external">青藏铁路</a></p>
+<h3 id="Day-10"><a href="#Day-10" class="headerlink" title="Day 10"></a>Day 10</h3><p>路线：安多—唐古拉山（4900）－可可西里（4000）－格尔木（2900）</p>
+<p>里程：700km（12小时），路况好</p>
+<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F6251216354W.jpg" target="_blank" rel="external">唐古拉山垭口</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625121A0c3.jpg" target="_blank" rel="external">沱沱河</a>、可可西里</p>
+<h3 id="Day-11"><a href="#Day-11" class="headerlink" title="Day 11"></a>Day 11</h3><p>路线：格尔木－茶卡盐湖（3100）－青海湖（3000）</p>
+<p>里程：620km（7小时），路况好</p>
+<p>行程亮点：<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625123523649.jpg" target="_blank" rel="external">茶卡盐湖</a>、<a href="http://jishi.vdouk.com/uploads/allimg/170625/1-1F625123531103.jpg" target="_blank" rel="external">青海湖</a></p>
+<h3 id="Day-12"><a href="#Day-12" class="headerlink" title="Day 12"></a>Day 12</h3><p>路线：青海湖－天水 - 重庆</p>
+<p>里程：1500km，路况好</p>
+<h2 id="费用"><a href="#费用" class="headerlink" title="费用"></a>费用</h2><p><strong>油费：</strong>4000元</p>
+<p><strong>停车费：</strong>500元</p>
+<p><strong>食宿（2人）：</strong>吃150元/日，住200元/日，总计350元</p>
+<p><strong>景区门票：</strong><br>海螺沟景区：门票80元/人，观光车票60元/人（双程），观光索道150元/人（双程）；</p>
+<p>亚丁风景区：门票150元/人，观光车120元/人，电瓶观光车80元，景区马费80—300元/人；</p>
+<p>米堆冰川：50元/人；来古冰川：30/人；雅鲁藏布江大峡谷290元/人</p>
+<p>布达拉宫：旺季200元/人，淡季100元/人；大昭寺：85元/人</p>
+<p>哲蚌寺：55元/人；色拉寺：55元/人</p>
+<p>小昭寺：20元/人；药王山：20元/人</p>
+<p>甘丹寺：45元/人；纳木错：淡季100元/人，旺季120元/人</p>
+<p>楚布寺：45元/人；直贡梯寺：45元/人</p>
+<p><strong>车辆保养和维修：</strong>大约在1000—3000元左右</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>在藏区加油一定需要出示三个证件：身份证、驾驶证、行驶证</li>
+<li>住酒店需要登记2人的身份证</li>
+<li>过检查站时，除了司机是在车上检查，因为司机需要将车辆开过去，其余每个人都要下车到检查站里刷身份证才能通行，而且车上的行李都需要在旁边过安检，所以不要带违禁物品</li>
+<li>除了正式的检查站之外，路上也有一些临时检查点，他们一般会在车上抽查一到二个人，然后检查身份证</li>
+<li>高原地区的气候特点是早晚温差比较大</li>
+<li>随车装备可准备充分一些，吃的喝的，自带了电热水壶和矿泉水</li>
+<li>高原地区非常干燥，因此要多带一些保湿性比较好的护肤品，补水面膜也可以带着</li>
+<li>高反药品：氧气包肯定必备，一旦高反吸氧是最好的治疗方法，其他高反药品</li>
+<li>随车的工具箱、备胎、充气泵、搭电装备、拉车绳都需要带上</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 旅行计划 </category>
             
         </categories>
         

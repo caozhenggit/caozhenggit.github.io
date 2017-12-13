@@ -20,17 +20,17 @@
   <meta name="description" content="一、概述最近看到很多创意的广告效果，今天挑了一个QQ空间里面的广告切换效果，在将列表中的item显示广告，随着列表的滚动切换图片。 效果图如下：  二、实现思路：  捕获列表滚动的滑动距离，不管是ListView还是RecyclerView都可以 自定义View, 绘制两个bitmap到画布上，通过传入的列表滑动的值确定其中一张图片被遮挡的值，这里需要了解一下Xfermode的PorterDuff">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【广告篇】仿QQ空间图片广告切换效果">
-<meta property="og:url" content="http://caozhenggit.github.io/2017/10/13/【广告篇】仿QQ空间图片广告切换效果/index.html">
+<meta property="og:url" content="http://caozhenggit.github.io/2017/11/13/【广告篇】仿QQ空间图片广告切换效果/index.html">
 <meta property="og:site_name" content="Spider">
 <meta property="og:description" content="一、概述最近看到很多创意的广告效果，今天挑了一个QQ空间里面的广告切换效果，在将列表中的item显示广告，随着列表的滚动切换图片。 效果图如下：  二、实现思路：  捕获列表滚动的滑动距离，不管是ListView还是RecyclerView都可以 自定义View, 绘制两个bitmap到画布上，通过传入的列表滑动的值确定其中一张图片被遮挡的值，这里需要了解一下Xfermode的PorterDuff">
 <meta property="og:image" content="https://camo.githubusercontent.com/ff0462b1f4b266dea6be30957903e67a5d806cfc/68747470733a2f2f692e696d6775722e636f6d2f314742784364732e676966">
-<meta property="og:updated_time" content="2017-12-13T14:17:40.619Z">
+<meta property="og:updated_time" content="2017-12-13T14:45:40.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【广告篇】仿QQ空间图片广告切换效果">
 <meta name="twitter:description" content="一、概述最近看到很多创意的广告效果，今天挑了一个QQ空间里面的广告切换效果，在将列表中的item显示广告，随着列表的滚动切换图片。 效果图如下：  二、实现思路：  捕获列表滚动的滑动距离，不管是ListView还是RecyclerView都可以 自定义View, 绘制两个bitmap到画布上，通过传入的列表滑动的值确定其中一张图片被遮挡的值，这里需要了解一下Xfermode的PorterDuff">
 <meta name="twitter:image" content="https://camo.githubusercontent.com/ff0462b1f4b266dea6be30957903e67a5d806cfc/68747470733a2f2f692e696d6775722e636f6d2f314742784364732e676966">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://caozhenggit.github.io/2017/10/13/【广告篇】仿QQ空间图片广告切换效果/index.html">
+  <link rel="canonical" href="http://caozhenggit.github.io/2017/11/13/【广告篇】仿QQ空间图片广告切换效果/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Spider" type="application/atom+xml">
   
@@ -204,7 +204,7 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/旅行计划/">旅行计划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/旅行计划/">旅行计划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -233,7 +233,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -267,25 +267,10 @@
                 <a class="category-link" href="/categories/Android/">Android</a>
               </p>
               <p class="item-title">
-                <a href="/2017/10/27/Android开发中定制自己的线程池/" class="title">Android开发中定制自己的线程池</a>
+                <a href="/2017/11/20/【广告篇】仿知乎长图片广告滚动效果/" class="title">【广告篇】仿知乎长图片广告滚动效果</a>
               </p>
               <p class="item-date">
-                <time datetime="2017-10-27T09:05:04.000Z" itemprop="datePublished">2017-10-27</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/Java/">Java</a>
-              </p>
-              <p class="item-title">
-                <a href="/2017/10/27/Java线程池的使用/" class="title">Java线程池的使用</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2017-10-27T03:30:18.000Z" itemprop="datePublished">2017-10-27</time>
+                <time datetime="2017-11-20T14:33:54.000Z" itemprop="datePublished">2017-11-20</time>
               </p>
             </div>
           </li>
@@ -297,10 +282,10 @@
                 <a class="category-link" href="/categories/Android/">Android</a>
               </p>
               <p class="item-title">
-                <a href="/2017/10/13/【广告篇】仿QQ空间图片广告切换效果/" class="title">【广告篇】仿QQ空间图片广告切换效果</a>
+                <a href="/2017/11/13/【广告篇】仿QQ空间图片广告切换效果/" class="title">【广告篇】仿QQ空间图片广告切换效果</a>
               </p>
               <p class="item-date">
-                <time datetime="2017-10-13T13:37:15.000Z" itemprop="datePublished">2017-10-13</time>
+                <time datetime="2017-11-13T13:37:15.000Z" itemprop="datePublished">2017-11-13</time>
               </p>
             </div>
           </li>
@@ -316,6 +301,21 @@
               </p>
               <p class="item-date">
                 <time datetime="2017-10-11T03:44:58.000Z" itemprop="datePublished">2017-10-11</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Android/">Android</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/09/27/【Android开源框架】之数据库框架/" class="title">【Android开源框架】之数据库框架</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-09-27T04:40:27.000Z" itemprop="datePublished">2017-09-27</time>
               </p>
             </div>
           </li>
@@ -348,8 +348,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="fa fa-calendar-check-o"></i>
-	<a href="/2017/10/13/【广告篇】仿QQ空间图片广告切换效果/" class="article-date">
-	  <time datetime="2017-10-13T13:37:15.000Z" itemprop="datePublished">2017-10-13</time>
+	<a href="/2017/11/13/【广告篇】仿QQ空间图片广告切换效果/" class="article-date">
+	  <time datetime="2017-11-13T13:37:15.000Z" itemprop="datePublished">2017-11-13</time>
 	</a>
 </span>
         
@@ -369,7 +369,7 @@
 	</span>
 
 
-        <span class="post-comment"><i class="fa fa-commenting-o"></i> <a href="/2017/10/13/【广告篇】仿QQ空间图片广告切换效果/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="fa fa-commenting-o"></i> <a href="/2017/11/13/【广告篇】仿QQ空间图片广告切换效果/#comments" class="article-comment-link">评论</a></span>
         
       </div>
       
@@ -480,7 +480,7 @@ private void getLocation() {
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://caozhenggit.github.io/2017/10/13/【广告篇】仿QQ空间图片广告切换效果/" title="【广告篇】仿QQ空间图片广告切换效果" target="_blank" rel="external">http://caozhenggit.github.io/2017/10/13/【广告篇】仿QQ空间图片广告切换效果/</a>
+      <a href="http://caozhenggit.github.io/2017/11/13/【广告篇】仿QQ空间图片广告切换效果/" title="【广告篇】仿QQ空间图片广告切换效果" target="_blank" rel="external">http://caozhenggit.github.io/2017/11/13/【广告篇】仿QQ空间图片广告切换效果/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -529,7 +529,7 @@ private void getLocation() {
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2017/10/27/Java线程池的使用/" title="Java线程池的使用"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;上一篇</a>
+      <a href="/2017/11/20/【广告篇】仿知乎长图片广告滚动效果/" title="【广告篇】仿知乎长图片广告滚动效果"><i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;&nbsp;上一篇</a>
     </li>
     
     
