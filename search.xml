@@ -3,23 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>/2017/12/08/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-      
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[Git 分支管理]]></title>
       <url>/2017/12/08/Git-%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/</url>
       <content type="html"><![CDATA[<h3 id="创建本地分支"><a href="#创建本地分支" class="headerlink" title="创建本地分支"></a>创建本地分支</h3><p>git branch &lt;分支名&gt;</p>
@@ -140,6 +123,115 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【广告篇】仿QQ空间图片广告切换效果]]></title>
+      <url>/2017/10/13/%E3%80%90%E5%B9%BF%E5%91%8A%E7%AF%87%E3%80%91%E4%BB%BFQQ%E7%A9%BA%E9%97%B4%E5%9B%BE%E7%89%87%E5%B9%BF%E5%91%8A%E5%88%87%E6%8D%A2%E6%95%88%E6%9E%9C/</url>
+      <content type="html"><![CDATA[<h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><p>最近看到很多创意的广告效果，今天挑了一个QQ空间里面的广告切换效果，在将列表中的item显示广告，随着列表的滚动切换图片。</p>
+<p>效果图如下：</p>
+<p><img src="https://camo.githubusercontent.com/ff0462b1f4b266dea6be30957903e67a5d806cfc/68747470733a2f2f692e696d6775722e636f6d2f314742784364732e676966" alt=""></p>
+<h4 id="二、实现"><a href="#二、实现" class="headerlink" title="二、实现"></a>二、实现</h4><p><strong>思路：</strong></p>
+<ol>
+<li>捕获列表滚动的滑动距离，不管是ListView还是RecyclerView都可以</li>
+<li>自定义View, 绘制两个bitmap到画布上，通过传入的列表滑动的值确定其中一张图片被遮挡的值，这里需要了解一下<a href="http://blog.csdn.net/j_bing/article/details/46289977" target="_blank" rel="external">Xfermode</a>的PorterDuff.Mode.DST_IN属性，即显示两个图层的交集，底层图层位于顶层图层上面。</li>
+</ol>
+<p><strong>实现：</strong></p>
+<p>1.初始化画笔</p>
+<pre><code>private void init(){
+    mPaint = new Paint();
+    mPaint.setAlpha(0);
+    //取两层交集的内容，显示最下层绘制
+    mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+    mPaint.setStyle(Paint.Style.FILL);
+    mPaint.setAntiAlias(true);
+    mPaint.setStrokeWidth(0);
+    mPaint.setStrokeJoin(Paint.Join.ROUND);
+    mPaint.setStrokeCap(Paint.Cap.ROUND);
+}
+</code></pre><p>2.初始化布局</p>
+<pre><code>@Override
+protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    width = MeasureSpec.getSize(widthMeasureSpec);
+    height = MeasureSpec.getSize(heightMeasureSpec);
+
+    rectF = new RectF(0, 0, width, height);
+    //创建空bitmap
+    frontBg = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+    //创建前景画布
+    frontCanvas = new Canvas(frontBg);
+}
+</code></pre><p>3.绘制</p>
+<pre><code>@Override
+protected void onDraw(Canvas behindCanvas) {
+    super.onDraw(behindCanvas);
+
+    //绘制背景图片至背景画布
+    behindCanvas.drawBitmap(getBitmap(mBehindImage), null, rectF, null);
+    //初始时背景图片不可见，防止遮挡前景画布
+    behindCanvas.drawBitmap(frontBg, null, rectF, null);
+
+    //绘制前景图片至前景画布
+    frontCanvas.drawBitmap(getBitmap(mFrontImage), null, rectF, null);
+    //绘制圆遮挡前景图片
+    frontCanvas.drawCircle(width - offsetX, height - offsetY, radius, mPaint);
+}
+</code></pre><p>4.绑定ViewGroup获取列表滚动的距离并不断重新绘制</p>
+<pre><code>public void bindView(ViewGroup parent){
+    if(parent instanceof RecyclerView){
+        ((RecyclerView) parent).addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                getLocation();
+            }
+        });
+    }else if(parent instanceof ListView){
+        ((ListView) parent).setOnScrollChangeListener(new OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+                getLocation();
+            }
+        });
+    }else {
+        Log.i(TAG, &quot;不支持的ViewGroup类型&quot;);
+    }
+}
+
+private void getLocation() {
+    int[] location = new int[2];
+    //获取view在屏幕中的坐标
+    this.getLocationOnScreen(location);
+    int y = location[1];
+    //view距离屏幕顶部的高度 + view自身高度
+    int heightTotal = y + getHeight();
+
+    //向上滑动, 放大圆的半径
+    //向下滑动, 缩小圆的半径
+    if (y &gt; 0 &amp;&amp; getScreenHeight() &gt;= heightTotal) {
+        radius = (float) ((getScreenHeight() - heightTotal) * 1.5);
+        frontCanvas.drawCircle(width - offsetX, heightTotal - offsetY, radius, mPaint);
+    } else {
+        if (radius &lt; width) {
+            radius = 0;
+        }
+    }
+
+    invalidate();
+}
+</code></pre><p><strong>总结：</strong></p>
+<p>到这里就已经基本的实现我们想要的View了，大致思路就是搞两块画布，随着滚动不停的在其中一块画布上扩大圆的半径遮挡住画布实现。</p>
+<h4 id="开源大法好"><a href="#开源大法好" class="headerlink" title="开源大法好"></a>开源大法好</h4><p><a href="https://github.com/caozhenggit/Advertise" target="_blank" rel="external">源代码地址</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【Android异常】关于Android方法数量限制的问题]]></title>
       <url>/2017/10/11/%E3%80%90Android%E5%BC%82%E5%B8%B8%E3%80%91%E5%85%B3%E4%BA%8EAndroid%E6%96%B9%E6%B3%95%E6%95%B0%E9%87%8F%E9%99%90%E5%88%B6%E7%9A%84%E9%97%AE%E9%A2%98/</url>
       <content type="html"><![CDATA[<h2 id="异常错误信息"><a href="#异常错误信息" class="headerlink" title="异常错误信息"></a>异常错误信息</h2><p>错误信息：</p>
@@ -242,6 +334,51 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【Android开源框架】之数据库框架]]></title>
+      <url>/2017/09/27/%E3%80%90Android%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6%E3%80%91%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6/</url>
+      <content type="html"><![CDATA[<h2 id="GreenDAO"><a href="#GreenDAO" class="headerlink" title="GreenDAO"></a><a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external">GreenDAO</a></h2><p>GreenDAO是一个轻量级，快速的orm框架。简化建表、查询、更新、插入、事务、索引的操作<br>特性:</p>
+<ul>
+<li>性能突出(比ormlite快4-5倍), performance</li>
+<li>库小，核心包小于100k</li>
+<li>简单易用的API</li>
+<li>支持protobuf</li>
+<li>自动生成数据库访问代码</li>
+</ul>
+<h2 id="Realm"><a href="#Realm" class="headerlink" title="Realm"></a><a href="https://github.com/chennaione/sugar" target="_blank" rel="external">Realm</a></h2><p>移动端的数据库，适用于 Phone、Tablet、Wearable，支持 ORM，线程安全、支持连表及数据库加密，比 SQLite 性能更好。<br>特性:</p>
+<ul>
+<li>着重移动端</li>
+<li>简单易用的API</li>
+<li>支持线程安全，关系数据库和加密</li>
+<li>访问快速</li>
+<li>跨平台</li>
+</ul>
+<h2 id="OrmLite"><a href="#OrmLite" class="headerlink" title="OrmLite"></a><a href="https://sourceforge.net/projects/ormlite/files/releases/com/j256/ormlite/" target="_blank" rel="external">OrmLite</a></h2><p>OrmLite不是Android平台专用的orm框架，它是一个Java orm，OrmLite For Android增加了对Android平台的支持。</p>
+<h2 id="ActiveAndroid"><a href="#ActiveAndroid" class="headerlink" title="ActiveAndroid"></a><a href="https://github.com/pardom/ActiveAndroid" target="_blank" rel="external">ActiveAndroid</a></h2><p>ActiveAndroid是一个轻量级的orm框架，名称命令方式类似于Yii、Rails等使用的orm框架ActiveRecord</p>
+<h2 id="DBFlow"><a href="#DBFlow" class="headerlink" title="DBFlow"></a><a href="https://github.com/Raizlabs/DBFlow" target="_blank" rel="external">DBFlow</a></h2><p>一个速度极快，功能强大，而且非常简单的 Android 数据库 ORM 库</p>
+<h2 id="Sugar"><a href="#Sugar" class="headerlink" title="Sugar"></a><a href="https://github.com/chennaione/sugar" target="_blank" rel="external">Sugar</a></h2><p>用超级简单的方法处理Android数据库<br>特性:</p>
+<ul>
+<li>配置少</li>
+<li>自动生成表结构</li>
+<li>支持在不同模式版本直接切换</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> Android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【Android面试题】之Android基础]]></title>
       <url>/2017/09/27/%E3%80%90Android%E9%9D%A2%E8%AF%95%E9%A2%98%E3%80%91%E4%B9%8BAndroid%E5%9F%BA%E7%A1%80/</url>
       <content type="html"><![CDATA[<h2 id="Android-面试题——Android基础"><a href="#Android-面试题——Android基础" class="headerlink" title="Android 面试题——Android基础"></a>Android 面试题——Android基础</h2><h3 id="1-Android的四大组件是哪些，它们的作用？"><a href="#1-Android的四大组件是哪些，它们的作用？" class="headerlink" title="1. Android的四大组件是哪些，它们的作用？"></a>1. Android的四大组件是哪些，它们的作用？</h3><p><strong>Activity</strong>：Activity是Android程序与用户交互的窗口，是Android构造块中最基本的一种，它需要为保持各界面的状态，做很多持久化的事情，妥善管理生命周期以及一些跳转逻辑</p>
@@ -320,51 +457,6 @@
         <tags>
             
             <tag> 面试题 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[【Android开源框架】之数据库框架]]></title>
-      <url>/2017/09/27/%E3%80%90Android%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6%E3%80%91%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6/</url>
-      <content type="html"><![CDATA[<h2 id="GreenDAO"><a href="#GreenDAO" class="headerlink" title="GreenDAO"></a><a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external">GreenDAO</a></h2><p>GreenDAO是一个轻量级，快速的orm框架。简化建表、查询、更新、插入、事务、索引的操作<br>特性:</p>
-<ul>
-<li>性能突出(比ormlite快4-5倍), performance</li>
-<li>库小，核心包小于100k</li>
-<li>简单易用的API</li>
-<li>支持protobuf</li>
-<li>自动生成数据库访问代码</li>
-</ul>
-<h2 id="Realm"><a href="#Realm" class="headerlink" title="Realm"></a><a href="https://github.com/chennaione/sugar" target="_blank" rel="external">Realm</a></h2><p>移动端的数据库，适用于 Phone、Tablet、Wearable，支持 ORM，线程安全、支持连表及数据库加密，比 SQLite 性能更好。<br>特性:</p>
-<ul>
-<li>着重移动端</li>
-<li>简单易用的API</li>
-<li>支持线程安全，关系数据库和加密</li>
-<li>访问快速</li>
-<li>跨平台</li>
-</ul>
-<h2 id="OrmLite"><a href="#OrmLite" class="headerlink" title="OrmLite"></a><a href="https://sourceforge.net/projects/ormlite/files/releases/com/j256/ormlite/" target="_blank" rel="external">OrmLite</a></h2><p>OrmLite不是Android平台专用的orm框架，它是一个Java orm，OrmLite For Android增加了对Android平台的支持。</p>
-<h2 id="ActiveAndroid"><a href="#ActiveAndroid" class="headerlink" title="ActiveAndroid"></a><a href="https://github.com/pardom/ActiveAndroid" target="_blank" rel="external">ActiveAndroid</a></h2><p>ActiveAndroid是一个轻量级的orm框架，名称命令方式类似于Yii、Rails等使用的orm框架ActiveRecord</p>
-<h2 id="DBFlow"><a href="#DBFlow" class="headerlink" title="DBFlow"></a><a href="https://github.com/Raizlabs/DBFlow" target="_blank" rel="external">DBFlow</a></h2><p>一个速度极快，功能强大，而且非常简单的 Android 数据库 ORM 库</p>
-<h2 id="Sugar"><a href="#Sugar" class="headerlink" title="Sugar"></a><a href="https://github.com/chennaione/sugar" target="_blank" rel="external">Sugar</a></h2><p>用超级简单的方法处理Android数据库<br>特性:</p>
-<ul>
-<li>配置少</li>
-<li>自动生成表结构</li>
-<li>支持在不同模式版本直接切换</li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> Android </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 数据库 </tag>
             
         </tags>
         
