@@ -11,9 +11,6 @@ git branch <分支名>
 ### 切换分支 ###
 git checkout <分支名>
 
-### 拉取远程分支并创建本地分支 ###
-git checkout -b 本地分支名x origin/远程分支名x
-
 ### 推送本地分支关联远程分支 ###
 
 - 远程分支存在并且已关联本地分支：	git push
