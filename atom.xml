@@ -49,17 +49,16 @@
     <link href="http://caozhenggit.github.io/2017/12/08/Git-%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86/"/>
     <id>http://caozhenggit.github.io/2017/12/08/Git-分支管理/</id>
     <published>2017-12-08T02:17:42.000Z</published>
-    <updated>2018-02-03T04:17:26.901Z</updated>
+    <updated>2018-02-03T04:21:47.362Z</updated>
     
     <content type="html"><![CDATA[<h3 id="创建本地分支"><a href="#创建本地分支" class="headerlink" title="创建本地分支"></a>创建本地分支</h3><p>git branch &lt;分支名&gt;</p>
 <h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p>git checkout &lt;分支名&gt;</p>
-<h3 id="拉取远程分支并创建本地分支"><a href="#拉取远程分支并创建本地分支" class="headerlink" title="拉取远程分支并创建本地分支"></a>拉取远程分支并创建本地分支</h3><p>git checkout -b 本地分支名x origin/远程分支名x</p>
 <h3 id="推送本地分支关联远程分支"><a href="#推送本地分支关联远程分支" class="headerlink" title="推送本地分支关联远程分支"></a>推送本地分支关联远程分支</h3><ul>
 <li>远程分支存在并且已关联本地分支：    git push</li>
 <li>远程分支存在且本地分支也存在，但未关联：git push -u origin &lt;远程分支名&gt;</li>
 <li>远程分支不存在但本地分支存在：git push origin &lt;本地分支名&gt;:&lt;远程分支名&gt;</li>
 </ul>
-<h3 id="拉取远程分支并创建本地分支-1"><a href="#拉取远程分支并创建本地分支-1" class="headerlink" title="拉取远程分支并创建本地分支"></a>拉取远程分支并创建本地分支</h3><p> git checkout -b &lt;本地分支名&gt; origin/&lt;远程分支名&gt;</p>
+<h3 id="拉取远程分支并创建本地分支"><a href="#拉取远程分支并创建本地分支" class="headerlink" title="拉取远程分支并创建本地分支"></a>拉取远程分支并创建本地分支</h3><p> git checkout -b &lt;本地分支名&gt; origin/&lt;远程分支名&gt;</p>
 <h3 id="重命名分支"><a href="#重命名分支" class="headerlink" title="重命名分支"></a>重命名分支</h3><p> git branch -m | -M &lt;旧分支名&gt; &lt;新分支名&gt;</p>
 <h3 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h3><p> git branch -d &lt;分支名&gt;</p>
 <h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p> git branch -d -r &lt;分支名&gt;</p>
